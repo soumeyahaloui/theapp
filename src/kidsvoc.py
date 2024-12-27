@@ -69,7 +69,7 @@ class SecondScreen(Screen):
 
         # Dynamic grid layout for categories
         grid = GridLayout(
-            cols=2, spacing=10, padding=[30, 20, 30, 20],  # Ensure proper centering horizontally and vertically
+            cols=2, spacing=10, padding=[40, 30, 10, 10],  # Ensure proper centering horizontally and vertically
             size_hint=(None, None),
             width=Window.width * 0.85,
             size_hint_y=None
