@@ -53,36 +53,39 @@ class SecondScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+        # Set background image
         self.add_widget(Image(source=resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][2]}'),
-                              allow_stretch=True, keep_ratio=False))
+                              allow_stretch=True))
 
+        # Main layout
         layout = FloatLayout()
 
         # Add all the categories to this list
         categories = [
-            "Animals", "Colors", "Fruits", "Vegetables", "Numbers", "Shapes", 
+            "Animals", "Colors", "Fruits", "Vegetables", "Numbers", "Shapes",
             "Actions", "Family and People", "Body Parts", "Clothing", "Food and Drinks",
             "Weather and Nature", "Transportation", "Household Items", "School and Education",
             "Jobs and Careers", "Sports and Hobbies", "Technology", "Places", "Time and Days",
             "Festivals and Celebrations", "Occupations", "Opposites", "Adjectives and Descriptions"
         ]
 
-        # Dynamic grid layout for categories
+        # Grid layout for categories
         grid = GridLayout(
-            cols=2, spacing=10, padding=[40, 30, 10, 10],  # Ensure proper centering horizontally and vertically
+            cols=2,
+            spacing=10,
+            padding=[20, 20, 20, 20],  # Equal padding for all sides
             size_hint=(None, None),
-            width=Window.width * 0.85,
+            width=Window.width * 0.9,  # Centered width for the grid
             size_hint_y=None
         )
-        grid.bind(minimum_height=grid.setter('height'))
-
-        # Center the grid layout
-        grid.pos_hint = {'center_x': 0.5, 'center_y': 0.5}
+        grid.bind(minimum_height=grid.setter('height'))  # Ensure dynamic height adjustment
 
         # Create buttons for each category
         for category in categories:
             button = Button(
-                text=category, size_hint=(None, None), size=(Window.width * 0.4, Window.height * 0.1), 
+                text=category,
+                size_hint=(None, None),
+                size=(Window.width * 0.4, Window.height * 0.1),  # Adjust button size dynamically
                 background_color=(0.2, 0.5, 0.8, 1)
             )
             # Bind Animals to navigate to AnimalCategoryScreen
@@ -92,11 +95,20 @@ class SecondScreen(Screen):
                 button.bind(on_press=lambda instance, cat=category: print(f"{cat} screen not yet implemented."))
             grid.add_widget(button)
 
-        scroll_view = ScrollView(size_hint=(1, 1))
-        scroll_view.add_widget(grid)
-        layout.add_widget(scroll_view)
-        self.add_widget(layout)
+        # Center the GridLayout horizontally in ScrollView
+        wrapper = FloatLayout(size_hint=(1, None), height=grid.height)
+        wrapper.add_widget(grid)
+        grid.pos_hint = {'center_x': 0.5, 'top': 1}
 
+        # Add GridLayout to ScrollView for scrolling
+        scroll_view = ScrollView(size_hint=(1, 1), bar_width=10)
+        scroll_view.add_widget(wrapper)
+
+        # Add ScrollView to the main layout
+        layout.add_widget(scroll_view)
+
+        # Add the main layout to the screen
+        self.add_widget(layout)
 
 
 # Screen 3: Animal Categories
