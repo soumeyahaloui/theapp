@@ -69,10 +69,15 @@ class SecondScreen(Screen):
 
         # Dynamic grid layout for categories
         grid = GridLayout(
-            cols=2, spacing=10, padding=20,
+            cols=2, spacing=10, padding=[30, 20, 30, 20],  # Ensure proper centering horizontally and vertically
+            size_hint=(None, None),
+            width=Window.width * 0.85,
             size_hint_y=None
         )
         grid.bind(minimum_height=grid.setter('height'))
+
+        # Center the grid layout
+        grid.pos_hint = {'center_x': 0.5, 'center_y': 0.5}
 
         # Create buttons for each category
         for category in categories:
@@ -93,6 +98,7 @@ class SecondScreen(Screen):
         self.add_widget(layout)
 
 
+
 # Screen 3: Animal Categories
 class AnimalCategoryScreen(Screen):
     def __init__(self, **kwargs):
@@ -108,15 +114,21 @@ class AnimalCategoryScreen(Screen):
 
         # Grid Layout for Animal Categories
         grid = GridLayout(
-            cols=2, spacing=10, padding=20,
-            size_hint_y=None
+            cols=2, spacing=10, padding=[0, 20, 0, 20],  # Remove horizontal padding
+            size_hint=(None, None),
+            size=(Window.width * 0.8, Window.height * 0.5)  # Explicitly set size
         )
         grid.bind(minimum_height=grid.setter('height'))
+
+        # Center the grid layout in the parent layout
+        grid.pos_hint = {'center_x': 0.5, 'center_y': 0.5}
 
         # Create buttons for each animal category
         for category in categories:
             button = Button(
-                text=category, size_hint=(None, None), size=(Window.width * 0.4, Window.height * 0.1),
+                text=category,
+                size_hint=(None, None),
+                size=(Window.width * 0.4, Window.height * 0.1),
                 background_color=(0.2, 0.5, 0.8, 1)
             )
             # Bind Wild Animals to navigate to WildAnimalsScreen
@@ -128,7 +140,6 @@ class AnimalCategoryScreen(Screen):
 
         layout.add_widget(grid)
         self.add_widget(layout)
-
 
 class WildAnimalsScreen(Screen):
     def __init__(self, **kwargs):
@@ -150,33 +161,35 @@ class WildAnimalsScreen(Screen):
             {"image": manifest["images"]["animals"][3], "audio_ar": manifest["audio"]["ar"][3], "audio_fr": manifest["audio"]["fr"][3]}
         ]
 
-        # Generate Animal Cards
         for animal in animals:
             animal_layout = FloatLayout(size_hint=(None, None), size=(Window.width * 0.45, Window.height * 0.25))
 
             # Animal Image
             img = Image(source=resource_find(f'assets/images/animals/{animal["image"]}'), 
                         size_hint=(None, None), size=(Window.width * 0.4, Window.height * 0.2),
-                        pos_hint={'center_x': 0.5, 'center_y': 0.6})
+                        pos_hint={'center_x': 0.5, 'center_y': 0.65})
             animal_layout.add_widget(img)
 
             # French Sound Button
             fr_button = Button(text="\U0001F50A FR", size_hint=(None, None),
-                               size=(Window.width * 0.1, Window.height * 0.05),
-                               pos_hint={'right': 1, 'center_y': 0.7},
-                               background_color=(0.2, 0.5, 0.8, 1))
+                            size=(Window.width * 0.1, Window.height * 0.05),
+                            pos_hint={'right': 1, 'center_y': 0.60},  # Moved slightly upward
+                            background_color=(0.2, 0.5, 0.8, 1))
             fr_button.bind(on_press=lambda instance, audio=animal["audio_fr"]: self.play_audio(audio))
             animal_layout.add_widget(fr_button)
 
             # Arabic Sound Button
             ar_button = Button(text="\U0001F50A AR", size_hint=(None, None),
-                               size=(Window.width * 0.1, Window.height * 0.05),
-                               pos_hint={'right': 1, 'center_y': 0.5},
-                               background_color=(0.2, 0.5, 0.8, 1))
+                            size=(Window.width * 0.1, Window.height * 0.05),
+                            pos_hint={'right': 1, 'center_y': 0.35},  # Kept in the same position
+                            background_color=(0.2, 0.5, 0.8, 1))
             ar_button.bind(on_press=lambda instance, audio=animal["audio_ar"]: self.play_audio(audio))
             animal_layout.add_widget(ar_button)
 
+            # Add the animal layout to the grid layout
             grid_layout.add_widget(animal_layout)
+
+
 
         scroll_view.add_widget(grid_layout)
         self.add_widget(scroll_view)
