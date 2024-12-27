@@ -12,6 +12,8 @@ from kivy.core.audio import SoundLoader
 from kivy.resources import resource_find
 from kivy.config import Config
 from kivy.core.window import Window
+from kivy.uix.label import Label
+
 
 # Disable resizing and set fixed dimensions for desktop testing
 Config.set('graphics', 'resizable', False)
@@ -60,7 +62,22 @@ class SecondScreen(Screen):
         # Main layout
         layout = FloatLayout()
 
-        # Add all the categories to this list
+        # Add a ScrollView for vertical scrolling
+        scroll_view = ScrollView(size_hint=(None, None), size=(Window.width * 0.9, Window.height * 0.8), bar_width=10)
+        scroll_view.pos_hint = {'center_x': 0.5, 'center_y': 0.5}  # Center the ScrollView
+
+        # Add GridLayout for buttons
+        grid = GridLayout(
+            cols=2,
+            spacing=10,
+            padding=[10, 20, 10, 20],
+            size_hint=(None, None),
+            width=Window.width * 0.8,  # Set a fixed width for alignment
+            size_hint_y=None
+        )
+        grid.bind(minimum_height=grid.setter('height'))  # Dynamically adjust height
+
+        # Add all categories to the grid
         categories = [
             "Animals", "Colors", "Fruits", "Vegetables", "Numbers", "Shapes",
             "Actions", "Family and People", "Body Parts", "Clothing", "Food and Drinks",
@@ -69,47 +86,28 @@ class SecondScreen(Screen):
             "Festivals and Celebrations", "Occupations", "Opposites", "Adjectives and Descriptions"
         ]
 
-        # Grid layout for categories
-        grid = GridLayout(
-            cols=2,
-            spacing=10,
-            padding=[10, 20, 10, 20],  # Equal padding for all sides
-            size_hint=(None, None),
-            width=Window.width * 0.8,  # Centered width for the grid
-            size_hint_y=None
-        )
-        grid.bind(minimum_height=grid.setter('height'))  # Ensure dynamic height adjustment
-
-        # Create buttons for each category
         for category in categories:
             button = Button(
                 text=category,
                 size_hint=(None, None),
-                size=(Window.width * 0.4, Window.height * 0.1),  # Adjust button size dynamically
+                size=(Window.width * 0.4, Window.height * 0.1),
                 background_color=(0.2, 0.5, 0.8, 1)
             )
-            # Bind Animals to navigate to AnimalCategoryScreen
+            # Navigate to appropriate screens
             if category == "Animals":
                 button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'animal_categories'))
             else:
                 button.bind(on_press=lambda instance, cat=category: print(f"{cat} screen not yet implemented."))
             grid.add_widget(button)
 
-        # Center the GridLayout horizontally in ScrollView
-        wrapper = FloatLayout(size_hint=(1, None), height=grid.height)
-        wrapper.add_widget(grid)
-        grid.pos_hint = {'center_x': 0.5, 'top': 1}
-
-        # Add GridLayout to ScrollView for scrolling
-        scroll_view = ScrollView(size_hint=(1, 1), bar_width=10)
-        scroll_view.add_widget(wrapper)
+        # Add GridLayout to ScrollView
+        scroll_view.add_widget(grid)
 
         # Add ScrollView to the main layout
         layout.add_widget(scroll_view)
 
-        # Add the main layout to the screen
+        # Add layout to the screen
         self.add_widget(layout)
-
 
 # Screen 3: Animal Categories
 class AnimalCategoryScreen(Screen):
