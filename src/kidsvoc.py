@@ -73,9 +73,9 @@ class SecondScreen(Screen):
         grid = GridLayout(
             cols=2,
             spacing=10,
-            padding=[20, 20, 20, 20],  # Equal padding for all sides
+            padding=[10, 20, 10, 20],  # Equal padding for all sides
             size_hint=(None, None),
-            width=Window.width * 0.9,  # Centered width for the grid
+            width=Window.width * 0.8,  # Centered width for the grid
             size_hint_y=None
         )
         grid.bind(minimum_height=grid.setter('height'))  # Ensure dynamic height adjustment
