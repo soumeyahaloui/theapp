@@ -6,19 +6,18 @@ from kivy.uix.image import Image
 from kivy.uix.button import Button
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.gridlayout import GridLayout
-from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.scrollview import ScrollView
 from kivy.core.audio import SoundLoader
 from kivy.resources import resource_find
 from kivy.config import Config
 from kivy.core.window import Window
-from kivy.uix.label import Label
+from kivy.metrics import dp
 
-
-# Disable resizing and set fixed dimensions for desktop testing
+# Set fixed dimensions for testing consistency
 Config.set('graphics', 'resizable', False)
 Config.set('graphics', 'width', '360')  # Match Android width
 Config.set('graphics', 'height', '640')  # Match Android height
+Config.write()
 
 # Load manifest.json
 with open('assets/manifest.json', 'r') as f:
@@ -30,7 +29,7 @@ class FirstScreen(Screen):
         super().__init__(**kwargs)
 
         # Background image
-        self.add_widget(Image(source=resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][1]}'), 
+        self.add_widget(Image(source=resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][1]}'),
                               allow_stretch=True, keep_ratio=False))
 
         # Layout and Start Button
@@ -39,7 +38,7 @@ class FirstScreen(Screen):
             text="Start",
             font_size="24sp",
             size_hint=(None, None),
-            size=(Window.width * 0.6, Window.height * 0.1),
+            size=(dp(200), dp(50)),
             pos_hint={'center_x': 0.5, 'center_y': 0.25},
             background_color=(0.2, 0.5, 0.8, 1),
             background_normal="",
@@ -63,19 +62,19 @@ class SecondScreen(Screen):
         layout = FloatLayout()
 
         # Add a ScrollView for vertical scrolling
-        scroll_view = ScrollView(size_hint=(None, None), size=(Window.width * 0.9, Window.height * 0.8), bar_width=10)
-        scroll_view.pos_hint = {'center_x': 0.5, 'center_y': 0.5}  # Center the ScrollView
+        scroll_view = ScrollView(size_hint=(None, None), size=(Window.width * 0.9, Window.height * 0.8), bar_width=dp(10))
+        scroll_view.pos_hint = {'center_x': 0.5, 'center_y': 0.5}
 
         # Add GridLayout for buttons
         grid = GridLayout(
             cols=2,
-            spacing=10,
-            padding=[10, 20, 10, 20],
+            spacing=dp(10),
+            padding=[dp(10), dp(20), dp(10), dp(20)],
             size_hint=(None, None),
-            width=Window.width * 0.8,  # Set a fixed width for alignment
+            width=Window.width * 0.8,
             size_hint_y=None
         )
-        grid.bind(minimum_height=grid.setter('height'))  # Dynamically adjust height
+        grid.bind(minimum_height=grid.setter('height'))
 
         # Add all categories to the grid
         categories = [
@@ -90,7 +89,7 @@ class SecondScreen(Screen):
             button = Button(
                 text=category,
                 size_hint=(None, None),
-                size=(Window.width * 0.4, Window.height * 0.1),
+                size=(dp(150), dp(50)),
                 background_color=(0.2, 0.5, 0.8, 1)
             )
             # Navigate to appropriate screens
@@ -109,6 +108,7 @@ class SecondScreen(Screen):
         # Add layout to the screen
         self.add_widget(layout)
 
+
 # Screen 3: Animal Categories
 class AnimalCategoryScreen(Screen):
     def __init__(self, **kwargs):
@@ -124,9 +124,9 @@ class AnimalCategoryScreen(Screen):
 
         # Grid Layout for Animal Categories
         grid = GridLayout(
-            cols=2, spacing=10, padding=[0, 20, 0, 20],  # Remove horizontal padding
+            cols=2, spacing=dp(10), padding=[dp(10), dp(20), dp(10), dp(20)],
             size_hint=(None, None),
-            size=(Window.width * 0.8, Window.height * 0.5)  # Explicitly set size
+            size=(Window.width * 0.8, Window.height * 0.5)
         )
         grid.bind(minimum_height=grid.setter('height'))
 
@@ -138,7 +138,7 @@ class AnimalCategoryScreen(Screen):
             button = Button(
                 text=category,
                 size_hint=(None, None),
-                size=(Window.width * 0.4, Window.height * 0.1),
+                size=(dp(150), dp(50)),
                 background_color=(0.2, 0.5, 0.8, 1)
             )
             # Bind Wild Animals to navigate to WildAnimalsScreen
@@ -151,6 +151,7 @@ class AnimalCategoryScreen(Screen):
         layout.add_widget(grid)
         self.add_widget(layout)
 
+
 class WildAnimalsScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -160,7 +161,7 @@ class WildAnimalsScreen(Screen):
 
         # Scrollable layout
         scroll_view = ScrollView(size_hint=(1, 1))
-        grid_layout = GridLayout(cols=2, spacing=(10, 40), padding=10, size_hint_y=None)
+        grid_layout = GridLayout(cols=2, spacing=dp(10), padding=dp(10), size_hint_y=None)
         grid_layout.bind(minimum_height=grid_layout.setter('height'))
 
         # Animal Data (from manifest)
@@ -173,41 +174,37 @@ class WildAnimalsScreen(Screen):
 
         for animal in animals:
             # Create a FloatLayout for each animal
-            animal_layout = FloatLayout(size_hint=(None, None), size=(Window.width * 0.45, Window.height * 0.25))
+            animal_layout = FloatLayout(size_hint=(None, None), size=(dp(160), dp(120)))
 
             # Create and configure the Animal Image
             img = Image(
                 source=resource_find(f'assets/images/animals/{animal["image"]}'),
                 size_hint=(None, None),
-                size=(Window.width * 0.4, Window.height * 0.3),  # Ensure uniform size
-                pos_hint={'center_x': 0.5, 'center_y': 0.4},
+                size=(dp(140), dp(100)),
+                pos_hint={'center_x': 0.5, 'center_y': 0.6},
                 allow_stretch=True,
-                keep_ratio=False  # Force uniform dimensions
+                keep_ratio=False
             )
- # Updated position
             animal_layout.add_widget(img)
 
             # Add French Sound Button
             fr_button = Button(text="\U0001F50A FR", size_hint=(None, None),
-                            size=(Window.width * 0.1, Window.height * 0.05),
-                            pos_hint={'right': 1, 'center_y': 0.35},
-                            background_color=(0.2, 0.5, 0.8, 1))
+                               size=(dp(50), dp(30)),
+                               pos_hint={'right': 1, 'center_y': 0.3},
+                               background_color=(0.2, 0.5, 0.8, 1))
             fr_button.bind(on_press=lambda instance, audio=animal["audio_fr"]: self.play_audio(audio))
             animal_layout.add_widget(fr_button)
 
             # Add Arabic Sound Button
             ar_button = Button(text="\U0001F50A AR", size_hint=(None, None),
-                            size=(Window.width * 0.1, Window.height * 0.05),
-                            pos_hint={'right': 1, 'center_y': 0},
-                            background_color=(0.2, 0.5, 0.8, 1))
+                               size=(dp(50), dp(30)),
+                               pos_hint={'right': 1, 'center_y': 0},
+                               background_color=(0.2, 0.5, 0.8, 1))
             ar_button.bind(on_press=lambda instance, audio=animal["audio_ar"]: self.play_audio(audio))
             animal_layout.add_widget(ar_button)
 
             # Add the animal layout to the grid layout
             grid_layout.add_widget(animal_layout)
-
-
-
 
         scroll_view.add_widget(grid_layout)
         self.add_widget(scroll_view)
@@ -222,7 +219,6 @@ class WildAnimalsScreen(Screen):
                 print(f"Failed to load sound: {audio_file}")
         else:
             print(f"Audio file not found: {audio_file}")
-
 
 
 # Main App Class
