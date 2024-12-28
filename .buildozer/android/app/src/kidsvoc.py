@@ -157,13 +157,21 @@ class WildAnimalsScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.add_widget(Image(source=resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][0]}'), 
+        # Add background image
+        self.add_widget(Image(source=resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][0]}'),
                               allow_stretch=True, keep_ratio=False))
 
         # Scrollable layout
-        scroll_view = ScrollView(size_hint=(1, 1))
-        grid_layout = GridLayout(cols=2, spacing=dp(10), padding=dp(10), size_hint_y=None)
-        grid_layout.bind(minimum_height=grid_layout.setter('height'))
+        scroll_view = ScrollView(size_hint=(1, 1))  # Full screen for ScrollView
+
+        # GridLayout to hold all animal frames
+        grid_layout = GridLayout(
+            cols=2,  # Two items per row
+            spacing=dp(10),  # Space between items
+            padding=[dp(10), dp(10), dp(10), dp(10)],  # Padding around the edges
+            size_hint_y=None  # Allow vertical expansion
+        )
+        grid_layout.bind(minimum_height=grid_layout.setter('height'))  # Dynamic height adjustment
 
         # Animal Data (from manifest)
         animals = [
@@ -173,41 +181,51 @@ class WildAnimalsScreen(Screen):
             {"image": manifest["images"]["animals"][3], "audio_ar": manifest["audio"]["ar"][3], "audio_fr": manifest["audio"]["fr"][3]}
         ]
 
+        # Loop through animal data to create frames
         for animal in animals:
-            # Create a FloatLayout for each animal
-            animal_layout = FloatLayout(size_hint=(None, None), size=(dp(160), dp(120)))
+            # Create a layout for the image and buttons
+            frame_layout = FloatLayout(size_hint=(None, None), size=(dp(180), dp(160)))  # Adjust size as needed
 
-            # Create and configure the Animal Image
+            # Add the image
             img = Image(
                 source=resource_find(f'assets/images/animals/{animal["image"]}'),
                 size_hint=(None, None),
-                size=(dp(140), dp(100)),
-                pos_hint={'center_x': 0.5, 'center_y': 0.6},
+                size=(dp(120), dp(120)),  # Adjust image size
+                pos_hint={'x': 0, 'center_y': 0.6},  # Align image to the left
                 allow_stretch=True,
                 keep_ratio=False
             )
-            animal_layout.add_widget(img)
+            frame_layout.add_widget(img)
 
-            # Add French Sound Button
-            fr_button = Button(text="\U0001F50A FR", size_hint=(None, None),
-                               size=(dp(50), dp(30)),
-                               pos_hint={'right': 1, 'center_y': 0.3},
-                               background_color=(0.2, 0.5, 0.8, 1))
+            # Add French button
+            fr_button = Button(
+                text="\U0001F50A FR",
+                size_hint=(None, None),
+                size=(dp(50), dp(30)),
+                pos_hint={'right': 1, 'center_y': 0.45},  # Adjusted position
+                background_color=(0.2, 0.5, 0.8, 1)
+            )
             fr_button.bind(on_press=lambda instance, audio=animal["audio_fr"]: self.play_audio(audio))
-            animal_layout.add_widget(fr_button)
+            frame_layout.add_widget(fr_button)
 
-            # Add Arabic Sound Button
-            ar_button = Button(text="\U0001F50A AR", size_hint=(None, None),
-                               size=(dp(50), dp(30)),
-                               pos_hint={'right': 1, 'center_y': 0},
-                               background_color=(0.2, 0.5, 0.8, 1))
+            # Add Arabic button
+            ar_button = Button(
+                text="\U0001F50A AR",
+                size_hint=(None, None),
+                size=(dp(50), dp(30)),
+                pos_hint={'right': 1, 'center_y': 0.3},  # Adjusted position
+                background_color=(0.2, 0.5, 0.8, 1)
+            )
             ar_button.bind(on_press=lambda instance, audio=animal["audio_ar"]: self.play_audio(audio))
-            animal_layout.add_widget(ar_button)
+            frame_layout.add_widget(ar_button)
 
-            # Add the animal layout to the grid layout
-            grid_layout.add_widget(animal_layout)
+            # Add the frame layout to the grid layout
+            grid_layout.add_widget(frame_layout)
 
+        # Add the grid layout to the ScrollView
         scroll_view.add_widget(grid_layout)
+
+        # Add the ScrollView to the screen
         self.add_widget(scroll_view)
 
     def play_audio(self, audio_file):
