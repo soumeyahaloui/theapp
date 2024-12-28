@@ -12,6 +12,8 @@ from kivy.resources import resource_find
 from kivy.config import Config
 from kivy.core.window import Window
 from kivy.metrics import dp
+from kivy.graphics import Color, Ellipse
+
 
 # Set fixed dimensions for testing consistency
 Config.set('graphics', 'resizable', False)
@@ -55,8 +57,12 @@ class SecondScreen(Screen):
         super().__init__(**kwargs)
 
         # Set background image
-        self.add_widget(Image(source=resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][2]}'),
-                              allow_stretch=True))
+        self.add_widget(Image(
+            source=resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][2]}'),
+            allow_stretch=True,
+            keep_ratio=False  # Set to False to stretch image fully
+        ))
+
 
         # Main layout
         layout = FloatLayout()
@@ -157,41 +163,65 @@ class WildAnimalsScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+        # Constants for styling
+        BUTTON_SIZE = dp(60)
+        IMAGE_WIDTH = dp(130)
+        IMAGE_HEIGHT = dp(200)  # Increase height to stretch vertically
+        FRAME_SIZE = (dp(190), dp(210))  # Adjust frame size for taller images
+        GRID_PADDING = [dp(10), dp(30), dp(10), dp(10)]
+        GRID_SPACING = [dp(5), dp(0)]  # Reduce vertical spacing to 5 dp
+
+
         # Add background image
-        self.add_widget(Image(source=resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][0]}'),
-                              allow_stretch=True, keep_ratio=False))
+        try:
+            background_image = resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][0]}')
+        except (KeyError, IndexError) as e:
+            print(f"Error loading background image: {e}")
+            background_image = 'default_background.png'  # Fallback image
+
+        self.add_widget(Image(source=background_image, allow_stretch=True, keep_ratio=False))
 
         # Scrollable layout
-        scroll_view = ScrollView(size_hint=(1, 1))  # Full screen for ScrollView
+        scroll_view = ScrollView(size_hint=(1, 1))
 
         # GridLayout to hold all animal frames
         grid_layout = GridLayout(
             cols=2,  # Two items per row
-            spacing=dp(10),  # Space between items
-            padding=[dp(10), dp(10), dp(10), dp(10)],  # Padding around the edges
+            spacing=GRID_SPACING,
+            padding=GRID_PADDING,
             size_hint_y=None  # Allow vertical expansion
         )
-        grid_layout.bind(minimum_height=grid_layout.setter('height'))  # Dynamic height adjustment
+        grid_layout.bind(minimum_height=grid_layout.setter('height'))
 
         # Animal Data (from manifest)
-        animals = [
-            {"image": manifest["images"]["animals"][1], "audio_ar": manifest["audio"]["ar"][1], "audio_fr": manifest["audio"]["fr"][1]},
-            {"image": manifest["images"]["animals"][0], "audio_ar": manifest["audio"]["ar"][0], "audio_fr": manifest["audio"]["fr"][0]},
-            {"image": manifest["images"]["animals"][2], "audio_ar": manifest["audio"]["ar"][2], "audio_fr": manifest["audio"]["fr"][2]},
-            {"image": manifest["images"]["animals"][3], "audio_ar": manifest["audio"]["ar"][3], "audio_fr": manifest["audio"]["fr"][3]}
-        ]
+        try:
+            animals = [
+                {"image": manifest["images"]["animals"][1], "audio_ar": manifest["audio"]["ar"][1], "audio_fr": manifest["audio"]["fr"][1]},
+                {"image": manifest["images"]["animals"][0], "audio_ar": manifest["audio"]["ar"][0], "audio_fr": manifest["audio"]["fr"][0]},
+                {"image": manifest["images"]["animals"][2], "audio_ar": manifest["audio"]["ar"][2], "audio_fr": manifest["audio"]["fr"][2]},
+                {"image": manifest["images"]["animals"][3], "audio_ar": manifest["audio"]["ar"][3], "audio_fr": manifest["audio"]["fr"][3]}
+            ]
+        except (KeyError, IndexError) as e:
+            print(f"Error accessing animal data: {e}")
+            animals = []  # Fallback to empty list if data is unavailable
+
+        # Function to dynamically update the ellipse
+        def update_ellipse(instance, value):
+            with instance.canvas.before:
+                instance.canvas.before.clear()  # Clear previous drawings
+                Color(0.2, 0.5, 0.8, 1)  # Redraw color
+                Ellipse(pos=instance.pos, size=instance.size)  # Redraw ellipse
 
         # Loop through animal data to create frames
         for animal in animals:
-            # Create a layout for the image and buttons
-            frame_layout = FloatLayout(size_hint=(None, None), size=(dp(180), dp(160)))  # Adjust size as needed
+            frame_layout = FloatLayout(size_hint=(None, None), size=FRAME_SIZE)
 
             # Add the image
             img = Image(
                 source=resource_find(f'assets/images/animals/{animal["image"]}'),
                 size_hint=(None, None),
-                size=(dp(120), dp(120)),  # Adjust image size
-                pos_hint={'x': 0, 'center_y': 0.6},  # Align image to the left
+                size=(IMAGE_WIDTH, IMAGE_HEIGHT),  # Stretch image vertically
+                pos_hint={'x': 0, 'center_y': 0.65},  # Adjust position for taller image
                 allow_stretch=True,
                 keep_ratio=False
             )
@@ -199,33 +229,51 @@ class WildAnimalsScreen(Screen):
 
             # Add French button
             fr_button = Button(
-                text="\U0001F50A FR",
+                text="\U0001F50A\nFR",
                 size_hint=(None, None),
-                size=(dp(50), dp(30)),
-                pos_hint={'right': 1, 'center_y': 0.45},  # Adjusted position
-                background_color=(0.2, 0.5, 0.8, 1)
+                size=(BUTTON_SIZE, BUTTON_SIZE),
+                pos_hint={'right': 1, 'center_y': 0.55},
+                background_normal='',
+                background_color=(0, 0, 0, 0)
             )
-            fr_button.bind(on_press=lambda instance, audio=animal["audio_fr"]: self.play_audio(audio))
             frame_layout.add_widget(fr_button)
+
+            # Draw circular background for French button
+            with fr_button.canvas.before:
+                Color(0.2, 0.5, 0.8, 1)
+                Ellipse(pos=fr_button.pos, size=fr_button.size)
 
             # Add Arabic button
             ar_button = Button(
-                text="\U0001F50A AR",
+                text="\U0001F50A\nAR",
                 size_hint=(None, None),
-                size=(dp(50), dp(30)),
-                pos_hint={'right': 1, 'center_y': 0.3},  # Adjusted position
-                background_color=(0.2, 0.5, 0.8, 1)
+                size=(BUTTON_SIZE, BUTTON_SIZE),
+                pos_hint={'right': 1, 'center_y': 0.35},
+                background_normal='',
+                background_color=(0, 0, 0, 0)
             )
-            ar_button.bind(on_press=lambda instance, audio=animal["audio_ar"]: self.play_audio(audio))
             frame_layout.add_widget(ar_button)
 
-            # Add the frame layout to the grid layout
+            # Draw circular background for Arabic button
+            with ar_button.canvas.before:
+                Color(0.2, 0.5, 0.8, 1)
+                Ellipse(pos=ar_button.pos, size=ar_button.size)
+
+            # Bind dynamic ellipse updates
+            fr_button.bind(pos=update_ellipse, size=update_ellipse)
+            ar_button.bind(pos=update_ellipse, size=update_ellipse)
+
+            # Bind button actions
+            fr_button.bind(on_press=lambda instance, audio=animal["audio_fr"]: self.play_audio(audio))
+            ar_button.bind(on_press=lambda instance, audio=animal["audio_ar"]: self.play_audio(audio))
+
+            # Add frame to grid layout
             grid_layout.add_widget(frame_layout)
 
-        # Add the grid layout to the ScrollView
+        # Add grid layout to ScrollView
         scroll_view.add_widget(grid_layout)
 
-        # Add the ScrollView to the screen
+        # Add ScrollView to the screen
         self.add_widget(scroll_view)
 
     def play_audio(self, audio_file):
@@ -238,7 +286,6 @@ class WildAnimalsScreen(Screen):
                 print(f"Failed to load sound: {audio_file}")
         else:
             print(f"Audio file not found: {audio_file}")
-
 
 # Main App Class
 class MyApp(App):
