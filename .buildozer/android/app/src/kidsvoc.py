@@ -160,7 +160,7 @@ class WildAnimalsScreen(Screen):
 
         # Scrollable layout
         scroll_view = ScrollView(size_hint=(1, 1))
-        grid_layout = GridLayout(cols=2, spacing=10, padding=10, size_hint_y=None)
+        grid_layout = GridLayout(cols=2, spacing=(10, 40), padding=10, size_hint_y=None)
         grid_layout.bind(minimum_height=grid_layout.setter('height'))
 
         # Animal Data (from manifest)
@@ -172,32 +172,40 @@ class WildAnimalsScreen(Screen):
         ]
 
         for animal in animals:
+            # Create a FloatLayout for each animal
             animal_layout = FloatLayout(size_hint=(None, None), size=(Window.width * 0.45, Window.height * 0.25))
 
-            # Animal Image
-            img = Image(source=resource_find(f'assets/images/animals/{animal["image"]}'), 
-                        size_hint=(None, None), size=(Window.width * 0.4, Window.height * 0.2),
-                        pos_hint={'center_x': 0.5, 'center_y': 0.65})
+            # Create and configure the Animal Image
+            img = Image(
+                source=resource_find(f'assets/images/animals/{animal["image"]}'),
+                size_hint=(None, None),
+                size=(Window.width * 0.4, Window.height * 0.3),  # Ensure uniform size
+                pos_hint={'center_x': 0.5, 'center_y': 0.4},
+                allow_stretch=True,
+                keep_ratio=False  # Force uniform dimensions
+            )
+ # Updated position
             animal_layout.add_widget(img)
 
-            # French Sound Button
+            # Add French Sound Button
             fr_button = Button(text="\U0001F50A FR", size_hint=(None, None),
                             size=(Window.width * 0.1, Window.height * 0.05),
-                            pos_hint={'right': 1, 'center_y': 0.60},  # Moved slightly upward
+                            pos_hint={'right': 1, 'center_y': 0.35},
                             background_color=(0.2, 0.5, 0.8, 1))
             fr_button.bind(on_press=lambda instance, audio=animal["audio_fr"]: self.play_audio(audio))
             animal_layout.add_widget(fr_button)
 
-            # Arabic Sound Button
+            # Add Arabic Sound Button
             ar_button = Button(text="\U0001F50A AR", size_hint=(None, None),
                             size=(Window.width * 0.1, Window.height * 0.05),
-                            pos_hint={'right': 1, 'center_y': 0.35},  # Kept in the same position
+                            pos_hint={'right': 1, 'center_y': 0},
                             background_color=(0.2, 0.5, 0.8, 1))
             ar_button.bind(on_press=lambda instance, audio=animal["audio_ar"]: self.play_audio(audio))
             animal_layout.add_widget(ar_button)
 
             # Add the animal layout to the grid layout
             grid_layout.add_widget(animal_layout)
+
 
 
 
