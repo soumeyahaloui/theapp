@@ -62,7 +62,7 @@ class SecondScreen(Screen):
         layout = FloatLayout()
 
         # Add a ScrollView for vertical scrolling
-        scroll_view = ScrollView(size_hint=(None, None), size=(Window.width * 0.9, Window.height * 0.8), bar_width=dp(10))
+        scroll_view = ScrollView(size_hint=(None, None), size=(dp(320), dp(520)), bar_width=dp(10))
         scroll_view.pos_hint = {'center_x': 0.5, 'center_y': 0.5}
 
         # Add GridLayout for buttons
@@ -71,7 +71,7 @@ class SecondScreen(Screen):
             spacing=dp(10),
             padding=[dp(10), dp(20), dp(10), dp(20)],
             size_hint=(None, None),
-            width=Window.width * 0.8,
+            width=dp(300),
             size_hint_y=None
         )
         grid.bind(minimum_height=grid.setter('height'))
@@ -89,7 +89,7 @@ class SecondScreen(Screen):
             button = Button(
                 text=category,
                 size_hint=(None, None),
-                size=(dp(150), dp(50)),
+                size=(dp(140), dp(50)),
                 background_color=(0.2, 0.5, 0.8, 1)
             )
             # Navigate to appropriate screens
@@ -126,7 +126,8 @@ class AnimalCategoryScreen(Screen):
         grid = GridLayout(
             cols=2, spacing=dp(10), padding=[dp(10), dp(20), dp(10), dp(20)],
             size_hint=(None, None),
-            size=(Window.width * 0.8, Window.height * 0.5)
+            width=dp(300),
+            size_hint_y=None
         )
         grid.bind(minimum_height=grid.setter('height'))
 
@@ -138,7 +139,7 @@ class AnimalCategoryScreen(Screen):
             button = Button(
                 text=category,
                 size_hint=(None, None),
-                size=(dp(150), dp(50)),
+                size=(dp(140), dp(50)),
                 background_color=(0.2, 0.5, 0.8, 1)
             )
             # Bind Wild Animals to navigate to WildAnimalsScreen
