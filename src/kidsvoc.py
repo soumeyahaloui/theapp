@@ -115,8 +115,8 @@ class SecondScreen(Screen):
             text="< Back",
             size_hint=(None, None),
             size=(dp(80), dp(40)),
-            pos_hint={'x': 0.05, 'top': 0.95},
-            background_color=(0.8, 0.2, 0.2, 1),
+            pos_hint={'x': 0.05, 'top': 0.1},
+            background_color=(0.094, 0.306, 0.318, 1),  # Converted RGBA from #184e51
             background_normal=""
         )
         back_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'first'))  # Navigate to the first screen
@@ -183,8 +183,8 @@ class AnimalCategoryScreen(Screen):
             text="< Back",
             size_hint=(None, None),
             size=(dp(80), dp(40)),
-            pos_hint={'x': 0.05, 'top': 0.95},
-            background_color=(0.8, 0.2, 0.2, 1),
+            pos_hint={'x': 0.05, 'top': 0.1},
+            background_color=(0.094, 0.306, 0.318, 1),  # Converted RGBA from #184e51
             background_normal=""
         )
         back_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'second'))  # Navigate to the previous screen
@@ -314,8 +314,8 @@ class WildAnimalsScreen(Screen):
             text="< Back",
             size_hint=(None, None),
             size=(dp(80), dp(40)),
-            pos_hint={'x': 0.05, 'top': 0.95},
-            background_color=(0.8, 0.2, 0.2, 1),
+            pos_hint={'x': 0.05, 'top': 0.1},
+            background_color=(0.094, 0.306, 0.318, 1),  # Converted RGBA from #184e51
             background_normal=""
         )
         back_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'animal_categories'))  # Navigate back to animal categories
