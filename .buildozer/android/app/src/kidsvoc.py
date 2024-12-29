@@ -198,12 +198,12 @@ class WildAnimalsScreen(Screen):
         super().__init__(**kwargs)
 
         # Constants for styling
-        BUTTON_SIZE = dp(60)
-        IMAGE_WIDTH = dp(130)
-        IMAGE_HEIGHT = dp(200)  # Increase height to stretch vertically
+        BUTTON_SIZE = dp(130)
+        IMAGE_WIDTH = dp(270)
+        IMAGE_HEIGHT = dp(340)  # Increase height to stretch vertically
         FRAME_SIZE = (dp(190), dp(210))  # Adjust frame size for taller images
-        GRID_PADDING = [dp(10), dp(30), dp(10), dp(10)]
-        GRID_SPACING = [dp(5), dp(0)]  # Reduce vertical spacing to 5 dp
+        GRID_PADDING = [dp(10), dp(100), dp(10), dp(10)]
+        GRID_SPACING = [dp(0), dp(150)]  # Adjust vertical spacing for rows
 
         # Add background image
         try:
@@ -219,7 +219,7 @@ class WildAnimalsScreen(Screen):
 
         # GridLayout to hold all animal frames
         grid_layout = GridLayout(
-            cols=2,  # Two items per row
+            cols=1,  # Set to 1 column to have each image in its own row
             spacing=GRID_SPACING,
             padding=GRID_PADDING,
             size_hint_y=None  # Allow vertical expansion
@@ -269,7 +269,7 @@ class WildAnimalsScreen(Screen):
                 source='assets/images/icon/speaker.png',
                 size_hint=(None, None),
                 size=(BUTTON_SIZE, BUTTON_SIZE),
-                pos_hint={'right': 1, 'center_y': 0.55},
+                pos_hint={'right': 2, 'center_y': 0.10},
                 allow_stretch=False,  # Prevent deformation
                 keep_ratio=True       # Maintain aspect ratio
             )
@@ -291,7 +291,7 @@ class WildAnimalsScreen(Screen):
                 source='assets/images/icon/speaker.png',
                 size_hint=(None, None),
                 size=(BUTTON_SIZE, BUTTON_SIZE),
-                pos_hint={'right': 1, 'center_y': 0.35},
+                pos_hint={'right': 2, 'center_y': 0.70},
                 allow_stretch=False,  # Prevent deformation
                 keep_ratio=True       # Maintain aspect ratio
             )
@@ -332,7 +332,6 @@ class WildAnimalsScreen(Screen):
                 print(f"Failed to load sound: {audio_file}")
         else:
             print(f"Audio file not found: {audio_file}")
-
 
 # Main App Class
 class MyApp(App):
