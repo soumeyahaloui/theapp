@@ -238,13 +238,6 @@ class WildAnimalsScreen(Screen):
             print(f"Error accessing animal data: {e}")
             animals = []  # Fallback to empty list if data is unavailable
 
-        # Function to dynamically update the ellipse
-        def update_ellipse(instance, value):
-            with instance.canvas.before:
-                instance.canvas.before.clear()  # Clear previous drawings
-                Color(0.2, 0.5, 0.8, 1)  # Redraw color
-                Ellipse(pos=instance.pos, size=instance.size)  # Redraw ellipse
-
         # Loop through animal data to create frames
         for animal in animals:
             frame_layout = FloatLayout(size_hint=(None, None), size=FRAME_SIZE)
@@ -260,41 +253,49 @@ class WildAnimalsScreen(Screen):
             )
             frame_layout.add_widget(img)
 
-            # Add French button
+            # Add French button with transparent background and speaker icon
             fr_button = Button(
-                text="\U0001F50A\nFR",
                 size_hint=(None, None),
                 size=(BUTTON_SIZE, BUTTON_SIZE),
                 pos_hint={'right': 1, 'center_y': 0.55},
                 background_normal='',
-                background_color=(0, 0, 0, 0)
+                background_down='',
+                background_color=(0, 0, 0, 0)  # Fully transparent button
             )
             frame_layout.add_widget(fr_button)
 
-            # Draw circular background for French button
-            with fr_button.canvas.before:
-                Color(0.2, 0.5, 0.8, 1)
-                Ellipse(pos=fr_button.pos, size=fr_button.size)
+            # Add French speaker icon
+            fr_icon = Image(
+                source='assets/images/icon/speaker.png',
+                size_hint=(None, None),
+                size=(BUTTON_SIZE, BUTTON_SIZE),
+                pos_hint={'right': 1, 'center_y': 0.55},
+                allow_stretch=False,  # Prevent deformation
+                keep_ratio=True       # Maintain aspect ratio
+            )
+            frame_layout.add_widget(fr_icon)
 
-            # Add Arabic button
+            # Add Arabic button with transparent background and speaker icon
             ar_button = Button(
-                text="\U0001F50A\nAR",
                 size_hint=(None, None),
                 size=(BUTTON_SIZE, BUTTON_SIZE),
                 pos_hint={'right': 1, 'center_y': 0.35},
                 background_normal='',
-                background_color=(0, 0, 0, 0)
+                background_down='',
+                background_color=(0, 0, 0, 0)  # Fully transparent button
             )
             frame_layout.add_widget(ar_button)
 
-            # Draw circular background for Arabic button
-            with ar_button.canvas.before:
-                Color(0.2, 0.5, 0.8, 1)
-                Ellipse(pos=ar_button.pos, size=ar_button.size)
-
-            # Bind dynamic ellipse updates
-            fr_button.bind(pos=update_ellipse, size=update_ellipse)
-            ar_button.bind(pos=update_ellipse, size=update_ellipse)
+            # Add Arabic speaker icon
+            ar_icon = Image(
+                source='assets/images/icon/speaker.png',
+                size_hint=(None, None),
+                size=(BUTTON_SIZE, BUTTON_SIZE),
+                pos_hint={'right': 1, 'center_y': 0.35},
+                allow_stretch=False,  # Prevent deformation
+                keep_ratio=True       # Maintain aspect ratio
+            )
+            frame_layout.add_widget(ar_icon)
 
             # Bind button actions
             fr_button.bind(on_press=lambda instance, audio=animal["audio_fr"]: self.play_audio(audio))
@@ -331,6 +332,7 @@ class WildAnimalsScreen(Screen):
                 print(f"Failed to load sound: {audio_file}")
         else:
             print(f"Audio file not found: {audio_file}")
+
 
 # Main App Class
 class MyApp(App):
