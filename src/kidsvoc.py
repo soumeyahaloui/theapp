@@ -257,7 +257,7 @@ class WildAnimalsScreen(Screen):
             fr_button = Button(
                 size_hint=(None, None),
                 size=(BUTTON_SIZE, BUTTON_SIZE),
-                pos_hint={'right': 1, 'center_y': 0.55},
+                pos_hint={'right': 2, 'center_y': 0.70},
                 background_normal='',
                 background_down='',
                 background_color=(0, 0, 0, 0)  # Fully transparent button
@@ -269,7 +269,7 @@ class WildAnimalsScreen(Screen):
                 source='assets/images/icon/speaker.png',
                 size_hint=(None, None),
                 size=(BUTTON_SIZE, BUTTON_SIZE),
-                pos_hint={'right': 2, 'center_y': 0.10},
+                pos_hint={'right': 2, 'center_y': 0.70},
                 allow_stretch=False,  # Prevent deformation
                 keep_ratio=True       # Maintain aspect ratio
             )
@@ -279,7 +279,7 @@ class WildAnimalsScreen(Screen):
             ar_button = Button(
                 size_hint=(None, None),
                 size=(BUTTON_SIZE, BUTTON_SIZE),
-                pos_hint={'right': 1, 'center_y': 0.35},
+                pos_hint={'right': 2, 'center_y': 0.10},
                 background_normal='',
                 background_down='',
                 background_color=(0, 0, 0, 0)  # Fully transparent button
@@ -291,7 +291,7 @@ class WildAnimalsScreen(Screen):
                 source='assets/images/icon/speaker.png',
                 size_hint=(None, None),
                 size=(BUTTON_SIZE, BUTTON_SIZE),
-                pos_hint={'right': 2, 'center_y': 0.70},
+                pos_hint={'right': 2, 'center_y': 0.10},
                 allow_stretch=False,  # Prevent deformation
                 keep_ratio=True       # Maintain aspect ratio
             )
