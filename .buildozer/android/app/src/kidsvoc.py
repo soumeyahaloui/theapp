@@ -63,7 +63,6 @@ class SecondScreen(Screen):
             keep_ratio=False  # Set to False to stretch image fully
         ))
 
-
         # Main layout
         layout = FloatLayout()
 
@@ -111,8 +110,21 @@ class SecondScreen(Screen):
         # Add ScrollView to the main layout
         layout.add_widget(scroll_view)
 
+        # Add a Back button
+        back_button = Button(
+            text="< Back",
+            size_hint=(None, None),
+            size=(dp(80), dp(40)),
+            pos_hint={'x': 0.05, 'top': 0.95},
+            background_color=(0.8, 0.2, 0.2, 1),
+            background_normal=""
+        )
+        back_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'first'))  # Navigate to the first screen
+        layout.add_widget(back_button)
+
         # Add layout to the screen
         self.add_widget(layout)
+
 
 
 # Screen 3: Animal Categories
@@ -120,9 +132,15 @@ class AnimalCategoryScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.add_widget(Image(source=resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][1]}'),
-                              allow_stretch=True, keep_ratio=False))
+        # Add background image
+        background_image = Image(
+            source=resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][1]}'),
+            allow_stretch=True,
+            keep_ratio=False
+        )
+        self.add_widget(background_image)
 
+        # Main layout
         layout = FloatLayout()
 
         # Animal Categories
@@ -130,7 +148,9 @@ class AnimalCategoryScreen(Screen):
 
         # Grid Layout for Animal Categories
         grid = GridLayout(
-            cols=2, spacing=dp(10), padding=[dp(10), dp(20), dp(10), dp(20)],
+            cols=2,
+            spacing=dp(10),
+            padding=[dp(10), dp(20), dp(10), dp(20)],
             size_hint=(None, None),
             width=dp(300),
             size_hint_y=None
@@ -155,9 +175,23 @@ class AnimalCategoryScreen(Screen):
                 button.bind(on_press=lambda instance, cat=category: print(f"{cat} screen not yet implemented."))
             grid.add_widget(button)
 
+        # Add grid layout to the main layout
         layout.add_widget(grid)
-        self.add_widget(layout)
 
+        # Add a Back button
+        back_button = Button(
+            text="< Back",
+            size_hint=(None, None),
+            size=(dp(80), dp(40)),
+            pos_hint={'x': 0.05, 'top': 0.95},
+            background_color=(0.8, 0.2, 0.2, 1),
+            background_normal=""
+        )
+        back_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'second'))  # Navigate to the previous screen
+        layout.add_widget(back_button)
+
+        # Add layout to the screen
+        self.add_widget(layout)
 
 class WildAnimalsScreen(Screen):
     def __init__(self, **kwargs):
@@ -170,7 +204,6 @@ class WildAnimalsScreen(Screen):
         FRAME_SIZE = (dp(190), dp(210))  # Adjust frame size for taller images
         GRID_PADDING = [dp(10), dp(30), dp(10), dp(10)]
         GRID_SPACING = [dp(5), dp(0)]  # Reduce vertical spacing to 5 dp
-
 
         # Add background image
         try:
@@ -275,6 +308,18 @@ class WildAnimalsScreen(Screen):
 
         # Add ScrollView to the screen
         self.add_widget(scroll_view)
+
+        # Add a Back button
+        back_button = Button(
+            text="< Back",
+            size_hint=(None, None),
+            size=(dp(80), dp(40)),
+            pos_hint={'x': 0.05, 'top': 0.95},
+            background_color=(0.8, 0.2, 0.2, 1),
+            background_normal=""
+        )
+        back_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'animal_categories'))  # Navigate back to animal categories
+        self.add_widget(back_button)
 
     def play_audio(self, audio_file):
         audio_path = resource_find(f'assets/audio/ar/{audio_file}') or resource_find(f'assets/audio/fr/{audio_file}')
