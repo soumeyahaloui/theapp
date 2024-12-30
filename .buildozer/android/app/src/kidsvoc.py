@@ -15,7 +15,8 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.core.audio import SoundLoader
-
+import arabic_reshaper
+from bidi.algorithm import get_display
 
 Config.set('graphics', 'resizable', False)
 Config.set('graphics', 'width', '360')
@@ -26,19 +27,24 @@ with open('assets/manifest.json', 'r') as f:
     manifest = json.load(f)
 
 
-# Render Arabic text as an image
 def render_arabic_text_as_image(text, font_path, font_size=40):
     """Converts Arabic text into an image using PIL."""
     try:
+        # Reshape and reorder the Arabic text
+        reshaped_text = arabic_reshaper.reshape(text)
+        bidi_text = get_display(reshaped_text)
+
+        # Render the reshaped and reordered text
         image_width, image_height = 400, 100
         pil_image = PILImage.new("RGBA", (image_width, image_height), (0, 0, 0, 0))
         draw = ImageDraw.Draw(pil_image)
         font = ImageFont.truetype(font_path, font_size)
-        text_bbox = draw.textbbox((0, 0), text, font=font)
+        text_bbox = draw.textbbox((0, 0), bidi_text, font=font)
         text_width, text_height = text_bbox[2], text_bbox[3]
         x = (image_width - text_width) // 2
         y = (image_height - text_height) // 2
-        draw.text((x, y), text, font=font, fill="white")
+        draw.text((x, y), bidi_text, font=font, fill="white")
+
         buffer = BytesIO()
         pil_image.save(buffer, format="PNG")
         buffer.seek(0)
