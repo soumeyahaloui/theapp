@@ -15,8 +15,6 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.core.audio import SoundLoader
-from arabic_reshaper import reshape
-from bidi.algorithm import get_display
 
 
 Config.set('graphics', 'resizable', False)
@@ -28,22 +26,19 @@ with open('assets/manifest.json', 'r') as f:
     manifest = json.load(f)
 
 
+# Render Arabic text as an image
 def render_arabic_text_as_image(text, font_path, font_size=40):
-    """Converts Arabic text into an image using PIL with reshaping and bidirectional fixes."""
+    """Converts Arabic text into an image using PIL."""
     try:
-        # Reshape and reverse text for correct display
-        reshaped_text = reshape(text)
-        bidi_text = get_display(reshaped_text)
-
         image_width, image_height = 400, 100
         pil_image = PILImage.new("RGBA", (image_width, image_height), (0, 0, 0, 0))
         draw = ImageDraw.Draw(pil_image)
         font = ImageFont.truetype(font_path, font_size)
-        text_bbox = draw.textbbox((0, 0), bidi_text, font=font)
+        text_bbox = draw.textbbox((0, 0), text, font=font)
         text_width, text_height = text_bbox[2], text_bbox[3]
         x = (image_width - text_width) // 2
         y = (image_height - text_height) // 2
-        draw.text((x, y), bidi_text, font=font, fill="white")
+        draw.text((x, y), text, font=font, fill="white")
         buffer = BytesIO()
         pil_image.save(buffer, format="PNG")
         buffer.seek(0)
@@ -113,7 +108,7 @@ class SecondScreen(Screen):
   def __init__(self, **kwargs):
       super().__init__(**kwargs)
       self.add_widget(Image(
-          source=resource_find('assets/images/backgrounds/wallpaperlogo.png'),
+          source=resource_find('assets/images/backgrounds/purple.png'),
           allow_stretch=True,
           keep_ratio=False
       ))
@@ -166,7 +161,7 @@ class AnimalCategoryScreen(Screen):
   def __init__(self, **kwargs):
       super().__init__(**kwargs)
       self.add_widget(Image(
-          source=resource_find('assets/images/backgrounds/wallpaperlogo.png'),
+          source=resource_find('assets/images/backgrounds/purple.png'),
           allow_stretch=True,
           keep_ratio=False
       ))
@@ -217,7 +212,7 @@ class WildAnimalsScreen(Screen):
       GRID_PADDING = [dp(10), dp(100), dp(10), dp(10)]
       GRID_SPACING = [dp(0), dp(150)]
       try:
-          background_image = resource_find('assets/images/backgrounds/wallpaperlogo.png')
+          background_image = resource_find('assets/images/backgrounds/purple.png')
       except (KeyError, IndexError) as e:
           background_image = 'default_background.png'
       self.add_widget(Image(source=background_image, allow_stretch=True, keep_ratio=False))
