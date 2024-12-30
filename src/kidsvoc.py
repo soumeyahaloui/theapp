@@ -2,23 +2,19 @@ import os
 import json
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.button import Button
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.scrollview import ScrollView
-from kivy.core.audio import SoundLoader
-from kivy.resources import resource_find
-from kivy.config import Config
-from kivy.core.window import Window
-from kivy.metrics import dp
-from kivy.uix.label import Label
 from kivy.uix.image import Image, CoreImage
 from kivy.uix.floatlayout import FloatLayout
-from kivy.graphics import Color, RoundedRectangle
 from kivy.uix.button import ButtonBehavior
+from kivy.graphics import Color, RoundedRectangle
+from kivy.metrics import dp
 from PIL import Image as PILImage, ImageDraw, ImageFont
 from io import BytesIO
-
-
+from kivy.resources import resource_find
+from kivy.config import Config
+from kivy.uix.scrollview import ScrollView
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.button import Button
+from kivy.core.audio import SoundLoader
 
 
 Config.set('graphics', 'resizable', False)
@@ -26,141 +22,86 @@ Config.set('graphics', 'width', '360')
 Config.set('graphics', 'height', '640')
 Config.write()
 
-
-
-
-import logging
-logging.getLogger("PIL").setLevel(logging.ERROR)
-
-
-
-
 with open('assets/manifest.json', 'r') as f:
-  manifest = json.load(f)
+    manifest = json.load(f)
 
 
-
-
+# Render Arabic text as an image
 def render_arabic_text_as_image(text, font_path, font_size=40):
-  image_width, image_height = 400, 100
-  pil_image = PILImage.new("RGBA", (image_width, image_height), (0, 0, 0, 0))
-  draw = ImageDraw.Draw(pil_image)
-  font = ImageFont.truetype(font_path, font_size)
-  text_bbox = font.getbbox(text)
-  text_width, text_height = text_bbox[2] - text_bbox[0], text_bbox[3] - text_bbox[1]
-  x = (image_width - text_width) // 2
-  y = (image_height - text_height) // 2
-  draw.text((x, y), text, font=font, fill="white")
-  buffer = BytesIO()
-  pil_image.save(buffer, format="PNG")
-  buffer.seek(0)
-  return CoreImage(buffer, ext="png")
-
-
+    """Converts Arabic text into an image using PIL."""
+    try:
+        image_width, image_height = 400, 100
+        pil_image = PILImage.new("RGBA", (image_width, image_height), (0, 0, 0, 0))
+        draw = ImageDraw.Draw(pil_image)
+        font = ImageFont.truetype(font_path, font_size)
+        text_bbox = draw.textbbox((0, 0), text, font=font)
+        text_width, text_height = text_bbox[2], text_bbox[3]
+        x = (image_width - text_width) // 2
+        y = (image_height - text_height) // 2
+        draw.text((x, y), text, font=font, fill="white")
+        buffer = BytesIO()
+        pil_image.save(buffer, format="PNG")
+        buffer.seek(0)
+        return CoreImage(buffer, ext="png")
+    except Exception as e:
+        print(f"Error rendering Arabic text: {e}")
+        raise
 
 
 class CustomButton(ButtonBehavior, FloatLayout):
-   def __init__(self, text, **kwargs):
-       super().__init__(**kwargs)
-       font_path = "assets/fonts/NotoNaskhArabic-VariableFont_wght.ttf"
-       try:
-           # Attempt to render the Arabic text as an image
-           text_image = render_arabic_text_as_image(text, font_path)
-       except FileNotFoundError:
-           print(f"Error: Font file not found at {font_path}")
-           raise
-       except Exception as e:
-           print(f"Error rendering Arabic text: {e}")
-           raise
+    def __init__(self, text, **kwargs):
+        super().__init__(**kwargs)
+        font_path = resource_find("assets/fonts/NotoNaskhArabic-VariableFont_wght.ttf")
+        if not font_path:
+            raise FileNotFoundError("Font file not found at specified path.")
+        
+        # Render Arabic text as an image
+        text_image = render_arabic_text_as_image(text, font_path)
 
+        # Background with rounded corners
+        with self.canvas.before:
+            Color(0.2, 0.5, 0.8, 1)  # Background color
+            self.bg_rect = RoundedRectangle(size=self.size, pos=self.pos, radius=[dp(20)])
+        self.bind(size=self.update_bg, pos=self.update_bg)
 
-       # Initialize the button background and text image
-       with self.canvas.before:
-           try:
-               Color(0.2, 0.5, 0.8, 1)  # Set the button color
-               self.bg_rect = RoundedRectangle(size=self.size, pos=self.pos, radius=[dp(20)])
-           except Exception as e:
-               print(f"Error initializing button background: {e}")
-               raise
+        # Add the rendered text image
+        self.text_image = Image(
+            texture=text_image.texture,
+            size_hint=(None, None),
+            size=(dp(240), dp(80)),
+            pos_hint={'center_x': 0.5, 'center_y': 0.5}
+        )
+        self.add_widget(self.text_image)
 
-
-       # Bind size and position updates to adjust the background
-       self.bind(size=self.update_bg, pos=self.update_bg)
-
-
-       # Add the rendered text image to the button
-       try:
-           self.text_image = Image(
-               texture=text_image.texture,
-               size_hint=(None, None),
-               size=(dp(240), dp(80)),
-               pos_hint={'center_x': 0.5, 'center_y': 0.5}
-           )
-           self.add_widget(self.text_image)
-       except Exception as e:
-           print(f"Error adding text image to button: {e}")
-           raise
-
-
-   def update_bg(self, *args):
-       """
-       Updates the background rectangle to match the button's size and position.
-       """
-       try:
-           self.bg_rect.size = self.size
-           self.bg_rect.pos = self.pos
-       except Exception as e:
-           print(f"Error updating button background: {e}")
-           raise
+    def update_bg(self, *args):
+        """Update the background size and position."""
+        self.bg_rect.size = self.size
+        self.bg_rect.pos = self.pos
 
 
 class FirstScreen(Screen):
-   def __init__(self, **kwargs):
-       super().__init__(**kwargs)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
+        # Background image
+        background_image = resource_find('assets/images/backgrounds/purple.png') or 'default_background.png'
+        self.add_widget(Image(
+            source=background_image,
+            allow_stretch=True,
+            keep_ratio=False
+        ))
 
-       # Try to load the background image
-       try:
-           background_image = resource_find('assets/images/backgrounds/purple.png')
-           if not background_image:
-               raise FileNotFoundError("Background image not found")
-       except FileNotFoundError as e:
-           print(f"Error: {e}")
-           background_image = 'default_background.png'  # Fallback
-
-
-       # Add the background image to the screen
-       self.add_widget(Image(
-           source=background_image,
-           allow_stretch=True,
-           keep_ratio=False
-       ))
-
-
-       # Layout and button setup
-       layout = FloatLayout()
-       start_button = CustomButton(
-           text="ابدأ",
-           size_hint=(None, None),
-           size=(dp(240), dp(80)),
-           pos_hint={'center_x': 0.5, 'center_y': 0.15}
-       )
-
-
-       # Bind button to debug_transition
-       start_button.bind(on_press=lambda instance: self.debug_transition('second'))
-       layout.add_widget(start_button)
-       self.add_widget(layout)
-
-
-   def debug_transition(self, screen_name):
-       try:
-           self.manager.current = screen_name
-           print(f"Transitioned to screen: {screen_name}")
-       except Exception as e:
-           print(f"Error transitioning to screen {screen_name}: {e}")
-
-
+        # Layout and Start Button
+        layout = FloatLayout()
+        start_button = CustomButton(
+            text="ابدأ",
+            size_hint=(None, None),
+            size=(dp(240), dp(80)),
+            pos_hint={'center_x': 0.5, 'center_y': 0.15}
+        )
+        start_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'second'))
+        layout.add_widget(start_button)
+        self.add_widget(layout)
 
 
 class SecondScreen(Screen):
