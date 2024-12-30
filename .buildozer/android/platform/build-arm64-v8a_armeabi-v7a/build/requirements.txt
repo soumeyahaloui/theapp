@@ -1,6 +1,3 @@
-certifi
-chardet
-idna
+arabic-reshaper
 kivy[base]
-requests
-urllib3
+python-bidi
