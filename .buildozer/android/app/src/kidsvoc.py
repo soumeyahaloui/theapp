@@ -1,4 +1,3 @@
-
 import os
 import json
 from kivy.app import App
@@ -51,52 +50,102 @@ def render_arabic_text_as_image(text, font_path, font_size=40):
 
 
 class CustomButton(ButtonBehavior, FloatLayout):
-   def __init__(self, text, **kwargs):
-       super().__init__(**kwargs)
-       font_path = "assets/fonts/NotoNaskhArabic-VariableFont_wght.ttf"
-       text_image = render_arabic_text_as_image(text, font_path)
-       with self.canvas.before:
-           Color(0.2, 0.5, 0.8, 1)
-           self.bg_rect = RoundedRectangle(size=self.size, pos=self.pos, radius=[dp(20)])
-       self.bind(size=self.update_bg, pos=self.update_bg)
-       self.text_image = Image(
-           texture=text_image.texture,
-           size_hint=(None, None),
-           size=(dp(240), dp(80)),
-           pos_hint={'center_x': 0.5, 'center_y': 0.5}
-       )
-       self.add_widget(self.text_image)
+    def __init__(self, text, **kwargs):
+        super().__init__(**kwargs)
+        font_path = "assets/fonts/NotoNaskhArabic-VariableFont_wght.ttf"
+        try:
+            # Attempt to render the Arabic text as an image
+            text_image = render_arabic_text_as_image(text, font_path)
+        except FileNotFoundError:
+            print(f"Error: Font file not found at {font_path}")
+            raise
+        except Exception as e:
+            print(f"Error rendering Arabic text: {e}")
+            raise
 
+        # Initialize the button background and text image
+        with self.canvas.before:
+            try:
+                Color(0.2, 0.5, 0.8, 1)  # Set the button color
+                self.bg_rect = RoundedRectangle(size=self.size, pos=self.pos, radius=[dp(20)])
+            except Exception as e:
+                print(f"Error initializing button background: {e}")
+                raise
 
-   def update_bg(self, *args):
-       self.bg_rect.size = self.size
-       self.bg_rect.pos = self.pos
+        # Bind size and position updates to adjust the background
+        self.bind(size=self.update_bg, pos=self.update_bg)
 
+        # Add the rendered text image to the button
+        try:
+            self.text_image = Image(
+                texture=text_image.texture,
+                size_hint=(None, None),
+                size=(dp(240), dp(80)),
+                pos_hint={'center_x': 0.5, 'center_y': 0.5}
+            )
+            self.add_widget(self.text_image)
+        except Exception as e:
+            print(f"Error adding text image to button: {e}")
+            raise
+
+    def update_bg(self, *args):
+        """
+        Updates the background rectangle to match the button's size and position.
+        """
+        try:
+            self.bg_rect.size = self.size
+            self.bg_rect.pos = self.pos
+        except Exception as e:
+            print(f"Error updating button background: {e}")
+            raise
 
 class FirstScreen(Screen):
-   def __init__(self, **kwargs):
-       super().__init__(**kwargs)
-       self.add_widget(Image(
-           source=resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][1]}'),
-           allow_stretch=True, keep_ratio=False
-       ))
-       layout = FloatLayout()
-       start_button = CustomButton(
-           text="ابدأ",
-           size_hint=(None, None),
-           size=(dp(240), dp(80)),
-           pos_hint={'center_x': 0.5, 'center_y': 0.15}
-       )
-       start_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'second'))
-       layout.add_widget(start_button)
-       self.add_widget(layout)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+        # Try to load the background image
+        try:
+            background_image = resource_find('assets/images/backgrounds/purple.png')
+            if not background_image:
+                raise FileNotFoundError("Background image not found")
+        except FileNotFoundError as e:
+            print(f"Error: {e}")
+            background_image = 'default_background.png'  # Fallback
+
+        # Add the background image to the screen
+        self.add_widget(Image(
+            source=background_image,
+            allow_stretch=True,
+            keep_ratio=False
+        ))
+
+        # Layout and button setup
+        layout = FloatLayout()
+        start_button = CustomButton(
+            text="ابدأ",
+            size_hint=(None, None),
+            size=(dp(240), dp(80)),
+            pos_hint={'center_x': 0.5, 'center_y': 0.15}
+        )
+
+        # Bind button to debug_transition
+        start_button.bind(on_press=lambda instance: self.debug_transition('second'))
+        layout.add_widget(start_button)
+        self.add_widget(layout)
+
+    def debug_transition(self, screen_name):
+        try:
+            self.manager.current = screen_name
+            print(f"Transitioned to screen: {screen_name}")
+        except Exception as e:
+            print(f"Error transitioning to screen {screen_name}: {e}")
 
 
 class SecondScreen(Screen):
    def __init__(self, **kwargs):
        super().__init__(**kwargs)
        self.add_widget(Image(
-           source=resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][0]}'),
+           source=resource_find('assets/images/backgrounds/purple.png'),
            allow_stretch=True,
            keep_ratio=False
        ))
@@ -147,7 +196,7 @@ class AnimalCategoryScreen(Screen):
    def __init__(self, **kwargs):
        super().__init__(**kwargs)
        self.add_widget(Image(
-           source=resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][0]}'),
+           source=resource_find('assets/images/backgrounds/purple.png'),
            allow_stretch=True,
            keep_ratio=False
        ))
@@ -196,7 +245,7 @@ class WildAnimalsScreen(Screen):
        GRID_PADDING = [dp(10), dp(100), dp(10), dp(10)]
        GRID_SPACING = [dp(0), dp(150)]
        try:
-           background_image = resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][0]}')
+           background_image = resource_find('assets/images/backgrounds/purple.png')
        except (KeyError, IndexError) as e:
            background_image = 'default_background.png'
        self.add_widget(Image(source=background_image, allow_stretch=True, keep_ratio=False))
@@ -280,16 +329,21 @@ class WildAnimalsScreen(Screen):
 
 
    def play_audio(self, audio_file):
-       audio_path = resource_find(f'assets/audio/ar/{audio_file}') or resource_find(f'assets/audio/fr/{audio_file}')
-       if audio_path and os.path.exists(audio_path):
-           sound = SoundLoader.load(audio_path)
-           if sound:
-               sound.play()
+    audio_path = resource_find(f'assets/audio/ar/{audio_file}') or resource_find(f'assets/audio/fr/{audio_file}')
+    if not audio_path or not os.path.exists(audio_path):
+        print(f"Audio file not found: {audio_file}")
+        return
+    sound = SoundLoader.load(audio_path)
+    if sound:
+        sound.play()
+    else:
+        print(f"Failed to load sound: {audio_file}")
+
 
 
 class MyApp(App):
    def build(self):
-       self.icon = resource_find(f'assets/images/icon/{manifest["images"]["icon"][0]}')
+       self.icon = resource_find('assets/images/icon/appkidicon.png')
        sm = ScreenManager()
        sm.add_widget(FirstScreen(name='first'))
        sm.add_widget(SecondScreen(name='second'))
