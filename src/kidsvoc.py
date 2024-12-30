@@ -289,7 +289,7 @@ class WildAnimalsScreen(Screen):
 
 class MyApp(App):
    def build(self):
-       self.icon = resource_find(f'assets/images/icons/{manifest["images"]["icons"][0]}')
+       self.icon = resource_find(f'assets/images/icon/{manifest["images"]["icon"][0]}')
        sm = ScreenManager()
        sm.add_widget(FirstScreen(name='first'))
        sm.add_widget(SecondScreen(name='second'))
