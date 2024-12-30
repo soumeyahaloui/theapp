@@ -2,7 +2,9 @@ import os
 import json
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.image import Image
 from kivy.uix.button import Button
+from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.scrollview import ScrollView
 from kivy.core.audio import SoundLoader
@@ -10,136 +12,76 @@ from kivy.resources import resource_find
 from kivy.config import Config
 from kivy.core.window import Window
 from kivy.metrics import dp
-from kivy.uix.label import Label
-from kivy.uix.image import Image, CoreImage
-from kivy.uix.floatlayout import FloatLayout
 from kivy.graphics import Color, RoundedRectangle
 from kivy.uix.button import ButtonBehavior
-from PIL import Image as PILImage, ImageDraw, ImageFont
-from io import BytesIO
+from kivy.uix.label import Label
 
 
+
+# Set fixed dimensions for testing consistency
 Config.set('graphics', 'resizable', False)
-Config.set('graphics', 'width', '360')
-Config.set('graphics', 'height', '640')
+Config.set('graphics', 'width', '360')  # Match Android width
+Config.set('graphics', 'height', '640')  # Match Android height
 Config.write()
 
-
-import logging
-logging.getLogger("PIL").setLevel(logging.ERROR)
-
-
+# Load manifest.json
 with open('assets/manifest.json', 'r') as f:
-   manifest = json.load(f)
-
-
-def render_arabic_text_as_image(text, font_path, font_size=40):
-   image_width, image_height = 400, 100
-   pil_image = PILImage.new("RGBA", (image_width, image_height), (0, 0, 0, 0))
-   draw = ImageDraw.Draw(pil_image)
-   font = ImageFont.truetype(font_path, font_size)
-   text_bbox = font.getbbox(text)
-   text_width, text_height = text_bbox[2] - text_bbox[0], text_bbox[3] - text_bbox[1]
-   x = (image_width - text_width) // 2
-   y = (image_height - text_height) // 2
-   draw.text((x, y), text, font=font, fill="white")
-   buffer = BytesIO()
-   pil_image.save(buffer, format="PNG")
-   buffer.seek(0)
-   return CoreImage(buffer, ext="png")
-
+    manifest = json.load(f)
 
 class CustomButton(ButtonBehavior, FloatLayout):
     def __init__(self, text, **kwargs):
         super().__init__(**kwargs)
-        font_path = "assets/fonts/NotoNaskhArabic-VariableFont_wght.ttf"
-        try:
-            # Attempt to render the Arabic text as an image
-            text_image = render_arabic_text_as_image(text, font_path)
-        except FileNotFoundError:
-            print(f"Error: Font file not found at {font_path}")
-            raise
-        except Exception as e:
-            print(f"Error rendering Arabic text: {e}")
-            raise
 
-        # Initialize the button background and text image
+        # Background with rounded corners
         with self.canvas.before:
-            try:
-                Color(0.2, 0.5, 0.8, 1)  # Set the button color
-                self.bg_rect = RoundedRectangle(size=self.size, pos=self.pos, radius=[dp(20)])
-            except Exception as e:
-                print(f"Error initializing button background: {e}")
-                raise
-
-        # Bind size and position updates to adjust the background
+            Color(0.2, 0.5, 0.8, 1)  # Background color
+            self.bg_rect = RoundedRectangle(size=self.size, pos=self.pos, radius=[dp(20)])
         self.bind(size=self.update_bg, pos=self.update_bg)
 
-        # Add the rendered text image to the button
-        try:
-            self.text_image = Image(
-                texture=text_image.texture,
-                size_hint=(None, None),
-                size=(dp(240), dp(80)),
-                pos_hint={'center_x': 0.5, 'center_y': 0.5}
-            )
-            self.add_widget(self.text_image)
-        except Exception as e:
-            print(f"Error adding text image to button: {e}")
-            raise
+        # Add the text label, ensuring proper alignment
+        self.label = Label(
+            text=text,
+            font_size="20sp",
+            color=(1, 1, 1, 1),  # White text color
+            size_hint=(None, None),
+            size=self.size,
+            pos_hint={'center_x': 0.5, 'center_y': 0.5},
+            halign='center',
+            valign='middle',
+        )
+        self.label.bind(size=self.label.setter('text_size'))  # Ensure text is properly centered
+        self.add_widget(self.label)
 
     def update_bg(self, *args):
-        """
-        Updates the background rectangle to match the button's size and position.
-        """
-        try:
-            self.bg_rect.size = self.size
-            self.bg_rect.pos = self.pos
-        except Exception as e:
-            print(f"Error updating button background: {e}")
-            raise
+        """Update the background size and position."""
+        self.bg_rect.size = self.size
+        self.bg_rect.pos = self.pos
 
+
+# Usage in your screen
 class FirstScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        # Try to load the background image
-        try:
-            background_image = resource_find('assets/images/backgrounds/purple.png')
-            if not background_image:
-                raise FileNotFoundError("Background image not found")
-        except FileNotFoundError as e:
-            print(f"Error: {e}")
-            background_image = 'default_background.png'  # Fallback
-
-        # Add the background image to the screen
+        # Background image
         self.add_widget(Image(
-            source=background_image,
-            allow_stretch=True,
-            keep_ratio=False
+            source=resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][1]}'),
+            allow_stretch=True, keep_ratio=False
         ))
 
-        # Layout and button setup
+        # Layout and Start Button
         layout = FloatLayout()
+
         start_button = CustomButton(
-            text="ابدأ",
+            text="Start",
             size_hint=(None, None),
             size=(dp(240), dp(80)),
             pos_hint={'center_x': 0.5, 'center_y': 0.15}
         )
+        start_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'second'))
 
-        # Bind button to debug_transition
-        start_button.bind(on_press=lambda instance: self.debug_transition('second'))
         layout.add_widget(start_button)
         self.add_widget(layout)
-
-    def debug_transition(self, screen_name):
-        try:
-            self.manager.current = screen_name
-            print(f"Transitioned to screen: {screen_name}")
-        except Exception as e:
-            print(f"Error transitioning to screen {screen_name}: {e}")
-
 
 class SecondScreen(Screen):
    def __init__(self, **kwargs):
