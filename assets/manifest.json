@@ -1,11 +1,11 @@
 {
-    "audio": {
-      "ar": ["elephant_ar.mp3", "lion_ar.mp3", "monkey_ar.mp3", "tiger_ar.mp3"],
-      "fr": ["elephant_fr.mp3", "lion_fr.mp3", "monkey_fr.mp3", "tiger_fr.mp3"]
-    },
-    "images": {
-      "icons": ["appkidicon.png"],
-      "animals": ["elephant.png", "lion.png", "monkey.png", "tiger.png"],
-      "backgrounds": ["galaxy.png", "bubbles.png", "purple.png"]
-    }
-  }  
+  "audio": {
+    "ar": ["elephant_ar.mp3", "lion_ar.mp3", "monkey_ar.mp3", "tiger_ar.mp3"],
+    "fr": ["elephant_fr.mp3", "lion_fr.mp3", "monkey_fr.mp3", "tiger_fr.mp3"]
+  },
+  "images": {
+    "icons": ["appkidicon.png"],
+    "animals": ["elephant.png", "lion.png", "monkey.png", "tiger.png"],
+    "backgrounds": ["wallpaperlogo.png", "purple.png"]
+  }
+} 
