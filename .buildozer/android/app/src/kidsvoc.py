@@ -17,6 +17,10 @@ from kivy.uix.button import Button
 from kivy.core.audio import SoundLoader
 from kivy.uix.label import Label
 from kivy.uix.behaviors import ButtonBehavior
+from kivy.uix.popup import Popup
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.label import Label
+from kivy.uix.button import Button
 
 
 Config.set('graphics', 'resizable', False)
@@ -84,20 +88,105 @@ class FirstScreen(Screen):
 
         layout.add_widget(start_button)
 
+        # Settings Icon (Gear Button)
         settings_button = IconButton(
-            source='assets/images/icon/settings.png',  # Path to your uploaded settings icon
+            source='assets/images/icon/settings.png',  # Path to the settings icon
             size_hint=(None, None),
             size=(dp(50), dp(50)),
             pos_hint={'right': 0.95, 'top': 0.95}
         )
-        settings_button.bind(on_press=self.open_settings)
+        settings_button.bind(on_press=self.open_settings_popup)
 
         layout.add_widget(settings_button)
 
         self.add_widget(layout)
 
-    def open_settings(self, instance):
-        print("Settings button pressed. Implement settings screen or functionality here.")
+    def open_settings_popup(self, instance):
+        """Open a popup window for settings options."""
+
+        # Create a BoxLayout for the popup content
+        popup_content = BoxLayout(orientation='vertical', spacing=10, padding=10)
+
+        # Add custom buttons for the settings options
+        language_button = CustomButton(
+            text="Language",
+            size_hint=(1, None),
+            size=(dp(200), dp(50))
+        )
+        language_button.bind(on_press=self.open_language_popup)
+
+        help_button = CustomButton(
+            text="Help",
+            size_hint=(1, None),
+            size=(dp(200), dp(50))
+        )
+        help_button.bind(on_press=lambda x: print("Help clicked"))
+
+        about_button = CustomButton(
+            text="About",
+            size_hint=(1, None),
+            size=(dp(200), dp(50))
+        )
+        about_button.bind(on_press=lambda x: print("About clicked"))
+
+        # Add buttons to the layout
+        popup_content.add_widget(language_button)
+        popup_content.add_widget(help_button)
+        popup_content.add_widget(about_button)
+
+        # Create and configure the popup
+        popup = Popup(
+            title="Settings",
+            content=popup_content,
+            size_hint=(None, None),
+            size=(dp(300), dp(250)),
+            auto_dismiss=True
+        )
+
+        # Open the popup
+        popup.open()
+
+    def open_language_popup(self, instance):
+        """Open a popup for language selection."""
+
+        # Create a BoxLayout for the language options
+        language_content = BoxLayout(orientation='vertical', spacing=10, padding=10)
+
+        # Add buttons for each language
+        arabic_button = CustomButton(
+            text="Arabic",
+            size_hint=(1, None),
+            size=(dp(200), dp(50))
+        )
+        arabic_button.bind(on_press=lambda x: self.set_language("Arabic"))
+
+        french_button = CustomButton(
+            text="French",
+            size_hint=(1, None),
+            size=(dp(200), dp(50))
+        )
+        french_button.bind(on_press=lambda x: self.set_language("French"))
+
+        # Add language buttons to the layout
+        language_content.add_widget(arabic_button)
+        language_content.add_widget(french_button)
+
+        # Create and configure the language popup
+        language_popup = Popup(
+            title="Select Language",
+            content=language_content,
+            size_hint=(None, None),
+            size=(dp(300), dp(200)),
+            auto_dismiss=True
+        )
+
+        # Open the popup
+        language_popup.open()
+
+    def set_language(self, language):
+        """Set the selected language."""
+        print(f"Language selected: {language}")
+        # Implement logic to update the app's language preference here.
 
 class SecondScreen(Screen):
   def __init__(self, **kwargs):
