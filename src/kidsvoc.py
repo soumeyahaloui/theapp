@@ -15,6 +15,8 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.core.audio import SoundLoader
+from kivy.uix.label import Label
+from kivy.uix.behaviors import ButtonBehavior
 
 
 Config.set('graphics', 'resizable', False)
@@ -25,38 +27,12 @@ Config.write()
 with open('assets/manifest.json', 'r') as f:
     manifest = json.load(f)
 
-
-# Render Arabic text as an image
-def render_arabic_text_as_image(text, font_path, font_size=40):
-    """Converts Arabic text into an image using PIL."""
-    try:
-        image_width, image_height = 400, 100
-        pil_image = PILImage.new("RGBA", (image_width, image_height), (0, 0, 0, 0))
-        draw = ImageDraw.Draw(pil_image)
-        font = ImageFont.truetype(font_path, font_size)
-        text_bbox = draw.textbbox((0, 0), text, font=font)
-        text_width, text_height = text_bbox[2], text_bbox[3]
-        x = (image_width - text_width) // 2
-        y = (image_height - text_height) // 2
-        draw.text((x, y), text, font=font, fill="white")
-        buffer = BytesIO()
-        pil_image.save(buffer, format="PNG")
-        buffer.seek(0)
-        return CoreImage(buffer, ext="png")
-    except Exception as e:
-        print(f"Error rendering Arabic text: {e}")
-        raise
-
+class IconButton(ButtonBehavior, Image):
+    pass
 
 class CustomButton(ButtonBehavior, FloatLayout):
     def __init__(self, text, **kwargs):
         super().__init__(**kwargs)
-        font_path = resource_find("assets/fonts/NotoNaskhArabic-VariableFont_wght.ttf")
-        if not font_path:
-            raise FileNotFoundError("Font file not found at specified path.")
-        
-        # Render Arabic text as an image
-        text_image = render_arabic_text_as_image(text, font_path)
 
         # Background with rounded corners
         with self.canvas.before:
@@ -64,14 +40,19 @@ class CustomButton(ButtonBehavior, FloatLayout):
             self.bg_rect = RoundedRectangle(size=self.size, pos=self.pos, radius=[dp(20)])
         self.bind(size=self.update_bg, pos=self.update_bg)
 
-        # Add the rendered text image
-        self.text_image = Image(
-            texture=text_image.texture,
+        # Add the text label, ensuring proper alignment
+        self.label = Label(
+            text=text,
+            font_size="20sp",
+            color=(1, 1, 1, 1),  # White text color
             size_hint=(None, None),
-            size=(dp(240), dp(80)),
-            pos_hint={'center_x': 0.5, 'center_y': 0.5}
+            size=self.size,
+            pos_hint={'center_x': 0.5, 'center_y': 0.5},
+            halign='center',
+            valign='middle',
         )
-        self.add_widget(self.text_image)
+        self.label.bind(size=self.label.setter('text_size'))  # Ensure text is properly centered
+        self.add_widget(self.label)
 
     def update_bg(self, *args):
         """Update the background size and position."""
@@ -84,31 +65,45 @@ class FirstScreen(Screen):
         super().__init__(**kwargs)
 
         # Background image
-        background_image = resource_find('assets/images/backgrounds/purple.png') or 'default_background.png'
         self.add_widget(Image(
-            source=background_image,
-            allow_stretch=True,
-            keep_ratio=False
+            source=resource_find(f'assets/images/backgrounds/{manifest["images"]["backgrounds"][1]}'),
+            allow_stretch=True, keep_ratio=False
         ))
 
-        # Layout and Start Button
+        # Layout
         layout = FloatLayout()
+
+        # Start Button
         start_button = CustomButton(
-            text="ابدأ",
+            text="Start",
             size_hint=(None, None),
             size=(dp(240), dp(80)),
             pos_hint={'center_x': 0.5, 'center_y': 0.15}
         )
         start_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'second'))
+
         layout.add_widget(start_button)
+
+        settings_button = IconButton(
+            source='assets/images/icon/settings.png',  # Path to your uploaded settings icon
+            size_hint=(None, None),
+            size=(dp(50), dp(50)),
+            pos_hint={'right': 0.95, 'top': 0.95}
+        )
+        settings_button.bind(on_press=self.open_settings)
+
+        layout.add_widget(settings_button)
+
         self.add_widget(layout)
 
+    def open_settings(self, instance):
+        print("Settings button pressed. Implement settings screen or functionality here.")
 
 class SecondScreen(Screen):
   def __init__(self, **kwargs):
       super().__init__(**kwargs)
       self.add_widget(Image(
-          source=resource_find('assets/images/backgrounds/purple.png'),
+          source=resource_find('assets/images/backgrounds/wallpaperlogo.png'),
           allow_stretch=True,
           keep_ratio=False
       ))
@@ -161,7 +156,7 @@ class AnimalCategoryScreen(Screen):
   def __init__(self, **kwargs):
       super().__init__(**kwargs)
       self.add_widget(Image(
-          source=resource_find('assets/images/backgrounds/purple.png'),
+          source=resource_find('assets/images/backgrounds/wallpaperlogo.png'),
           allow_stretch=True,
           keep_ratio=False
       ))
@@ -212,7 +207,7 @@ class WildAnimalsScreen(Screen):
       GRID_PADDING = [dp(10), dp(100), dp(10), dp(10)]
       GRID_SPACING = [dp(0), dp(150)]
       try:
-          background_image = resource_find('assets/images/backgrounds/purple.png')
+          background_image = resource_find('assets/images/backgrounds/wallpaperlogo.png')
       except (KeyError, IndexError) as e:
           background_image = 'default_background.png'
       self.add_widget(Image(source=background_image, allow_stretch=True, keep_ratio=False))
