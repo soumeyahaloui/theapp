@@ -97,6 +97,8 @@ class FirstScreen(Screen):
         super().__init__(**kwargs)
         self.start_button = None
         self.settings_button = None
+        self.settings_popup = None
+        self.language_popup = None
         self.init_ui()
 
     def init_ui(self):
@@ -149,16 +151,19 @@ class FirstScreen(Screen):
         popup_content.add_widget(language_button)
         popup_content.add_widget(help_button)
         popup_content.add_widget(about_button)
-        popup = Popup(
+        self.settings_popup = Popup(
             title=LANGUAGES['Français']['settings'],
             content=popup_content,
             size_hint=(None, None),
             size=(dp(300), dp(250)),
             auto_dismiss=True
         )
-        popup.open()
+        self.settings_popup.open()
 
     def open_language_popup(self, instance):
+        if self.settings_popup:
+            self.settings_popup.dismiss()  # Close the settings popup
+
         language_content = BoxLayout(orientation='vertical', spacing=10, padding=10)
         arabic_button = CustomButton(
             text="Arabe",
@@ -174,16 +179,19 @@ class FirstScreen(Screen):
         french_button.bind(on_press=lambda x: self.set_language("Français"))
         language_content.add_widget(arabic_button)
         language_content.add_widget(french_button)
-        language_popup = Popup(
+        self.language_popup = Popup(
             title=LANGUAGES['Français']['language'],
             content=language_content,
             size_hint=(None, None),
             size=(dp(300), dp(200)),
             auto_dismiss=True
         )
-        language_popup.open()
+        self.language_popup.open()
 
     def set_language(self, language):
+        if self.language_popup:
+            self.language_popup.dismiss()  # Close the language popup
+
         self.manager.language = language
         for screen in self.manager.screens:
             if hasattr(screen, 'update_language'):
@@ -334,6 +342,7 @@ class WildAnimalsScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.language = 'Français'
+        self.back_button = None
         self.init_ui()
 
     def init_ui(self):
@@ -445,14 +454,14 @@ class WildAnimalsScreen(Screen):
         self.add_widget(scroll_view)
 
         # Back button
-        back_button = CustomButton(
+        self.back_button = CustomButton(
             text=LANGUAGES[self.language]['back'],
             size_hint=(None, None),
             size=(dp(100), dp(50)),
             pos_hint={'x': 0.05, 'top': 0.1}
         )
-        back_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'animal_categories'))
-        self.add_widget(back_button)
+        self.back_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'animal_categories'))
+        self.add_widget(self.back_button)
 
     def play_audio(self, audio_file):
         # Play the corresponding audio file
@@ -468,6 +477,11 @@ class WildAnimalsScreen(Screen):
             sound.play()
         else:
             print(f"Failed to load sound: {audio_file}")
+
+    def update_language(self, language):
+        self.language = language
+        if self.back_button:
+            self.back_button.label.text = LANGUAGES[language]['back']
 
 class MyApp(App):
     def build(self):
