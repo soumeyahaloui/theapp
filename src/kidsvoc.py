@@ -16,7 +16,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.resources import resource_find
 from kivy.config import Config
 from kivy.core.audio import SoundLoader
-from kivy.core.text import LabelBase
+from kivy.core.text import LabelBase 
 import arabic_reshaper
 from bidi.algorithm import get_display
 
@@ -38,15 +38,20 @@ class IconButton(ButtonBehavior, Image):
 class CustomButton(ButtonBehavior, FloatLayout):
     def __init__(self, text, **kwargs):
         super().__init__(**kwargs)
-        # Reshape Arabic text if necessary
-        reshaped_text = arabic_reshaper.reshape(text) if self.is_arabic(text) else text
-        display_text = get_display(reshaped_text) if self.is_arabic(text) else text
+        reshaped_text = text
+        try:
+            if self.is_arabic(text):
+                reshaped_text = arabic_reshaper.reshape(text)
+                reshaped_text = get_display(reshaped_text)
+        except Exception as e:
+            print(f"Error processing text: {e}")
+
         with self.canvas.before:
             Color(0.2, 0.5, 0.8, 1)
             self.bg_rect = RoundedRectangle(size=self.size, pos=self.pos, radius=[dp(20)])
         self.bind(size=self.update_bg, pos=self.update_bg)
         self.label = Label(
-            text=display_text,
+            text=reshaped_text,
             font_size="20sp",
             font_name='ArabicFont' if self.is_arabic(text) else 'FrenchFont',
             color=(1, 1, 1, 1),
@@ -58,24 +63,6 @@ class CustomButton(ButtonBehavior, FloatLayout):
         )
         self.label.bind(size=self.label.setter('text_size'))
         self.add_widget(self.label)
-
-    def update_bg(self, *args):
-        self.bg_rect.size = self.size
-        self.bg_rect.pos = self.pos
-
-    def is_arabic(self, text):
-        """Check if the text contains Arabic script characters."""
-        arabic_ranges = [
-            ('\u0600', '\u06FF'),  # Arabic
-            ('\u0750', '\u077F'),  # Arabic Supplement
-            ('\u08A0', '\u08FF'),  # Arabic Extended-A
-            ('\uFB50', '\uFDFF'),  # Arabic Presentation Forms-A
-            ('\uFE70', '\uFEFF')   # Arabic Presentation Forms-B
-        ]
-        return any(
-            any(start <= char <= end for start, end in arabic_ranges)
-            for char in text
-        )
 
 
 LANGUAGES = {
