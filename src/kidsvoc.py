@@ -38,15 +38,14 @@ class IconButton(ButtonBehavior, Image):
 class CustomButton(ButtonBehavior, FloatLayout):
     def __init__(self, text, **kwargs):
         super().__init__(**kwargs)
-        # Reshape Arabic text if necessary
-        reshaped_text = arabic_reshaper.reshape(text) if self.is_arabic(text) else text
-        display_text = get_display(reshaped_text) if self.is_arabic(text) else text
         with self.canvas.before:
             Color(0.2, 0.5, 0.8, 1)
             self.bg_rect = RoundedRectangle(size=self.size, pos=self.pos, radius=[dp(20)])
         self.bind(size=self.update_bg, pos=self.update_bg)
+
+        # Use the original text directly for testing
         self.label = Label(
-            text=display_text,
+            text=text,
             font_size="20sp",
             font_name='ArabicFont' if self.is_arabic(text) else 'FrenchFont',
             color=(1, 1, 1, 1),
@@ -148,18 +147,26 @@ class FirstScreen(Screen):
         self.add_widget(layout)
 
     def update_language(self, language):
-        # Update text for the start button
         reshaped_text = self.process_arabic_text(LANGUAGES[language]['start'])
-        self.start_button.label.text = reshaped_text
-        self.start_button.label.font_name = 'ArabicFont' if language == 'Arabe' else 'FrenchFont'
-        self.start_button.label.halign = 'right' if language == 'Arabe' else 'center'
+        if reshaped_text:
+            self.start_button.label.text = reshaped_text
+        else:
+            self.start_button.label.text = LANGUAGES[language]['start']  # Fallback to the original
+
 
     def process_arabic_text(self, text):
         """Reshape and process Arabic text for proper display."""
         if self.is_arabic(text):
-            reshaped_text = arabic_reshaper.reshape(text)
-            return get_display(reshaped_text)
+            try:
+                reshaped_text = arabic_reshaper.reshape(text)
+                display_text = get_display(reshaped_text)
+                print(f"Processed text: {display_text}")  # Debugging output
+                return display_text
+            except Exception as e:
+                print(f"Error processing Arabic text: {e}")
         return text
+
+
 
     def is_arabic(self, text):
         """Check if the text contains Arabic characters."""
