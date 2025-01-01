@@ -16,11 +16,15 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.resources import resource_find
 from kivy.config import Config
 from kivy.core.audio import SoundLoader
+from kivy.core.text import LabelBase
 
 Config.set('graphics', 'resizable', False)
 Config.set('graphics', 'width', '360')
 Config.set('graphics', 'height', '640')
 Config.write()
+
+LabelBase.register(name='ArabicFont', fn_regular='assets/fonts/NotoNaskhArabic-VariableFont_wght.ttf')
+LabelBase.register(name='FrenchFont', fn_regular='assets/fonts/Roboto-Regular.ttf')  # Example for French
 
 with open('assets/manifest.json', 'r') as f:
     manifest = json.load(f)
@@ -127,6 +131,9 @@ class FirstScreen(Screen):
 
     def update_language(self, language):
         self.start_button.label.text = LANGUAGES[language]['start']
+        self.start_button.label.font_name = 'ArabicFont' if language == 'Arabe' else 'FrenchFont'
+
+
 
     def open_settings_popup(self, instance):
         popup_content = BoxLayout(orientation='vertical', spacing=10, padding=10)
@@ -355,7 +362,7 @@ class WildAnimalsScreen(Screen):
 
         # Set background image
         try:
-            background_image = resource_find('assets/images/backgrounds/purple.png')
+            background_image = resource_find('assets/images/backgrounds/wallpaperlogo.png')
         except (KeyError, IndexError):
             background_image = 'default_background.png'
         self.add_widget(Image(source=background_image, allow_stretch=True, keep_ratio=False))

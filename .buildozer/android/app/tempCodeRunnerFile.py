@@ -1,9 +1,3 @@
-import sys
-import os
-from kivy.metrics import dp
-sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
-
-
 from kivy.config import Config
 from kivy.core.window import Window 
 
@@ -18,12 +12,3 @@ Window.size = (400, 720)
 
 
 from kidsvoc import MyApp
-
-
-def main():
-   app = MyApp()
-   app.run()
-
-
-if __name__ == '__main__':
-   main()
