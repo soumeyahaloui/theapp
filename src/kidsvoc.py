@@ -16,10 +16,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.resources import resource_find
 from kivy.config import Config
 from kivy.core.audio import SoundLoader
-from kivy.core.text import LabelBase 
-import arabic_reshaper
-from bidi.algorithm import get_display
-
+from kivy.core.text import LabelBase
 
 Config.set('graphics', 'resizable', False)
 Config.set('graphics', 'width', '360')
@@ -38,32 +35,26 @@ class IconButton(ButtonBehavior, Image):
 class CustomButton(ButtonBehavior, FloatLayout):
     def __init__(self, text, **kwargs):
         super().__init__(**kwargs)
-        reshaped_text = text
-        try:
-            if self.is_arabic(text):
-                reshaped_text = arabic_reshaper.reshape(text)
-                reshaped_text = get_display(reshaped_text)
-        except Exception as e:
-            print(f"Error processing text: {e}")
-
         with self.canvas.before:
             Color(0.2, 0.5, 0.8, 1)
             self.bg_rect = RoundedRectangle(size=self.size, pos=self.pos, radius=[dp(20)])
         self.bind(size=self.update_bg, pos=self.update_bg)
         self.label = Label(
-            text=reshaped_text,
+            text=text,
             font_size="20sp",
-            font_name='ArabicFont' if self.is_arabic(text) else 'FrenchFont',
             color=(1, 1, 1, 1),
             size_hint=(None, None),
             size=self.size,
             pos_hint={'center_x': 0.5, 'center_y': 0.5},
-            halign='right' if self.is_arabic(text) else 'center',
+            halign='center',
             valign='middle',
         )
         self.label.bind(size=self.label.setter('text_size'))
         self.add_widget(self.label)
 
+    def update_bg(self, *args):
+        self.bg_rect.size = self.size
+        self.bg_rect.pos = self.pos
 
 LANGUAGES = {
     'Français': {
@@ -115,25 +106,19 @@ class FirstScreen(Screen):
         self.init_ui()
 
     def init_ui(self):
-        # Add background image
         self.add_widget(Image(
             source=resource_find('assets/images/backgrounds/purple.png'),
             allow_stretch=True, keep_ratio=False
         ))
-        
         layout = FloatLayout()
-
-        # Create Start Button
         self.start_button = CustomButton(
-            text=self.process_arabic_text(LANGUAGES['Français']['start']),
+            text=LANGUAGES['Français']['start'],
             size_hint=(None, None),
             size=(dp(240), dp(80)),
             pos_hint={'center_x': 0.5, 'center_y': 0.15}
         )
         self.start_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'second'))
         layout.add_widget(self.start_button)
-
-        # Create Settings Button
         self.settings_button = IconButton(
             source='assets/images/icon/settings.png',
             size_hint=(None, None),
@@ -142,54 +127,30 @@ class FirstScreen(Screen):
         )
         self.settings_button.bind(on_press=self.open_settings_popup)
         layout.add_widget(self.settings_button)
-
         self.add_widget(layout)
 
     def update_language(self, language):
-        # Update text for the start button
-        reshaped_text = self.process_arabic_text(LANGUAGES[language]['start'])
-        self.start_button.label.text = reshaped_text
+        self.start_button.label.text = LANGUAGES[language]['start']
         self.start_button.label.font_name = 'ArabicFont' if language == 'Arabe' else 'FrenchFont'
-        self.start_button.label.halign = 'right' if language == 'Arabe' else 'center'
 
-    def process_arabic_text(self, text):
-        """Reshape and process Arabic text for proper display."""
-        if self.is_arabic(text):
-            reshaped_text = arabic_reshaper.reshape(text)
-            return get_display(reshaped_text)
-        return text
-
-    def is_arabic(self, text):
-        """Check if the text contains Arabic script characters."""
-        arabic_ranges = [
-            ('\u0600', '\u06FF'),  # Arabic
-            ('\u0750', '\u077F'),  # Arabic Supplement
-            ('\u08A0', '\u08FF'),  # Arabic Extended-A
-            ('\uFB50', '\uFDFF'),  # Arabic Presentation Forms-A
-            ('\uFE70', '\uFEFF')   # Arabic Presentation Forms-B
-        ]
-        return any(
-            any(start <= char <= end for start, end in arabic_ranges)
-            for char in text
-        )
 
 
     def open_settings_popup(self, instance):
         popup_content = BoxLayout(orientation='vertical', spacing=10, padding=10)
         language_button = CustomButton(
-            text=self.process_arabic_text(LANGUAGES['Français']['language']),
+            text=LANGUAGES['Français']['language'],
             size_hint=(1, None),
             size=(dp(200), dp(50))
         )
         language_button.bind(on_press=self.open_language_popup)
         help_button = CustomButton(
-            text=self.process_arabic_text(LANGUAGES['Français']['help']),
+            text=LANGUAGES['Français']['help'],
             size_hint=(1, None),
             size=(dp(200), dp(50))
         )
         help_button.bind(on_press=lambda x: print("Help clicked"))
         about_button = CustomButton(
-            text=self.process_arabic_text(LANGUAGES['Français']['about']),
+            text=LANGUAGES['Français']['about'],
             size_hint=(1, None),
             size=(dp(200), dp(50))
         )
@@ -198,7 +159,7 @@ class FirstScreen(Screen):
         popup_content.add_widget(help_button)
         popup_content.add_widget(about_button)
         self.settings_popup = Popup(
-            title=self.process_arabic_text(LANGUAGES['Français']['settings']),
+            title=LANGUAGES['Français']['settings'],
             content=popup_content,
             size_hint=(None, None),
             size=(dp(300), dp(250)),
@@ -212,13 +173,13 @@ class FirstScreen(Screen):
 
         language_content = BoxLayout(orientation='vertical', spacing=10, padding=10)
         arabic_button = CustomButton(
-            text=self.process_arabic_text("Arabe"),
+            text="Arabe",
             size_hint=(1, None),
             size=(dp(200), dp(50))
         )
         arabic_button.bind(on_press=lambda x: self.set_language("Arabe"))
         french_button = CustomButton(
-            text=self.process_arabic_text("Français"),
+            text="Français",
             size_hint=(1, None),
             size=(dp(200), dp(50))
         )
@@ -226,7 +187,7 @@ class FirstScreen(Screen):
         language_content.add_widget(arabic_button)
         language_content.add_widget(french_button)
         self.language_popup = Popup(
-            title=self.process_arabic_text(LANGUAGES['Français']['language']),
+            title=LANGUAGES['Français']['language'],
             content=language_content,
             size_hint=(None, None),
             size=(dp(300), dp(200)),
