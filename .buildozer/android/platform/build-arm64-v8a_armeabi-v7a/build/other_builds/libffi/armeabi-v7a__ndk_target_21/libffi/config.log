@@ -937,7 +937,7 @@ configure:18637: checking for memfd_create
 configure:18637: /home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -target armv7a-linux-androideabi21 -fomit-frame-pointer -march=armv7-a -mfloat-abi=softfp -mfpu=vfp -mthumb -fPIC -o conftest -target armv7a-linux-androideabi21 -fomit-frame-pointer -march=armv7-a -mfloat-abi=softfp -mfpu=vfp -mthumb -fPIC -Wall -fexceptions -DANDROID -I/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/python-installs/kidsvoc/armeabi-v7a/include/python3.1   -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/libs_collections/kidsvoc/armeabi-v7a conftest.c  >&5
 ld: error: undefined symbol: memfd_create
 >>> referenced by conftest.c
->>>               /tmp/conftest-ad64b2.o:(main)
+>>>               /tmp/conftest-2d348b.o:(main)
 clang-14: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:18637: $? = 1
 configure: failed program was:
@@ -1008,7 +1008,7 @@ configure:18658: checking for mkostemp
 configure:18658: /home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -target armv7a-linux-androideabi21 -fomit-frame-pointer -march=armv7-a -mfloat-abi=softfp -mfpu=vfp -mthumb -fPIC -o conftest -target armv7a-linux-androideabi21 -fomit-frame-pointer -march=armv7-a -mfloat-abi=softfp -mfpu=vfp -mthumb -fPIC -Wall -fexceptions -DANDROID -I/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/python-installs/kidsvoc/armeabi-v7a/include/python3.1   -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/libs_collections/kidsvoc/armeabi-v7a conftest.c  >&5
 ld: error: undefined symbol: mkostemp
 >>> referenced by conftest.c
->>>               /tmp/conftest-b799c8.o:(main)
+>>>               /tmp/conftest-c694b0.o:(main)
 >>> did you mean: mkstemp
 >>> defined in: /home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/21/libc.so
 clang-14: error: linker command failed with exit code 1 (use -v to see invocation)

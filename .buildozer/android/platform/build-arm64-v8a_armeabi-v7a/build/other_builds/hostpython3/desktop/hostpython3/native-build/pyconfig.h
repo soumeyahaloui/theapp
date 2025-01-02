@@ -126,7 +126,7 @@
 #define HAVE_BUILTIN_ATOMIC 1
 
 /* Define to 1 if you have the <bzlib.h> header file. */
-/* #undef HAVE_BZLIB_H */
+#define HAVE_BZLIB_H 1
 
 /* Define to 1 if you have the 'chflags' function. */
 /* #undef HAVE_CHFLAGS */
@@ -1457,10 +1457,10 @@
 /* #undef HAVE_UUID_ENC_BE */
 
 /* Define if uuid_generate_time_safe() exists. */
-/* #undef HAVE_UUID_GENERATE_TIME_SAFE */
+#define HAVE_UUID_GENERATE_TIME_SAFE 1
 
 /* Define to 1 if you have the <uuid.h> header file. */
-/* #undef HAVE_UUID_H */
+#define HAVE_UUID_H 1
 
 /* Define to 1 if you have the <uuid/uuid.h> header file. */
 /* #undef HAVE_UUID_UUID_H */
@@ -1509,7 +1509,7 @@
 #define HAVE_ZLIB_COPY 1
 
 /* Define to 1 if you have the <zlib.h> header file. */
-#define HAVE_ZLIB_H 1
+/* #undef HAVE_ZLIB_H */
 
 /* Define to 1 if you have the `_getpty' function. */
 /* #undef HAVE__GETPTY */

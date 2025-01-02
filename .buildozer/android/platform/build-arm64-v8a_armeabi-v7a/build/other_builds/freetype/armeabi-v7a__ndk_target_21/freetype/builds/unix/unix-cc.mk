@@ -99,7 +99,7 @@ endif
 
 # Linker flags.
 #
-LDFLAGS           :=   -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/libs_collections/kidsvoc/armeabi-v7a -L/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/21 -march=armv7-a -lz
+LDFLAGS           :=   -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/libs_collections/kidsvoc/armeabi-v7a -L/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/21 -march=armv7-a -lz 
 LIB_CLOCK_GETTIME :=   # for ftbench
 
 
