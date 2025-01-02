@@ -18,10 +18,6 @@ from kivy.config import Config
 from kivy.core.audio import SoundLoader
 from kivy.core.text import LabelBase
 
-Config.set('graphics', 'resizable', False)
-Config.set('graphics', 'width', '360')
-Config.set('graphics', 'height', '640')
-Config.write()
 
 LabelBase.register(name='ArabicFont', fn_regular='assets/fonts/NotoNaskhArabic-Regular.ttf')
 LabelBase.register(name='FrenchFont', fn_regular='assets/fonts/Roboto-Regular.ttf')
