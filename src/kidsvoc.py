@@ -140,8 +140,10 @@ class FirstScreen(Screen):
             start_button_image = Image(
                 source=resource_find('output.png'),
                 allow_stretch=True,
-                keep_ratio=False,  # Ensure the image stretches to fit the button
-                size_hint=(1, 1)   # Fit the button size
+                keep_ratio=True,
+                size_hint=(None, None),
+                size=self.start_button.size,
+                pos_hint={'center_x': 0.5, 'center_y': 0.5},
             )
             self.start_button.add_widget(start_button_image)
         else:
@@ -226,6 +228,7 @@ class SecondScreen(Screen):
         self.back_button = None
         self.grid = None
         self.scroll_view = None
+        self.language = 'Français'  # Default language
         self.init_ui()
 
     def init_ui(self):
@@ -263,6 +266,8 @@ class SecondScreen(Screen):
             self.grid.add_widget(button)
         self.scroll_view.add_widget(self.grid)
         layout.add_widget(self.scroll_view)
+
+        # Back Button
         self.back_button = CustomButton(
             text=LANGUAGES['Français']['back'],
             size_hint=(None, None),
@@ -274,11 +279,26 @@ class SecondScreen(Screen):
         self.add_widget(layout)
 
     def update_language(self, language):
-        categories = LANGUAGES[language]['categories']
-        for i, button in enumerate(self.grid.children[::-1]):
-            if i < len(categories):
-                button.label.text = categories[i]
-        self.back_button.label.text = LANGUAGES[language]['back']
+        """Update UI elements based on the selected language."""
+        if language == 'Arabe':
+            # Switch to Arabic image for back button
+            self.back_button.clear_widgets()
+            back_button_image = Image(
+                source=resource_find('assets/images/icon/back.png'),  # Path to back.png
+                allow_stretch=True,
+                keep_ratio=True,
+                size_hint=(None, None),
+                size=self.back_button.size,
+                pos_hint={'center_x': 0.5, 'center_y': 0.5},
+            )
+            self.back_button.add_widget(back_button_image)
+        else:
+            # Switch back to French text
+            self.back_button.clear_widgets()
+            self.back_button.label.text = LANGUAGES['Français']['back']
+            self.back_button.label.font_name = 'FrenchFont'
+            self.back_button.add_widget(self.back_button.label)
+
 
 class AnimalCategoryScreen(Screen):
     def __init__(self, **kwargs):
