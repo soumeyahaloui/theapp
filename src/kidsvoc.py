@@ -24,7 +24,7 @@ Config.set('graphics', 'height', '640')
 Config.write()
 
 LabelBase.register(name='ArabicFont', fn_regular='assets/fonts/NotoNaskhArabic-Regular.ttf')
-LabelBase.register(name='FrenchFont', fn_regular='assets/fonts/Roboto-Regular.ttf')  # Example for French
+LabelBase.register(name='FrenchFont', fn_regular='assets/fonts/Roboto-Regular.ttf')
 
 with open('assets/manifest.json', 'r') as f:
     manifest = json.load(f)
@@ -95,7 +95,6 @@ LANGUAGES = {
     }
 }
 
-
 class FirstScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -133,8 +132,6 @@ class FirstScreen(Screen):
         self.start_button.label.text = LANGUAGES[language]['start']
         self.start_button.label.font_name = 'ArabicFont' if language == 'Arabe' else 'FrenchFont'
 
-
-
     def open_settings_popup(self, instance):
         popup_content = BoxLayout(orientation='vertical', spacing=10, padding=10)
         language_button = CustomButton(
@@ -169,8 +166,7 @@ class FirstScreen(Screen):
 
     def open_language_popup(self, instance):
         if self.settings_popup:
-            self.settings_popup.dismiss()  # Close the settings popup
-
+            self.settings_popup.dismiss()
         language_content = BoxLayout(orientation='vertical', spacing=10, padding=10)
         arabic_button = CustomButton(
             text="Arabe",
@@ -197,8 +193,7 @@ class FirstScreen(Screen):
 
     def set_language(self, language):
         if self.language_popup:
-            self.language_popup.dismiss()  # Close the language popup
-
+            self.language_popup.dismiss()
         self.manager.language = language
         for screen in self.manager.screens:
             if hasattr(screen, 'update_language'):
@@ -271,17 +266,12 @@ class AnimalCategoryScreen(Screen):
         self.init_ui()
 
     def init_ui(self):
-        # Set background image
         self.add_widget(Image(
             source=resource_find('assets/images/backgrounds/wallpaperlogo.png'),
             allow_stretch=True,
             keep_ratio=False
         ))
-
-        # Create a FloatLayout for the overall screen
         layout = FloatLayout()
-
-        # ScrollView and GridLayout for displaying categories
         scroll_view = ScrollView(
             size_hint=(None, None),
             size=(dp(320), dp(520)),
@@ -297,8 +287,6 @@ class AnimalCategoryScreen(Screen):
             size_hint_y=None
         )
         grid.bind(minimum_height=grid.setter('height'))
-
-        # Define categories with unique identifiers
         categories = [
             {"id": "domestic_animals", "name": LANGUAGES[self.language]['animalcategories'][0]},
             {"id": "wild_animals", "name": LANGUAGES[self.language]['animalcategories'][1]},
@@ -307,25 +295,19 @@ class AnimalCategoryScreen(Screen):
             {"id": "marine_creatures", "name": LANGUAGES[self.language]['animalcategories'][4]},
             {"id": "insects", "name": LANGUAGES[self.language]['animalcategories'][5]}
         ]
-
-        # Create buttons for each category
         for category in categories:
             button = CustomButton(
                 text=category["name"],
                 size_hint=(None, None),
                 size=(dp(140), dp(50))
             )
-            if category["id"] == "wild_animals":  # Navigate to WildAnimalsScreen
+            if category["id"] == "wild_animals":
                 button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'wild_animals'))
-            else:  # Placeholder for unimplemented categories
+            else:
                 button.bind(on_press=lambda instance, cat=category["name"]: print(f"{cat} category not implemented yet."))
-
             grid.add_widget(button)
-
         scroll_view.add_widget(grid)
         layout.add_widget(scroll_view)
-
-        # Add a back button
         back_button = CustomButton(
             text=LANGUAGES[self.language]['back'],
             size_hint=(None, None),
@@ -334,16 +316,12 @@ class AnimalCategoryScreen(Screen):
         )
         back_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'second'))
         layout.add_widget(back_button)
-
-        # Add everything to the screen
         self.add_widget(layout)
 
     def update_language(self, language):
-        # Update the screen's language and refresh buttons
         self.language = language
         self.clear_widgets()
         self.init_ui()
-
 
 class WildAnimalsScreen(Screen):
     def __init__(self, **kwargs):
@@ -360,14 +338,8 @@ class WildAnimalsScreen(Screen):
         GRID_PADDING = [dp(10), dp(100), dp(10), dp(10)]
         GRID_SPACING = [dp(0), dp(150)]
 
-        # Set background image
-        try:
-            background_image = resource_find('assets/images/backgrounds/wallpaperlogo.png')
-        except (KeyError, IndexError):
-            background_image = 'default_background.png'
-        self.add_widget(Image(source=background_image, allow_stretch=True, keep_ratio=False))
+        self.add_widget(Image(source=resource_find('assets/images/backgrounds/wallpaperlogo.png'), allow_stretch=True, keep_ratio=False))
 
-        # ScrollView and GridLayout for animals
         scroll_view = ScrollView(size_hint=(1, 1))
         grid_layout = GridLayout(
             cols=1,
@@ -377,7 +349,6 @@ class WildAnimalsScreen(Screen):
         )
         grid_layout.bind(minimum_height=grid_layout.setter('height'))
 
-        # Load animal data from manifest
         try:
             animals = [
                 {
@@ -390,11 +361,8 @@ class WildAnimalsScreen(Screen):
         except (KeyError, IndexError):
             animals = []
 
-        # Create widgets for each animal
         for animal in animals:
             frame_layout = FloatLayout(size_hint=(None, None), size=FRAME_SIZE)
-
-            # Animal image
             img = Image(
                 source=resource_find(f'assets/images/animals/{animal["image"]}'),
                 size_hint=(None, None),
@@ -405,7 +373,6 @@ class WildAnimalsScreen(Screen):
             )
             frame_layout.add_widget(img)
 
-            # French audio button
             fr_button = Button(
                 size_hint=(None, None),
                 size=(BUTTON_SIZE, BUTTON_SIZE),
@@ -416,7 +383,6 @@ class WildAnimalsScreen(Screen):
             )
             frame_layout.add_widget(fr_button)
 
-            # French audio icon
             fr_icon = Image(
                 source='assets/images/icon/speaker.png',
                 size_hint=(None, None),
@@ -427,7 +393,6 @@ class WildAnimalsScreen(Screen):
             )
             frame_layout.add_widget(fr_icon)
 
-            # Arabic audio button
             ar_button = Button(
                 size_hint=(None, None),
                 size=(BUTTON_SIZE, BUTTON_SIZE),
@@ -438,7 +403,6 @@ class WildAnimalsScreen(Screen):
             )
             frame_layout.add_widget(ar_button)
 
-            # Arabic audio icon
             ar_icon = Image(
                 source='assets/images/icon/speaker.png',
                 size_hint=(None, None),
@@ -449,18 +413,14 @@ class WildAnimalsScreen(Screen):
             )
             frame_layout.add_widget(ar_icon)
 
-            # Bind audio buttons
             fr_button.bind(on_press=lambda instance, audio=animal["audio_fr"]: self.play_audio(audio))
             ar_button.bind(on_press=lambda instance, audio=animal["audio_ar"]: self.play_audio(audio))
 
-            # Add frame to grid layout
             grid_layout.add_widget(frame_layout)
 
-        # Add grid layout to scroll view
         scroll_view.add_widget(grid_layout)
         self.add_widget(scroll_view)
 
-        # Back button
         self.back_button = CustomButton(
             text=LANGUAGES[self.language]['back'],
             size_hint=(None, None),
@@ -471,7 +431,6 @@ class WildAnimalsScreen(Screen):
         self.add_widget(self.back_button)
 
     def play_audio(self, audio_file):
-        # Play the corresponding audio file
         audio_path = (
             resource_find(f'assets/audio/ar/{audio_file}') or
             resource_find(f'assets/audio/fr/{audio_file}')
