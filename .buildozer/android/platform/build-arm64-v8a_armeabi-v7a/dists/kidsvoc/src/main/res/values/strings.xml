@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">KidsVoc</string>
-    <string name="private_version">2789deee0dbaa84f55def3ee6744ab671f4a17e8</string>
+    <string name="private_version">94aba63dc1047a8c556d297c0d17cc557a64d45e</string>
     <string name="presplash_color">#000000</string>
     <string name="urlScheme">kivy</string>
 </resources>
