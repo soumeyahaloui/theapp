@@ -138,7 +138,7 @@ class FirstScreen(Screen):
             # Replace the button's text with the image for Arabic
             self.start_button.clear_widgets()
             start_button_image = Image(
-                source=resource_find('output.png'),
+                source=resource_find('assets/images/text/output.png'),
                 allow_stretch=True,
                 keep_ratio=True,
                 size_hint=(None, None),
@@ -284,7 +284,7 @@ class SecondScreen(Screen):
             # Switch to Arabic image for back button
             self.back_button.clear_widgets()
             back_button_image = Image(
-                source=resource_find('assets/images/icon/back.png'),  # Path to back.png
+                source=resource_find('assets/images/text/back.png'),  # Path to Arabic back.png
                 allow_stretch=True,
                 keep_ratio=True,
                 size_hint=(None, None),
@@ -298,6 +298,7 @@ class SecondScreen(Screen):
             self.back_button.label.text = LANGUAGES['Français']['back']
             self.back_button.label.font_name = 'FrenchFont'
             self.back_button.add_widget(self.back_button.label)
+
 
 
 class AnimalCategoryScreen(Screen):
