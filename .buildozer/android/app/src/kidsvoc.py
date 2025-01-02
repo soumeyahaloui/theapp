@@ -1,22 +1,24 @@
 import os
 import json
 from kivy.app import App
-from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.image import Image
-from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.button import ButtonBehavior
-from kivy.graphics import Color, RoundedRectangle
 from kivy.metrics import dp
+from kivy.config import Config
+from kivy.uix.label import Label
+from kivy.uix.image import Image
+from kivy.uix.popup import Popup
+from kivy.uix.button import Button
+from kivy.core.window import Window
+from kivy.core.text import LabelBase
+from kivy.core.audio import SoundLoader
+from kivy.resources import resource_find
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import ButtonBehavior
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.gridlayout import GridLayout
-from kivy.uix.button import Button
-from kivy.uix.label import Label
-from kivy.uix.popup import Popup
-from kivy.uix.boxlayout import BoxLayout
-from kivy.resources import resource_find
-from kivy.config import Config
-from kivy.core.audio import SoundLoader
-from kivy.core.text import LabelBase
+from kivy.uix.floatlayout import FloatLayout
+from kivy.graphics import Color, RoundedRectangle
+from kivy.uix.screenmanager import ScreenManager, Screen
+
 
 
 LabelBase.register(name='ArabicFont', fn_regular='assets/fonts/NotoNaskhArabic-Regular.ttf')
@@ -448,6 +450,7 @@ class WildAnimalsScreen(Screen):
 class MyApp(App):
     def build(self):
         self.icon = resource_find('assets/images/icon/appkidicon.png')
+        Window.size = (400, 720)
         sm = ScreenManager()
         sm.language = 'Français'
         sm.add_widget(FirstScreen(name='first'))
