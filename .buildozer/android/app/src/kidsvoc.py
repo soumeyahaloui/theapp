@@ -100,6 +100,7 @@ class FirstScreen(Screen):
         self.settings_button = None
         self.settings_popup = None
         self.language_popup = None
+        self.language = 'Français'  # Default language
         self.init_ui()
 
     def init_ui(self):
@@ -108,6 +109,8 @@ class FirstScreen(Screen):
             allow_stretch=True, keep_ratio=False
         ))
         layout = FloatLayout()
+
+        # Create the start button with default French text
         self.start_button = CustomButton(
             text=LANGUAGES['Français']['start'],
             size_hint=(None, None),
@@ -116,6 +119,8 @@ class FirstScreen(Screen):
         )
         self.start_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'second'))
         layout.add_widget(self.start_button)
+
+        # Settings button
         self.settings_button = IconButton(
             source='assets/images/icon/settings.png',
             size_hint=(None, None),
@@ -124,11 +129,27 @@ class FirstScreen(Screen):
         )
         self.settings_button.bind(on_press=self.open_settings_popup)
         layout.add_widget(self.settings_button)
+
         self.add_widget(layout)
 
     def update_language(self, language):
-        self.start_button.label.text = LANGUAGES[language]['start']
-        self.start_button.label.font_name = 'ArabicFont' if language == 'Arabe' else 'FrenchFont'
+        self.language = language
+        if language == 'Arabe':
+            # Replace the button's text with the image for Arabic
+            self.start_button.clear_widgets()
+            start_button_image = Image(
+                source=resource_find('output.png'),
+                allow_stretch=True,
+                keep_ratio=False,  # Ensure the image stretches to fit the button
+                size_hint=(1, 1)   # Fit the button size
+            )
+            self.start_button.add_widget(start_button_image)
+        else:
+            # Revert to the text label for French
+            self.start_button.clear_widgets()
+            self.start_button.label.text = LANGUAGES['Français']['start']
+            self.start_button.label.font_name = 'FrenchFont'
+            self.start_button.add_widget(self.start_button.label)
 
     def open_settings_popup(self, instance):
         popup_content = BoxLayout(orientation='vertical', spacing=10, padding=10)
@@ -196,6 +217,8 @@ class FirstScreen(Screen):
         for screen in self.manager.screens:
             if hasattr(screen, 'update_language'):
                 screen.update_language(language)
+
+
 
 class SecondScreen(Screen):
     def __init__(self, **kwargs):
