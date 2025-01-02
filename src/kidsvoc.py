@@ -37,22 +37,30 @@ class CustomButton(ButtonBehavior, FloatLayout):
             Color(0.2, 0.5, 0.8, 1)
             self.bg_rect = RoundedRectangle(size=self.size, pos=self.pos, radius=[dp(20)])
         self.bind(size=self.update_bg, pos=self.update_bg)
+        
         self.label = Label(
             text=text,
             font_size="20sp",
             color=(1, 1, 1, 1),
             size_hint=(None, None),
             size=self.size,
+            text_size=(self.width - dp(20), None),  # Allow wrapping within button
             pos_hint={'center_x': 0.5, 'center_y': 0.5},
             halign='center',
             valign='middle',
         )
         self.label.bind(size=self.label.setter('text_size'))
+        self.label.bind(texture_size=self.adjust_height)
         self.add_widget(self.label)
 
     def update_bg(self, *args):
         self.bg_rect.size = self.size
         self.bg_rect.pos = self.pos
+
+    def adjust_height(self, *args):
+        # Dynamically adjust the height based on the label's texture size
+        self.size = (self.size[0], max(dp(50), self.label.texture_size[1] + dp(20)))
+
 
 LANGUAGES = {
     'Français': {
@@ -253,24 +261,14 @@ class SecondScreen(Screen):
             size_hint_y=None
         )
         self.grid.bind(minimum_height=self.grid.setter('height'))
-        categories = LANGUAGES['Français']['categories']
-        for category in categories:
-            button = CustomButton(
-                text=category,
-                size_hint=(None, None),
-                size=(dp(140), dp(50))
-            )
-            if category == "Animaux":
-                button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'animal_categories'))
-            else:
-                button.bind(on_press=lambda instance, cat=category: print(f"{cat} not implemented yet."))
-            self.grid.add_widget(button)
+        
+        self.add_category_buttons()
         self.scroll_view.add_widget(self.grid)
         layout.add_widget(self.scroll_view)
 
         # Back Button
         self.back_button = CustomButton(
-            text=LANGUAGES['Français']['back'],
+            text=LANGUAGES[self.language]['back'],
             size_hint=(None, None),
             size=(dp(80), dp(40)),
             pos_hint={'x': 0.05, 'top': 0.1}
@@ -279,34 +277,67 @@ class SecondScreen(Screen):
         layout.add_widget(self.back_button)
         self.add_widget(layout)
 
+    def add_category_buttons(self):
+        categories = LANGUAGES[self.language]['categories']
+        for category in categories:
+            button = CustomButton(
+                text=category if self.language != 'Arabe' else '',
+                size_hint=(None, None),
+                size=(dp(140), dp(50))
+            )
+
+            if self.language == 'Arabe':
+                # Set Arabic image as the button content
+                button.clear_widgets()
+                category_image = Image(
+                    source=resource_find(f'assets/images/text/categories/{category}.png'),
+                    allow_stretch=True,
+                    keep_ratio=True,
+                    size_hint=(None, None),
+                    size=button.size,
+                    pos_hint={'center_x': 0.5, 'center_y': 0.5}
+                )
+                button.add_widget(category_image)
+
+            # Bind "Animaux" or "الحيوانات" to open AnimalCategoryScreen
+            if category in ["Animaux", "الحيوانات"]:
+                button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'animal_categories'))
+            else:
+                button.bind(on_press=lambda instance, cat=category: print(f"{cat} selected"))
+
+            self.grid.add_widget(button)
+
     def update_language(self, language):
-        """Update UI elements based on the selected language."""
+        self.language = language
+        self.grid.clear_widgets()  # Clear existing buttons
+        self.add_category_buttons()
+
+        # Update Back Button
         if language == 'Arabe':
-            # Switch to Arabic image for back button
             self.back_button.clear_widgets()
             back_button_image = Image(
-                source=resource_find('assets/images/text/back.png'),  # Path to Arabic back.png
+                source=resource_find('assets/images/text/back.png'),
                 allow_stretch=True,
                 keep_ratio=True,
                 size_hint=(None, None),
                 size=self.back_button.size,
-                pos_hint={'center_x': 0.5, 'center_y': 0.5},
+                pos_hint={'center_x': 0.5, 'center_y': 0.5}
             )
             self.back_button.add_widget(back_button_image)
         else:
-            # Switch back to French text
             self.back_button.clear_widgets()
             self.back_button.label.text = LANGUAGES['Français']['back']
             self.back_button.label.font_name = 'FrenchFont'
             self.back_button.add_widget(self.back_button.label)
 
 
-
 class AnimalCategoryScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.language = 'Français'
-        self.back_button = None  # Define the back button here
+        self.back_button = None
+        self.grid = None
+        self.scroll_view = None
         self.init_ui()
 
     def init_ui(self):
@@ -317,13 +348,13 @@ class AnimalCategoryScreen(Screen):
         ))
         layout = FloatLayout()
 
-        scroll_view = ScrollView(
+        self.scroll_view = ScrollView(
             size_hint=(None, None),
             size=(dp(320), dp(520)),
             bar_width=dp(10),
             pos_hint={'center_x': 0.5, 'center_y': 0.5}
         )
-        grid = GridLayout(
+        self.grid = GridLayout(
             cols=2,
             spacing=dp(10),
             padding=[dp(10), dp(20), dp(10), dp(20)],
@@ -331,30 +362,13 @@ class AnimalCategoryScreen(Screen):
             width=dp(300),
             size_hint_y=None
         )
-        grid.bind(minimum_height=grid.setter('height'))
-        categories = [
-            {"id": "domestic_animals", "name": LANGUAGES[self.language]['animalcategories'][0]},
-            {"id": "wild_animals", "name": LANGUAGES[self.language]['animalcategories'][1]},
-            {"id": "farm_animals", "name": LANGUAGES[self.language]['animalcategories'][2]},
-            {"id": "birds", "name": LANGUAGES[self.language]['animalcategories'][3]},
-            {"id": "marine_creatures", "name": LANGUAGES[self.language]['animalcategories'][4]},
-            {"id": "insects", "name": LANGUAGES[self.language]['animalcategories'][5]}
-        ]
-        for category in categories:
-            button = CustomButton(
-                text=category["name"],
-                size_hint=(None, None),
-                size=(dp(140), dp(50))
-            )
-            if category["id"] == "wild_animals":
-                button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'wild_animals'))
-            else:
-                button.bind(on_press=lambda instance, cat=category["name"]: print(f"{cat} category not implemented yet."))
-            grid.add_widget(button)
-        scroll_view.add_widget(grid)
-        layout.add_widget(scroll_view)
+        self.grid.bind(minimum_height=self.grid.setter('height'))
 
-        # Create the back button
+        self.add_category_buttons()
+        self.scroll_view.add_widget(self.grid)
+        layout.add_widget(self.scroll_view)
+
+        # Back Button
         self.back_button = CustomButton(
             text=LANGUAGES[self.language]['back'],
             size_hint=(None, None),
@@ -365,26 +379,54 @@ class AnimalCategoryScreen(Screen):
         layout.add_widget(self.back_button)
         self.add_widget(layout)
 
-    def update_language(self, language):
-        """Update UI elements based on the selected language."""
-        self.language = language
-        self.clear_widgets()
-        self.init_ui()
+    def add_category_buttons(self):
+        categories = LANGUAGES[self.language]['animalcategories']
+        for category in categories:
+            button = CustomButton(
+                text=category if self.language != 'Arabe' else '',
+                size_hint=(None, None),
+                size=(dp(140), dp(50))
+            )
 
+            if self.language == 'Arabe':
+                # Set Arabic image as the button content
+                button.clear_widgets()
+                category_image = Image(
+                    source=resource_find(f'assets/images/text/animalcategories/{category}.png'),
+                    allow_stretch=True,
+                    keep_ratio=True,
+                    size_hint=(None, None),
+                    size=button.size,
+                    pos_hint={'center_x': 0.5, 'center_y': 0.5}
+                )
+                button.add_widget(category_image)
+
+            # Bind "Animaux Sauvages" or "حيوانات برية" to open WildAnimalsScreen
+            if category in ["Animaux Sauvages", "حيوانات برية"]:
+                button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'wild_animals'))
+            else:
+                button.bind(on_press=lambda instance, cat=category: print(f"{cat} category selected"))
+
+            self.grid.add_widget(button)
+
+    def update_language(self, language):
+        self.language = language
+        self.grid.clear_widgets()  # Clear existing buttons
+        self.add_category_buttons()
+
+        # Update Back Button
         if language == 'Arabe':
-            # Switch to Arabic image for back button
             self.back_button.clear_widgets()
             back_button_image = Image(
-                source=resource_find('assets/images/text/back.png'),  # Path to Arabic back.png
+                source=resource_find('assets/images/text/back.png'),
                 allow_stretch=True,
                 keep_ratio=True,
                 size_hint=(None, None),
                 size=self.back_button.size,
-                pos_hint={'center_x': 0.5, 'center_y': 0.5},
+                pos_hint={'center_x': 0.5, 'center_y': 0.5}
             )
             self.back_button.add_widget(back_button_image)
         else:
-            # Switch back to French text
             self.back_button.clear_widgets()
             self.back_button.label.text = LANGUAGES['Français']['back']
             self.back_button.label.font_name = 'FrenchFont'
