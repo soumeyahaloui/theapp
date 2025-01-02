@@ -8,7 +8,7 @@ URL: https://freetype.org
 Description: A free, high-quality, and portable font engine.
 Version: 23.1.17
 Requires:
-Requires.private: 
+Requires.private: zlib
 Libs: -L${libdir} -lfreetype
-Libs.private: -lz
+Libs.private: 
 Cflags: -I${includedir}/freetype2

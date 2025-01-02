@@ -304,13 +304,15 @@ MODULE__SQLITE3_STATE=yes
 MODULE__SQLITE3_CFLAGS= -I$(srcdir)/Modules/_sqlite
 MODULE__SQLITE3_LDFLAGS=-lsqlite3
 MODULE__TKINTER_STATE=missing
-MODULE__UUID_STATE=missing
+MODULE__UUID_STATE=yes
+MODULE__UUID_CFLAGS=-I/usr/include/uuid 
+MODULE__UUID_LDFLAGS=-luuid 
 MODULE_ZLIB_STATE=yes
 MODULE_ZLIB_CFLAGS=
-MODULE_ZLIB_LDFLAGS=-lz
+MODULE_ZLIB_LDFLAGS=-lz 
 MODULE_BINASCII_STATE=yes
 MODULE_BINASCII_CFLAGS=-DUSE_ZLIB_CRC32 
-MODULE_BINASCII_LDFLAGS=-lz
+MODULE_BINASCII_LDFLAGS=-lz 
 MODULE__BZ2_STATE=missing
 MODULE__LZMA_STATE=missing
 MODULE__SSL_STATE=yes
@@ -448,7 +450,7 @@ IO_OBJS=	\
 
 ##########################################################################
 
-LIBFFI_INCLUDEDIR=	
+LIBFFI_INCLUDEDIR=	/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/arm64-v8a__ndk_target_21/libffi/include
 
 ##########################################################################
 # Parser

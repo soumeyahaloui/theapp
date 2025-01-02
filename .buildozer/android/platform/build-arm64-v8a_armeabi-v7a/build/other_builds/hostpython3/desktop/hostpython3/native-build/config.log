@@ -60,7 +60,10 @@ configure:3344: result: python3.10
 configure:3358: checking Python for regen version
 configure:3361: result: Python 3.10.16
 configure:3488: checking for pkg-config
-configure:3521: result: no
+configure:3506: found /usr/bin/pkg-config
+configure:3518: result: /usr/bin/pkg-config
+configure:3543: checking pkg-config is at least version 0.9.0
+configure:3546: result: yes
 configure:3569: checking for --enable-universalsdk
 configure:3616: result: no
 configure:3640: checking for --with-universal-archs
@@ -4583,7 +4586,7 @@ conftest.c: In function 'main':
 conftest.c:91:8: warning: implicit declaration of function 'makedev' [-Wimplicit-function-declaration]
    91 | return makedev(0, 0);
       |        ^~~~~~~
-/usr/bin/ld: /tmp/ccfyAjRA.o: in function `main':
+/usr/bin/ld: /tmp/ccwSSS65.o: in function `main':
 conftest.c:(.text+0x18): undefined reference to `makedev'
 collect2: error: ld returned 1 exit status
 configure:9391: $? = 1
@@ -6760,318 +6763,11 @@ configure:11319: result: no
 configure:11319: checking for uuid.h
 configure:11319: result: no
 configure:11351: checking for LIBUUID
-configure:11535: result: no
-configure:11548: checking uuid/uuid.h usability
-configure:11548: gcc -c    conftest.c >&5
-conftest.c:161:10: fatal error: uuid/uuid.h: No such file or directory
-  161 | #include <uuid/uuid.h>
-      |          ^~~~~~~~~~~~~
-compilation terminated.
-configure:11548: $? = 1
-configure: failed program was:
-| /* confdefs.h */
-| #define _NETBSD_SOURCE 1
-| #define __BSD_VISIBLE 1
-| #define _DARWIN_C_SOURCE 1
-| #define _PYTHONFRAMEWORK ""
-| #define _XOPEN_SOURCE 700
-| #define _XOPEN_SOURCE_EXTENDED 1
-| #define _POSIX_C_SOURCE 200809L
-| #define STDC_HEADERS 1
-| #define HAVE_SYS_TYPES_H 1
-| #define HAVE_SYS_STAT_H 1
-| #define HAVE_STDLIB_H 1
-| #define HAVE_STRING_H 1
-| #define HAVE_MEMORY_H 1
-| #define HAVE_STRINGS_H 1
-| #define HAVE_INTTYPES_H 1
-| #define HAVE_STDINT_H 1
-| #define HAVE_UNISTD_H 1
-| #define __EXTENSIONS__ 1
-| #define _ALL_SOURCE 1
-| #define _GNU_SOURCE 1
-| #define _POSIX_PTHREAD_SEMANTICS 1
-| #define _TANDEM_SOURCE 1
-| #define PY_SUPPORT_TIER 1
-| #define STDC_HEADERS 1
-| #define HAVE_ALLOCA_H 1
-| #define HAVE_ASM_TYPES_H 1
-| #define HAVE_CRYPT_H 1
-| #define HAVE_DLFCN_H 1
-| #define HAVE_ENDIAN_H 1
-| #define HAVE_ERRNO_H 1
-| #define HAVE_FCNTL_H 1
-| #define HAVE_GRP_H 1
-| #define HAVE_LANGINFO_H 1
-| #define HAVE_LIBINTL_H 1
-| #define HAVE_LINUX_AUXVEC_H 1
-| #define HAVE_SYS_AUXV_H 1
-| #define HAVE_LINUX_LIMITS_H 1
-| #define HAVE_LINUX_MEMFD_H 1
-| #define HAVE_LINUX_RANDOM_H 1
-| #define HAVE_LINUX_SOUNDCARD_H 1
-| #define HAVE_LINUX_TIPC_H 1
-| #define HAVE_LINUX_WAIT_H 1
-| #define HAVE_NETDB_H 1
-| #define HAVE_NETINET_IN_H 1
-| #define HAVE_NETPACKET_PACKET_H 1
-| #define HAVE_POLL_H 1
-| #define HAVE_PTHREAD_H 1
-| #define HAVE_PTY_H 1
-| #define HAVE_SCHED_H 1
-| #define HAVE_SETJMP_H 1
-| #define HAVE_SHADOW_H 1
-| #define HAVE_SIGNAL_H 1
-| #define HAVE_SPAWN_H 1
-| #define HAVE_SYS_EPOLL_H 1
-| #define HAVE_SYS_EVENTFD_H 1
-| #define HAVE_SYS_FILE_H 1
-| #define HAVE_SYS_IOCTL_H 1
-| #define HAVE_SYS_MMAN_H 1
-| #define HAVE_SYS_PARAM_H 1
-| #define HAVE_SYS_POLL_H 1
-| #define HAVE_SYS_RANDOM_H 1
-| #define HAVE_SYS_RESOURCE_H 1
-| #define HAVE_SYS_SELECT_H 1
-| #define HAVE_SYS_SENDFILE_H 1
-| #define HAVE_SYS_SOCKET_H 1
-| #define HAVE_SYS_SOUNDCARD_H 1
-| #define HAVE_SYS_STAT_H 1
-| #define HAVE_SYS_STATVFS_H 1
-| #define HAVE_SYS_SYSCALL_H 1
-| #define HAVE_SYS_SYSMACROS_H 1
-| #define HAVE_SYS_TIME_H 1
-| #define HAVE_SYS_TIMES_H 1
-| #define HAVE_SYS_TYPES_H 1
-| #define HAVE_SYS_UIO_H 1
-| #define HAVE_SYS_UN_H 1
-| #define HAVE_SYS_UTSNAME_H 1
-| #define HAVE_SYS_WAIT_H 1
-| #define HAVE_SYS_XATTR_H 1
-| #define HAVE_SYSEXITS_H 1
-| #define HAVE_SYSLOG_H 1
-| #define HAVE_TERMIOS_H 1
-| #define HAVE_UTIME_H 1
-| #define HAVE_UTMP_H 1
-| #define HAVE_DIRENT_H 1
-| #define MAJOR_IN_SYSMACROS 1
-| #define HAVE_NET_IF_H 1
-| #define HAVE_LINUX_NETLINK_H 1
-| #define HAVE_LINUX_QRTR_H 1
-| #define HAVE_LINUX_VM_SOCKETS_H 1
-| #define HAVE_LINUX_CAN_H 1
-| #define HAVE_LINUX_CAN_BCM_H 1
-| #define HAVE_LINUX_CAN_J1939_H 1
-| #define HAVE_LINUX_CAN_RAW_H 1
-| #define HAVE_MAKEDEV 1
-| #define HAVE_HTOLE64 1
-| #define _LARGEFILE_SOURCE 1
-| #define _FILE_OFFSET_BITS 64
-| #if defined(SCO_DS)
-| #undef _OFF_T
-| #endif
-| #define RETSIGTYPE void
-| #define HAVE_SSIZE_T 1
-| #define HAVE_GCC_UINT128_T 1
-| #define SIZEOF_INT 4
-| #define SIZEOF_LONG 8
-| #define ALIGNOF_LONG 8
-| #define SIZEOF_LONG_LONG 8
-| #define SIZEOF_VOID_P 8
-| #define SIZEOF_SHORT 2
-| #define SIZEOF_FLOAT 4
-| #define SIZEOF_DOUBLE 8
-| #define SIZEOF_FPOS_T 16
-| #define SIZEOF_SIZE_T 8
-| #define ALIGNOF_SIZE_T 8
-| #define SIZEOF_PID_T 4
-| #define SIZEOF_UINTPTR_T 8
-| #define HAVE_LONG_DOUBLE 1
-| #define SIZEOF_LONG_DOUBLE 16
-| #define SIZEOF__BOOL 1
-| #define SIZEOF_OFF_T 8
-| #define SIZEOF_TIME_T 8
-| #define SIZEOF_PTHREAD_T 8
-| #define SIZEOF_PTHREAD_KEY_T 4
-| #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
-| #define HAVE_LIBDL 1
-| /* end confdefs.h.  */
-| #include <stdio.h>
-| #ifdef HAVE_SYS_TYPES_H
-| # include <sys/types.h>
-| #endif
-| #ifdef HAVE_SYS_STAT_H
-| # include <sys/stat.h>
-| #endif
-| #ifdef STDC_HEADERS
-| # include <stdlib.h>
-| # include <stddef.h>
-| #else
-| # ifdef HAVE_STDLIB_H
-| #  include <stdlib.h>
-| # endif
-| #endif
-| #ifdef HAVE_STRING_H
-| # if !defined STDC_HEADERS && defined HAVE_MEMORY_H
-| #  include <memory.h>
-| # endif
-| # include <string.h>
-| #endif
-| #ifdef HAVE_STRINGS_H
-| # include <strings.h>
-| #endif
-| #ifdef HAVE_INTTYPES_H
-| # include <inttypes.h>
-| #endif
-| #ifdef HAVE_STDINT_H
-| # include <stdint.h>
-| #endif
-| #ifdef HAVE_UNISTD_H
-| # include <unistd.h>
-| #endif
-| #include <uuid/uuid.h>
-configure:11548: result: no
-configure:11548: checking uuid/uuid.h presence
-configure:11548: gcc -E   conftest.c
-conftest.c:128:10: fatal error: uuid/uuid.h: No such file or directory
-  128 | #include <uuid/uuid.h>
-      |          ^~~~~~~~~~~~~
-compilation terminated.
-configure:11548: $? = 1
-configure: failed program was:
-| /* confdefs.h */
-| #define _NETBSD_SOURCE 1
-| #define __BSD_VISIBLE 1
-| #define _DARWIN_C_SOURCE 1
-| #define _PYTHONFRAMEWORK ""
-| #define _XOPEN_SOURCE 700
-| #define _XOPEN_SOURCE_EXTENDED 1
-| #define _POSIX_C_SOURCE 200809L
-| #define STDC_HEADERS 1
-| #define HAVE_SYS_TYPES_H 1
-| #define HAVE_SYS_STAT_H 1
-| #define HAVE_STDLIB_H 1
-| #define HAVE_STRING_H 1
-| #define HAVE_MEMORY_H 1
-| #define HAVE_STRINGS_H 1
-| #define HAVE_INTTYPES_H 1
-| #define HAVE_STDINT_H 1
-| #define HAVE_UNISTD_H 1
-| #define __EXTENSIONS__ 1
-| #define _ALL_SOURCE 1
-| #define _GNU_SOURCE 1
-| #define _POSIX_PTHREAD_SEMANTICS 1
-| #define _TANDEM_SOURCE 1
-| #define PY_SUPPORT_TIER 1
-| #define STDC_HEADERS 1
-| #define HAVE_ALLOCA_H 1
-| #define HAVE_ASM_TYPES_H 1
-| #define HAVE_CRYPT_H 1
-| #define HAVE_DLFCN_H 1
-| #define HAVE_ENDIAN_H 1
-| #define HAVE_ERRNO_H 1
-| #define HAVE_FCNTL_H 1
-| #define HAVE_GRP_H 1
-| #define HAVE_LANGINFO_H 1
-| #define HAVE_LIBINTL_H 1
-| #define HAVE_LINUX_AUXVEC_H 1
-| #define HAVE_SYS_AUXV_H 1
-| #define HAVE_LINUX_LIMITS_H 1
-| #define HAVE_LINUX_MEMFD_H 1
-| #define HAVE_LINUX_RANDOM_H 1
-| #define HAVE_LINUX_SOUNDCARD_H 1
-| #define HAVE_LINUX_TIPC_H 1
-| #define HAVE_LINUX_WAIT_H 1
-| #define HAVE_NETDB_H 1
-| #define HAVE_NETINET_IN_H 1
-| #define HAVE_NETPACKET_PACKET_H 1
-| #define HAVE_POLL_H 1
-| #define HAVE_PTHREAD_H 1
-| #define HAVE_PTY_H 1
-| #define HAVE_SCHED_H 1
-| #define HAVE_SETJMP_H 1
-| #define HAVE_SHADOW_H 1
-| #define HAVE_SIGNAL_H 1
-| #define HAVE_SPAWN_H 1
-| #define HAVE_SYS_EPOLL_H 1
-| #define HAVE_SYS_EVENTFD_H 1
-| #define HAVE_SYS_FILE_H 1
-| #define HAVE_SYS_IOCTL_H 1
-| #define HAVE_SYS_MMAN_H 1
-| #define HAVE_SYS_PARAM_H 1
-| #define HAVE_SYS_POLL_H 1
-| #define HAVE_SYS_RANDOM_H 1
-| #define HAVE_SYS_RESOURCE_H 1
-| #define HAVE_SYS_SELECT_H 1
-| #define HAVE_SYS_SENDFILE_H 1
-| #define HAVE_SYS_SOCKET_H 1
-| #define HAVE_SYS_SOUNDCARD_H 1
-| #define HAVE_SYS_STAT_H 1
-| #define HAVE_SYS_STATVFS_H 1
-| #define HAVE_SYS_SYSCALL_H 1
-| #define HAVE_SYS_SYSMACROS_H 1
-| #define HAVE_SYS_TIME_H 1
-| #define HAVE_SYS_TIMES_H 1
-| #define HAVE_SYS_TYPES_H 1
-| #define HAVE_SYS_UIO_H 1
-| #define HAVE_SYS_UN_H 1
-| #define HAVE_SYS_UTSNAME_H 1
-| #define HAVE_SYS_WAIT_H 1
-| #define HAVE_SYS_XATTR_H 1
-| #define HAVE_SYSEXITS_H 1
-| #define HAVE_SYSLOG_H 1
-| #define HAVE_TERMIOS_H 1
-| #define HAVE_UTIME_H 1
-| #define HAVE_UTMP_H 1
-| #define HAVE_DIRENT_H 1
-| #define MAJOR_IN_SYSMACROS 1
-| #define HAVE_NET_IF_H 1
-| #define HAVE_LINUX_NETLINK_H 1
-| #define HAVE_LINUX_QRTR_H 1
-| #define HAVE_LINUX_VM_SOCKETS_H 1
-| #define HAVE_LINUX_CAN_H 1
-| #define HAVE_LINUX_CAN_BCM_H 1
-| #define HAVE_LINUX_CAN_J1939_H 1
-| #define HAVE_LINUX_CAN_RAW_H 1
-| #define HAVE_MAKEDEV 1
-| #define HAVE_HTOLE64 1
-| #define _LARGEFILE_SOURCE 1
-| #define _FILE_OFFSET_BITS 64
-| #if defined(SCO_DS)
-| #undef _OFF_T
-| #endif
-| #define RETSIGTYPE void
-| #define HAVE_SSIZE_T 1
-| #define HAVE_GCC_UINT128_T 1
-| #define SIZEOF_INT 4
-| #define SIZEOF_LONG 8
-| #define ALIGNOF_LONG 8
-| #define SIZEOF_LONG_LONG 8
-| #define SIZEOF_VOID_P 8
-| #define SIZEOF_SHORT 2
-| #define SIZEOF_FLOAT 4
-| #define SIZEOF_DOUBLE 8
-| #define SIZEOF_FPOS_T 16
-| #define SIZEOF_SIZE_T 8
-| #define ALIGNOF_SIZE_T 8
-| #define SIZEOF_PID_T 4
-| #define SIZEOF_UINTPTR_T 8
-| #define HAVE_LONG_DOUBLE 1
-| #define SIZEOF_LONG_DOUBLE 16
-| #define SIZEOF__BOOL 1
-| #define SIZEOF_OFF_T 8
-| #define SIZEOF_TIME_T 8
-| #define SIZEOF_PTHREAD_T 8
-| #define SIZEOF_PTHREAD_KEY_T 4
-| #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
-| #define HAVE_LIBDL 1
-| /* end confdefs.h.  */
-| #include <uuid/uuid.h>
-configure:11548: result: no
-configure:11548: checking for uuid/uuid.h
-configure:11548: result: no
-configure:11683: checking for uuid/uuid.h
-configure:11683: result: no
+configure:11358: $PKG_CONFIG --exists --print-errors "uuid >= 2.20"
+configure:11361: $? = 0
+configure:11375: $PKG_CONFIG --exists --print-errors "uuid >= 2.20"
+configure:11378: $? = 0
+configure:11666: result: yes
 configure:11713: checking for library containing sem_init
 configure:11744: gcc -o conftest    conftest.c -ldl  >&5
 configure:11744: $? = 0
@@ -7208,6 +6904,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | /* end confdefs.h.  */
 | 
 | /* Override any GCC internal prototype to avoid an error.
@@ -7367,6 +7065,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | /* end confdefs.h.  */
 | 
 | /* Override any GCC internal prototype to avoid an error.
@@ -7516,6 +7216,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | /* end confdefs.h.  */
 | 
 | /* Override any GCC internal prototype to avoid an error.
@@ -7546,13 +7248,26 @@ configure:12260: result: yes
 configure:12264: checking for decimal libmpdec machine
 configure:12304: result: uint128
 configure:12343: checking for LIBNSL
-configure:12485: result: no
-configure:12495: checking for library containing yp_match
-configure:12526: gcc -o conftest    conftest.c -ldl  >&5
-/usr/bin/ld: /tmp/ccJeenhf.o: in function `main':
+configure:12350: $PKG_CONFIG --exists --print-errors "libnsl"
+Package libnsl was not found in the pkg-config search path.
+Perhaps you should add the directory containing `libnsl.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'libnsl', required by 'virtual:world', not found
+configure:12353: $? = 1
+configure:12367: $PKG_CONFIG --exists --print-errors "libnsl"
+Package libnsl was not found in the pkg-config search path.
+Perhaps you should add the directory containing `libnsl.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'libnsl', required by 'virtual:world', not found
+configure:12370: $? = 1
+configure:12384: result: no
+Package 'libnsl', required by 'virtual:world', not found
+configure:12408: checking for library containing yp_match
+configure:12439: gcc -o conftest    conftest.c -ldl  >&5
+/usr/bin/ld: /tmp/cciLEB4N.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `yp_match'
 collect2: error: ld returned 1 exit status
-configure:12526: $? = 1
+configure:12439: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define _NETBSD_SOURCE 1
@@ -7680,6 +7395,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | /* end confdefs.h.  */
 | 
@@ -7697,10 +7414,10 @@ configure: failed program was:
 |   ;
 |   return 0;
 | }
-configure:12526: gcc -o conftest    conftest.c -lnsl  -ldl  >&5
+configure:12439: gcc -o conftest    conftest.c -lnsl  -ldl  >&5
 /usr/bin/ld: cannot find -lnsl: No such file or directory
 collect2: error: ld returned 1 exit status
-configure:12526: $? = 1
+configure:12439: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define _NETBSD_SOURCE 1
@@ -7828,6 +7545,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | /* end confdefs.h.  */
 | 
@@ -7845,13 +7564,26 @@ configure: failed program was:
 |   ;
 |   return 0;
 | }
-configure:12543: result: no
+configure:12456: result: no
 configure:12633: checking for LIBSQLITE3
-configure:12696: result: no
+configure:12640: $PKG_CONFIG --exists --print-errors "sqlite3 >= 3.7.15"
+Package sqlite3 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `sqlite3.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'sqlite3', required by 'virtual:world', not found
+configure:12643: $? = 1
+configure:12657: $PKG_CONFIG --exists --print-errors "sqlite3 >= 3.7.15"
+Package sqlite3 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `sqlite3.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'sqlite3', required by 'virtual:world', not found
+configure:12660: $? = 1
+configure:12674: result: no
+Package 'sqlite3', required by 'virtual:world', not found
 configure:12723: checking sqlite3.h usability
 configure:12723: gcc -c    -I$(srcdir)/Modules/_sqlite conftest.c >&5
-conftest.c:162:10: fatal error: sqlite3.h: No such file or directory
-  162 | #include <sqlite3.h>
+conftest.c:164:10: fatal error: sqlite3.h: No such file or directory
+  164 | #include <sqlite3.h>
       |          ^~~~~~~~~~~
 compilation terminated.
 configure:12723: $? = 1
@@ -7982,6 +7714,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | /* end confdefs.h.  */
 | #include <stdio.h>
@@ -8021,8 +7755,8 @@ configure: failed program was:
 configure:12723: result: no
 configure:12723: checking sqlite3.h presence
 configure:12723: gcc -E   -I$(srcdir)/Modules/_sqlite conftest.c
-conftest.c:129:10: fatal error: sqlite3.h: No such file or directory
-  129 | #include <sqlite3.h>
+conftest.c:131:10: fatal error: sqlite3.h: No such file or directory
+  131 | #include <sqlite3.h>
       |          ^~~~~~~~~~~
 compilation terminated.
 configure:12723: $? = 1
@@ -8153,6 +7887,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | /* end confdefs.h.  */
 | #include <sqlite3.h>
@@ -8161,9 +7897,44 @@ configure:12723: checking for sqlite3.h
 configure:12723: result: no
 configure:13417: checking for --enable-loadable-sqlite-extensions
 configure:13441: result: no
+configure:13457: $PKG_CONFIG --exists --print-errors "$_QUERY"
+Package tcl was not found in the pkg-config search path.
+Perhaps you should add the directory containing `tcl.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'tcl', required by 'virtual:world', not found
+Package 'tk', required by 'virtual:world', not found
+configure:13460: $? = 1
+configure:13457: $PKG_CONFIG --exists --print-errors "$_QUERY"
+Package tcl8.6 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `tcl8.6.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'tcl8.6', required by 'virtual:world', not found
+Package 'tk8.6', required by 'virtual:world', not found
+configure:13460: $? = 1
+configure:13457: $PKG_CONFIG --exists --print-errors "$_QUERY"
+Package tcl86 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `tcl86.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'tcl86', required by 'virtual:world', not found
+Package 'tk86', required by 'virtual:world', not found
+configure:13460: $? = 1
+configure:13457: $PKG_CONFIG --exists --print-errors "$_QUERY"
+Package tcl8.5 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `tcl8.5.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'tcl8.5', required by 'virtual:world', not found
+Package 'tk8.5', required by 'virtual:world', not found
+configure:13460: $? = 1
+configure:13457: $PKG_CONFIG --exists --print-errors "$_QUERY"
+Package tcl85 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `tcl85.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'tcl85', required by 'virtual:world', not found
+Package 'tk85', required by 'virtual:world', not found
+configure:13460: $? = 1
 configure:13703: gcc -o conftest     conftest.c   >&5
-conftest.c:131:16: fatal error: tcl.h: No such file or directory
-  131 |       #include <tcl.h>
+conftest.c:133:16: fatal error: tcl.h: No such file or directory
+  133 |       #include <tcl.h>
       |                ^~~~~~~
 compilation terminated.
 configure:13703: $? = 1
@@ -8294,6 +8065,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | /* end confdefs.h.  */
 | 
@@ -8325,8 +8098,8 @@ configure: failed program was:
 | 
 configure:13735: checking gdbm.h usability
 configure:13735: gcc -c    conftest.c >&5
-conftest.c:162:10: fatal error: gdbm.h: No such file or directory
-  162 | #include <gdbm.h>
+conftest.c:164:10: fatal error: gdbm.h: No such file or directory
+  164 | #include <gdbm.h>
       |          ^~~~~~~~
 compilation terminated.
 configure:13735: $? = 1
@@ -8457,6 +8230,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | /* end confdefs.h.  */
 | #include <stdio.h>
@@ -8496,8 +8271,8 @@ configure: failed program was:
 configure:13735: result: no
 configure:13735: checking gdbm.h presence
 configure:13735: gcc -E   conftest.c
-conftest.c:129:10: fatal error: gdbm.h: No such file or directory
-  129 | #include <gdbm.h>
+conftest.c:131:10: fatal error: gdbm.h: No such file or directory
+  131 | #include <gdbm.h>
       |          ^~~~~~~~
 compilation terminated.
 configure:13735: $? = 1
@@ -8628,6 +8403,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | /* end confdefs.h.  */
 | #include <gdbm.h>
@@ -8636,8 +8413,8 @@ configure:13735: checking for gdbm.h
 configure:13735: result: no
 configure:13804: checking ndbm.h usability
 configure:13804: gcc -c   conftest.c >&5
-conftest.c:162:10: fatal error: ndbm.h: No such file or directory
-  162 | #include <ndbm.h>
+conftest.c:164:10: fatal error: ndbm.h: No such file or directory
+  164 | #include <ndbm.h>
       |          ^~~~~~~~
 compilation terminated.
 configure:13804: $? = 1
@@ -8768,6 +8545,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | /* end confdefs.h.  */
 | #include <stdio.h>
@@ -8807,8 +8586,8 @@ configure: failed program was:
 configure:13804: result: no
 configure:13804: checking ndbm.h presence
 configure:13804: gcc -E  conftest.c
-conftest.c:129:10: fatal error: ndbm.h: No such file or directory
-  129 | #include <ndbm.h>
+conftest.c:131:10: fatal error: ndbm.h: No such file or directory
+  131 | #include <ndbm.h>
       |          ^~~~~~~~
 compilation terminated.
 configure:13804: $? = 1
@@ -8939,6 +8718,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | /* end confdefs.h.  */
 | #include <ndbm.h>
@@ -8947,8 +8728,8 @@ configure:13804: checking for ndbm.h
 configure:13804: result: no
 configure:13916: checking gdbm/ndbm.h usability
 configure:13916: gcc -c   conftest.c >&5
-conftest.c:162:10: fatal error: gdbm/ndbm.h: No such file or directory
-  162 | #include <gdbm/ndbm.h>
+conftest.c:164:10: fatal error: gdbm/ndbm.h: No such file or directory
+  164 | #include <gdbm/ndbm.h>
       |          ^~~~~~~~~~~~~
 compilation terminated.
 configure:13916: $? = 1
@@ -9079,6 +8860,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | /* end confdefs.h.  */
 | #include <stdio.h>
@@ -9118,8 +8901,8 @@ configure: failed program was:
 configure:13916: result: no
 configure:13916: checking gdbm/ndbm.h presence
 configure:13916: gcc -E  conftest.c
-conftest.c:129:10: fatal error: gdbm/ndbm.h: No such file or directory
-  129 | #include <gdbm/ndbm.h>
+conftest.c:131:10: fatal error: gdbm/ndbm.h: No such file or directory
+  131 | #include <gdbm/ndbm.h>
       |          ^~~~~~~~~~~~~
 compilation terminated.
 configure:13916: $? = 1
@@ -9250,6 +9033,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | /* end confdefs.h.  */
 | #include <gdbm/ndbm.h>
@@ -9258,8 +9043,8 @@ configure:13916: checking for gdbm/ndbm.h
 configure:13916: result: no
 configure:13941: checking gdbm-ndbm.h usability
 configure:13941: gcc -c   conftest.c >&5
-conftest.c:162:10: fatal error: gdbm-ndbm.h: No such file or directory
-  162 | #include <gdbm-ndbm.h>
+conftest.c:164:10: fatal error: gdbm-ndbm.h: No such file or directory
+  164 | #include <gdbm-ndbm.h>
       |          ^~~~~~~~~~~~~
 compilation terminated.
 configure:13941: $? = 1
@@ -9390,6 +9175,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | /* end confdefs.h.  */
 | #include <stdio.h>
@@ -9429,8 +9216,8 @@ configure: failed program was:
 configure:13941: result: no
 configure:13941: checking gdbm-ndbm.h presence
 configure:13941: gcc -E  conftest.c
-conftest.c:129:10: fatal error: gdbm-ndbm.h: No such file or directory
-  129 | #include <gdbm-ndbm.h>
+conftest.c:131:10: fatal error: gdbm-ndbm.h: No such file or directory
+  131 | #include <gdbm-ndbm.h>
       |          ^~~~~~~~~~~~~
 compilation terminated.
 configure:13941: $? = 1
@@ -9561,6 +9348,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | /* end confdefs.h.  */
 | #include <gdbm-ndbm.h>
@@ -9569,8 +9358,8 @@ configure:13941: checking for gdbm-ndbm.h
 configure:13941: result: no
 configure:14016: checking db.h usability
 configure:14016: gcc -c   conftest.c >&5
-conftest.c:162:10: fatal error: db.h: No such file or directory
-  162 | #include <db.h>
+conftest.c:164:10: fatal error: db.h: No such file or directory
+  164 | #include <db.h>
       |          ^~~~~~
 compilation terminated.
 configure:14016: $? = 1
@@ -9701,6 +9490,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | /* end confdefs.h.  */
 | #include <stdio.h>
@@ -9740,8 +9531,8 @@ configure: failed program was:
 configure:14016: result: no
 configure:14016: checking db.h presence
 configure:14016: gcc -E  conftest.c
-conftest.c:129:10: fatal error: db.h: No such file or directory
-  129 | #include <db.h>
+conftest.c:131:10: fatal error: db.h: No such file or directory
+  131 | #include <db.h>
       |          ^~~~~~
 compilation terminated.
 configure:14016: $? = 1
@@ -9872,6 +9663,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | /* end confdefs.h.  */
 | #include <db.h>
@@ -9982,8 +9775,8 @@ configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for execv
 configure:15227: gcc -o conftest    conftest.c -ldl  >&5
-conftest.c:177:6: warning: conflicting types for built-in function 'execv'; expected 'int(const char *, char * const*)' [-Wbuiltin-declaration-mismatch]
-  177 | char execv ();
+conftest.c:179:6: warning: conflicting types for built-in function 'execv'; expected 'int(const char *, char * const*)' [-Wbuiltin-declaration-mismatch]
+  179 | char execv ();
       |      ^~~~~
 configure:15227: $? = 0
 configure:15227: result: yes
@@ -9993,7 +9786,7 @@ configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for explicit_memset
 configure:15227: gcc -o conftest    conftest.c -ldl  >&5
-/usr/bin/ld: /tmp/ccYBa3Vo.o: in function `main':
+/usr/bin/ld: /tmp/ccR2zs9C.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `explicit_memset'
 collect2: error: ld returned 1 exit status
 configure:15227: $? = 1
@@ -10124,6 +9917,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -10218,7 +10013,7 @@ configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for fdwalk
 configure:15227: gcc -o conftest    conftest.c -ldl  >&5
-/usr/bin/ld: /tmp/ccLyXrn1.o: in function `main':
+/usr/bin/ld: /tmp/ccBGfrkp.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `fdwalk'
 collect2: error: ld returned 1 exit status
 configure:15227: $? = 1
@@ -10349,6 +10144,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -10429,14 +10226,14 @@ configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for fork
 configure:15227: gcc -o conftest    conftest.c -ldl  >&5
-conftest.c:186:6: warning: conflicting types for built-in function 'fork'; expected 'int(void)' [-Wbuiltin-declaration-mismatch]
-  186 | char fork ();
+conftest.c:188:6: warning: conflicting types for built-in function 'fork'; expected 'int(void)' [-Wbuiltin-declaration-mismatch]
+  188 | char fork ();
       |      ^~~~
 configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for fork1
 configure:15227: gcc -o conftest    conftest.c -ldl  >&5
-/usr/bin/ld: /tmp/ccWpOmJG.o: in function `main':
+/usr/bin/ld: /tmp/cc2AfYxf.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `fork1'
 collect2: error: ld returned 1 exit status
 configure:15227: $? = 1
@@ -10567,6 +10364,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -10749,7 +10548,7 @@ configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for _getpty
 configure:15227: gcc -o conftest    conftest.c -ldl  >&5
-/usr/bin/ld: /tmp/cc6LXqvR.o: in function `main':
+/usr/bin/ld: /tmp/cclifXZh.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `_getpty'
 collect2: error: ld returned 1 exit status
 configure:15227: $? = 1
@@ -10880,6 +10679,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -11028,7 +10829,7 @@ configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for getwd
 configure:15227: gcc -o conftest    conftest.c -ldl  >&5
-/usr/bin/ld: /tmp/ccYzPIPe.o: in function `main':
+/usr/bin/ld: /tmp/ccFYlgCv.o: in function `main':
 conftest.c:(.text+0xe): warning: the `getwd' function is dangerous and should not be used.
 configure:15227: $? = 0
 configure:15227: result: yes
@@ -11142,7 +10943,7 @@ configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for plock
 configure:15227: gcc -o conftest    conftest.c -ldl  >&5
-/usr/bin/ld: /tmp/cc6tnNVh.o: in function `main':
+/usr/bin/ld: /tmp/ccRYdQQ9.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `plock'
 collect2: error: ld returned 1 exit status
 configure:15227: $? = 1
@@ -11273,6 +11074,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -11452,7 +11255,7 @@ configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for pthread_init
 configure:15227: gcc -o conftest    conftest.c -ldl  >&5
-/usr/bin/ld: /tmp/ccHNfwcw.o: in function `main':
+/usr/bin/ld: /tmp/cc1K4apx.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `pthread_init'
 collect2: error: ld returned 1 exit status
 configure:15227: $? = 1
@@ -11583,6 +11386,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -11771,7 +11576,7 @@ configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for rtpSpawn
 configure:15227: gcc -o conftest    conftest.c -ldl  >&5
-/usr/bin/ld: /tmp/ccSD4s7m.o: in function `main':
+/usr/bin/ld: /tmp/cclINUoe.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `rtpSpawn'
 collect2: error: ld returned 1 exit status
 configure:15227: $? = 1
@@ -11902,6 +11707,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -12211,12 +12018,12 @@ configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for snprintf
 configure:15227: gcc -o conftest    conftest.c -ldl  >&5
-conftest.c:307:6: warning: conflicting types for built-in function 'snprintf'; expected 'int(char *, long unsigned int,  const char *, ...)' [-Wbuiltin-declaration-mismatch]
-  307 | char snprintf ();
+conftest.c:309:6: warning: conflicting types for built-in function 'snprintf'; expected 'int(char *, long unsigned int,  const char *, ...)' [-Wbuiltin-declaration-mismatch]
+  309 | char snprintf ();
       |      ^~~~~~~~
-conftest.c:295:1: note: 'snprintf' is declared in header '<stdio.h>'
-  294 | # include <limits.h>
-  295 | #else
+conftest.c:297:1: note: 'snprintf' is declared in header '<stdio.h>'
+  296 | # include <limits.h>
+  297 | #else
 configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for splice
@@ -12225,12 +12032,12 @@ configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for strftime
 configure:15227: gcc -o conftest    conftest.c -ldl  >&5
-conftest.c:309:6: warning: conflicting types for built-in function 'strftime'; expected 'long unsigned int(char *, long unsigned int,  const char *, const void *)' [-Wbuiltin-declaration-mismatch]
-  309 | char strftime ();
+conftest.c:311:6: warning: conflicting types for built-in function 'strftime'; expected 'long unsigned int(char *, long unsigned int,  const char *, const void *)' [-Wbuiltin-declaration-mismatch]
+  311 | char strftime ();
       |      ^~~~~~~~
-conftest.c:297:1: note: 'strftime' is declared in header '<time.h>'
-  296 | # include <limits.h>
-  297 | #else
+conftest.c:299:1: note: 'strftime' is declared in header '<time.h>'
+  298 | # include <limits.h>
+  299 | #else
 configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for strlcpy
@@ -12267,7 +12074,7 @@ configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for tempnam
 configure:15227: gcc -o conftest    conftest.c -ldl  >&5
-/usr/bin/ld: /tmp/ccWJ64dz.o: in function `main':
+/usr/bin/ld: /tmp/ccZAocnI.o: in function `main':
 conftest.c:(.text+0xe): warning: the use of `tempnam' is dangerous, better use `mkstemp'
 configure:15227: $? = 0
 configure:15227: result: yes
@@ -12285,13 +12092,13 @@ configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for tmpnam
 configure:15227: gcc -o conftest    conftest.c -ldl  >&5
-/usr/bin/ld: /tmp/ccf02zfQ.o: in function `main':
+/usr/bin/ld: /tmp/cclNAtX3.o: in function `main':
 conftest.c:(.text+0xe): warning: the use of `tmpnam' is dangerous, better use `mkstemp'
 configure:15227: $? = 0
 configure:15227: result: yes
 configure:15227: checking for tmpnam_r
 configure:15227: gcc -o conftest    conftest.c -ldl  >&5
-/usr/bin/ld: /tmp/ccPR0uo9.o: in function `main':
+/usr/bin/ld: /tmp/ccyplVes.o: in function `main':
 conftest.c:(.text+0xe): warning: the use of `tmpnam_r' is dangerous, better use `mkstemp'
 configure:15227: $? = 0
 configure:15227: result: yes
@@ -12405,8 +12212,8 @@ configure:15538: $? = 0
 configure:15546: result: yes
 configure:15558: checking for kqueue
 configure:15577: gcc -c   conftest.c >&5
-conftest.c:330:10: fatal error: sys/event.h: No such file or directory
-  330 | #include <sys/event.h>
+conftest.c:332:10: fatal error: sys/event.h: No such file or directory
+  332 | #include <sys/event.h>
       |          ^~~~~~~~~~~~~
 compilation terminated.
 configure:15577: $? = 1
@@ -12537,6 +12344,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -12756,8 +12565,8 @@ configure:15616: $? = 0
 configure:15624: result: yes
 configure:15637: checking for _dyld_shared_cache_contains_path
 configure:15653: gcc -c   conftest.c >&5
-conftest.c:329:10: fatal error: mach-o/dyld.h: No such file or directory
-  329 | #include <mach-o/dyld.h>
+conftest.c:331:10: fatal error: mach-o/dyld.h: No such file or directory
+  331 | #include <mach-o/dyld.h>
       |          ^~~~~~~~~~~~~~~
 compilation terminated.
 configure:15653: $? = 1
@@ -12888,6 +12697,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -13110,11 +12921,11 @@ configure:15746: result: yes
 configure:15765: checking for ctermid_r
 configure:15781: gcc -c   conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:335:9: error: 'ctermid_r' undeclared (first use in this function); did you mean 'ctermid'?
-  335 | void *x=ctermid_r
+conftest.c:337:9: error: 'ctermid_r' undeclared (first use in this function); did you mean 'ctermid'?
+  337 | void *x=ctermid_r
       |         ^~~~~~~~~
       |         ctermid
-conftest.c:335:9: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:337:9: note: each undeclared identifier is reported only once for each function it appears in
 configure:15781: $? = 1
 configure: failed program was:
 | /* confdefs.h */
@@ -13243,6 +13054,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -13482,10 +13295,10 @@ configure:16033: result: yes
 configure:16089: checking for chflags
 configure:16110: gcc -o conftest    conftest.c -ldl  >&5
 conftest.c: In function 'main':
-conftest.c:338:6: warning: implicit declaration of function 'chflags' [-Wimplicit-function-declaration]
-  338 |   if(chflags(argv[0], 0) != 0)
+conftest.c:340:6: warning: implicit declaration of function 'chflags' [-Wimplicit-function-declaration]
+  340 |   if(chflags(argv[0], 0) != 0)
       |      ^~~~~~~
-/usr/bin/ld: /tmp/ccwpuLSH.o: in function `main':
+/usr/bin/ld: /tmp/ccZr0gSj.o: in function `main':
 conftest.c:(.text+0x28): warning: chflags is not implemented and will always fail
 configure:16110: $? = 0
 configure:16110: ./conftest
@@ -13618,6 +13431,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -13838,10 +13653,10 @@ configure:16121: result: no
 configure:16138: checking for lchflags
 configure:16159: gcc -o conftest    conftest.c -ldl  >&5
 conftest.c: In function 'main':
-conftest.c:338:6: warning: implicit declaration of function 'lchflags' [-Wimplicit-function-declaration]
-  338 |   if(lchflags(argv[0], 0) != 0)
+conftest.c:340:6: warning: implicit declaration of function 'lchflags' [-Wimplicit-function-declaration]
+  340 |   if(lchflags(argv[0], 0) != 0)
       |      ^~~~~~~~
-/usr/bin/ld: /tmp/cc7Ehsw1.o: in function `main':
+/usr/bin/ld: /tmp/ccd9d4WW.o: in function `main':
 conftest.c:(.text+0x28): undefined reference to `lchflags'
 collect2: error: ld returned 1 exit status
 configure:16159: $? = 1
@@ -13973,6 +13788,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -14191,759 +14008,62 @@ configure: failed program was:
 | 
 configure:16170: result: no
 configure:16204: checking for ZLIB
-configure:16389: result: no
-configure:16402: checking zlib.h usability
-configure:16402: gcc -c    conftest.c >&5
-configure:16402: $? = 0
-configure:16402: result: yes
-configure:16402: checking zlib.h presence
-configure:16402: gcc -E   conftest.c
-configure:16402: $? = 0
-configure:16402: result: yes
-configure:16402: checking for zlib.h
-configure:16402: result: yes
-configure:16409: checking for gzread in -lz
-configure:16434: gcc -o conftest      conftest.c -lz  -ldl  >&5
-configure:16434: $? = 0
-configure:16443: result: yes
-configure:16465: checking for inflateCopy in -lz
-configure:16490: gcc -o conftest      conftest.c -lz  -ldl  >&5
-configure:16490: $? = 0
-configure:16499: result: yes
+configure:16211: $PKG_CONFIG --exists --print-errors "zlib >= 1.2.0"
+configure:16214: $? = 0
+configure:16228: $PKG_CONFIG --exists --print-errors "zlib >= 1.2.0"
+configure:16231: $? = 0
+configure:16521: result: yes
 configure:16552: checking for BZIP2
-configure:16690: result: no
-configure:16703: checking bzlib.h usability
-configure:16703: gcc -c    conftest.c >&5
-conftest.c:368:10: fatal error: bzlib.h: No such file or directory
-  368 | #include <bzlib.h>
-      |          ^~~~~~~~~
-compilation terminated.
-configure:16703: $? = 1
-configure: failed program was:
-| /* confdefs.h */
-| #define _NETBSD_SOURCE 1
-| #define __BSD_VISIBLE 1
-| #define _DARWIN_C_SOURCE 1
-| #define _PYTHONFRAMEWORK ""
-| #define _XOPEN_SOURCE 700
-| #define _XOPEN_SOURCE_EXTENDED 1
-| #define _POSIX_C_SOURCE 200809L
-| #define STDC_HEADERS 1
-| #define HAVE_SYS_TYPES_H 1
-| #define HAVE_SYS_STAT_H 1
-| #define HAVE_STDLIB_H 1
-| #define HAVE_STRING_H 1
-| #define HAVE_MEMORY_H 1
-| #define HAVE_STRINGS_H 1
-| #define HAVE_INTTYPES_H 1
-| #define HAVE_STDINT_H 1
-| #define HAVE_UNISTD_H 1
-| #define __EXTENSIONS__ 1
-| #define _ALL_SOURCE 1
-| #define _GNU_SOURCE 1
-| #define _POSIX_PTHREAD_SEMANTICS 1
-| #define _TANDEM_SOURCE 1
-| #define PY_SUPPORT_TIER 1
-| #define STDC_HEADERS 1
-| #define HAVE_ALLOCA_H 1
-| #define HAVE_ASM_TYPES_H 1
-| #define HAVE_CRYPT_H 1
-| #define HAVE_DLFCN_H 1
-| #define HAVE_ENDIAN_H 1
-| #define HAVE_ERRNO_H 1
-| #define HAVE_FCNTL_H 1
-| #define HAVE_GRP_H 1
-| #define HAVE_LANGINFO_H 1
-| #define HAVE_LIBINTL_H 1
-| #define HAVE_LINUX_AUXVEC_H 1
-| #define HAVE_SYS_AUXV_H 1
-| #define HAVE_LINUX_LIMITS_H 1
-| #define HAVE_LINUX_MEMFD_H 1
-| #define HAVE_LINUX_RANDOM_H 1
-| #define HAVE_LINUX_SOUNDCARD_H 1
-| #define HAVE_LINUX_TIPC_H 1
-| #define HAVE_LINUX_WAIT_H 1
-| #define HAVE_NETDB_H 1
-| #define HAVE_NETINET_IN_H 1
-| #define HAVE_NETPACKET_PACKET_H 1
-| #define HAVE_POLL_H 1
-| #define HAVE_PTHREAD_H 1
-| #define HAVE_PTY_H 1
-| #define HAVE_SCHED_H 1
-| #define HAVE_SETJMP_H 1
-| #define HAVE_SHADOW_H 1
-| #define HAVE_SIGNAL_H 1
-| #define HAVE_SPAWN_H 1
-| #define HAVE_SYS_EPOLL_H 1
-| #define HAVE_SYS_EVENTFD_H 1
-| #define HAVE_SYS_FILE_H 1
-| #define HAVE_SYS_IOCTL_H 1
-| #define HAVE_SYS_MMAN_H 1
-| #define HAVE_SYS_PARAM_H 1
-| #define HAVE_SYS_POLL_H 1
-| #define HAVE_SYS_RANDOM_H 1
-| #define HAVE_SYS_RESOURCE_H 1
-| #define HAVE_SYS_SELECT_H 1
-| #define HAVE_SYS_SENDFILE_H 1
-| #define HAVE_SYS_SOCKET_H 1
-| #define HAVE_SYS_SOUNDCARD_H 1
-| #define HAVE_SYS_STAT_H 1
-| #define HAVE_SYS_STATVFS_H 1
-| #define HAVE_SYS_SYSCALL_H 1
-| #define HAVE_SYS_SYSMACROS_H 1
-| #define HAVE_SYS_TIME_H 1
-| #define HAVE_SYS_TIMES_H 1
-| #define HAVE_SYS_TYPES_H 1
-| #define HAVE_SYS_UIO_H 1
-| #define HAVE_SYS_UN_H 1
-| #define HAVE_SYS_UTSNAME_H 1
-| #define HAVE_SYS_WAIT_H 1
-| #define HAVE_SYS_XATTR_H 1
-| #define HAVE_SYSEXITS_H 1
-| #define HAVE_SYSLOG_H 1
-| #define HAVE_TERMIOS_H 1
-| #define HAVE_UTIME_H 1
-| #define HAVE_UTMP_H 1
-| #define HAVE_DIRENT_H 1
-| #define MAJOR_IN_SYSMACROS 1
-| #define HAVE_NET_IF_H 1
-| #define HAVE_LINUX_NETLINK_H 1
-| #define HAVE_LINUX_QRTR_H 1
-| #define HAVE_LINUX_VM_SOCKETS_H 1
-| #define HAVE_LINUX_CAN_H 1
-| #define HAVE_LINUX_CAN_BCM_H 1
-| #define HAVE_LINUX_CAN_J1939_H 1
-| #define HAVE_LINUX_CAN_RAW_H 1
-| #define HAVE_MAKEDEV 1
-| #define HAVE_HTOLE64 1
-| #define _LARGEFILE_SOURCE 1
-| #define _FILE_OFFSET_BITS 64
-| #if defined(SCO_DS)
-| #undef _OFF_T
-| #endif
-| #define RETSIGTYPE void
-| #define HAVE_SSIZE_T 1
-| #define HAVE_GCC_UINT128_T 1
-| #define SIZEOF_INT 4
-| #define SIZEOF_LONG 8
-| #define ALIGNOF_LONG 8
-| #define SIZEOF_LONG_LONG 8
-| #define SIZEOF_VOID_P 8
-| #define SIZEOF_SHORT 2
-| #define SIZEOF_FLOAT 4
-| #define SIZEOF_DOUBLE 8
-| #define SIZEOF_FPOS_T 16
-| #define SIZEOF_SIZE_T 8
-| #define ALIGNOF_SIZE_T 8
-| #define SIZEOF_PID_T 4
-| #define SIZEOF_UINTPTR_T 8
-| #define HAVE_LONG_DOUBLE 1
-| #define SIZEOF_LONG_DOUBLE 16
-| #define SIZEOF__BOOL 1
-| #define SIZEOF_OFF_T 8
-| #define SIZEOF_TIME_T 8
-| #define SIZEOF_PTHREAD_T 8
-| #define SIZEOF_PTHREAD_KEY_T 4
-| #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
-| #define HAVE_LIBDL 1
-| #define WITH_DECIMAL_CONTEXTVAR 1
-| #define _REENTRANT 1
-| #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
-| #define HAVE_PTHREAD_SIGMASK 1
-| #define HAVE_PTHREAD_GETCPUCLOCKID 1
-| #define ENABLE_IPV6 1
-| #define HAVE_LINUX_CAN_RAW_FD_FRAMES 1
-| #define HAVE_LINUX_CAN_RAW_JOIN_FILTERS 1
-| #define WITH_DOC_STRINGS 1
-| #define WITH_PYMALLOC 1
-| #define WITH_FREELISTS 1
-| #define PY_COERCE_C_LOCALE 1
-| #define HAVE_DLOPEN 1
-| #define HAVE_DYNAMIC_LOADING 1
-| #define HAVE_ACCEPT4 1
-| #define HAVE_ALARM 1
-| #define HAVE_BIND_TEXTDOMAIN_CODESET 1
-| #define HAVE_CHMOD 1
-| #define HAVE_CHOWN 1
-| #define HAVE_CLOCK 1
-| #define HAVE_CLOSE_RANGE 1
-| #define HAVE_CONFSTR 1
-| #define HAVE_COPY_FILE_RANGE 1
-| #define HAVE_CTERMID 1
-| #define HAVE_DUP 1
-| #define HAVE_DUP3 1
-| #define HAVE_EXECV 1
-| #define HAVE_EXPLICIT_BZERO 1
-| #define HAVE_FACCESSAT 1
-| #define HAVE_FCHMOD 1
-| #define HAVE_FCHMODAT 1
-| #define HAVE_FCHOWN 1
-| #define HAVE_FCHOWNAT 1
-| #define HAVE_FDOPENDIR 1
-| #define HAVE_FEXECVE 1
-| #define HAVE_FORK 1
-| #define HAVE_FPATHCONF 1
-| #define HAVE_FSTATAT 1
-| #define HAVE_FTIME 1
-| #define HAVE_FTRUNCATE 1
-| #define HAVE_FUTIMENS 1
-| #define HAVE_FUTIMES 1
-| #define HAVE_FUTIMESAT 1
-| #define HAVE_GAI_STRERROR 1
-| #define HAVE_GETEGID 1
-| #define HAVE_GETENTROPY 1
-| #define HAVE_GETEUID 1
-| #define HAVE_GETGID 1
-| #define HAVE_GETGRGID 1
-| #define HAVE_GETGRGID_R 1
-| #define HAVE_GETGRNAM_R 1
-| #define HAVE_GETGROUPLIST 1
-| #define HAVE_GETGROUPS 1
-| #define HAVE_GETHOSTNAME 1
-| #define HAVE_GETITIMER 1
-| #define HAVE_GETLOADAVG 1
-| #define HAVE_GETLOGIN 1
-| #define HAVE_GETPEERNAME 1
-| #define HAVE_GETPGID 1
-| #define HAVE_GETPID 1
-| #define HAVE_GETPPID 1
-| #define HAVE_GETPRIORITY 1
-| #define HAVE_GETPWENT 1
-| #define HAVE_GETPWNAM_R 1
-| #define HAVE_GETPWUID 1
-| #define HAVE_GETPWUID_R 1
-| #define HAVE_GETRESGID 1
-| #define HAVE_GETRESUID 1
-| #define HAVE_GETRUSAGE 1
-| #define HAVE_GETSID 1
-| #define HAVE_GETSPENT 1
-| #define HAVE_GETSPNAM 1
-| #define HAVE_GETUID 1
-| #define HAVE_GETWD 1
-| #define HAVE_IF_NAMEINDEX 1
-| #define HAVE_INITGROUPS 1
-| #define HAVE_KILL 1
-| #define HAVE_KILLPG 1
-| #define HAVE_LCHOWN 1
-| #define HAVE_LINKAT 1
-| #define HAVE_LOCKF 1
-| #define HAVE_LSTAT 1
-| #define HAVE_LUTIMES 1
-| #define HAVE_MADVISE 1
-| #define HAVE_MBRTOWC 1
-| #define HAVE_MEMRCHR 1
-| #define HAVE_MKDIRAT 1
-| #define HAVE_MKFIFO 1
-| #define HAVE_MKFIFOAT 1
-| #define HAVE_MKNOD 1
-| #define HAVE_MKNODAT 1
-| #define HAVE_MKTIME 1
-| #define HAVE_MMAP 1
-| #define HAVE_MREMAP 1
-| #define HAVE_NICE 1
-| #define HAVE_OPENAT 1
-| #define HAVE_OPENDIR 1
-| #define HAVE_PATHCONF 1
-| #define HAVE_PAUSE 1
-| #define HAVE_PIPE 1
-| #define HAVE_PIPE2 1
-| #define HAVE_POLL 1
-| #define HAVE_POSIX_FADVISE 1
-| #define HAVE_POSIX_FALLOCATE 1
-| #define HAVE_POSIX_SPAWN 1
-| #define HAVE_POSIX_SPAWNP 1
-| #define HAVE_PREAD 1
-| #define HAVE_PREADV 1
-| #define HAVE_PREADV2 1
-| #define HAVE_PTHREAD_CONDATTR_SETCLOCK 1
-| #define HAVE_PTHREAD_KILL 1
-| #define HAVE_PWRITE 1
-| #define HAVE_PWRITEV 1
-| #define HAVE_PWRITEV2 1
-| #define HAVE_READLINK 1
-| #define HAVE_READLINKAT 1
-| #define HAVE_READV 1
-| #define HAVE_REALPATH 1
-| #define HAVE_RENAMEAT 1
-| #define HAVE_SCHED_GET_PRIORITY_MAX 1
-| #define HAVE_SCHED_RR_GET_INTERVAL 1
-| #define HAVE_SCHED_SETAFFINITY 1
-| #define HAVE_SCHED_SETPARAM 1
-| #define HAVE_SCHED_SETSCHEDULER 1
-| #define HAVE_SEM_CLOCKWAIT 1
-| #define HAVE_SEM_GETVALUE 1
-| #define HAVE_SEM_OPEN 1
-| #define HAVE_SEM_TIMEDWAIT 1
-| #define HAVE_SEM_UNLINK 1
-| #define HAVE_SENDFILE 1
-| #define HAVE_SETEGID 1
-| #define HAVE_SETEUID 1
-| #define HAVE_SETGID 1
-| #define HAVE_SETHOSTNAME 1
-| #define HAVE_SETITIMER 1
-| #define HAVE_SETLOCALE 1
-| #define HAVE_SETPGID 1
-| #define HAVE_SETPGRP 1
-| #define HAVE_SETPRIORITY 1
-| #define HAVE_SETREGID 1
-| #define HAVE_SETRESGID 1
-| #define HAVE_SETRESUID 1
-| #define HAVE_SETREUID 1
-| #define HAVE_SETSID 1
-| #define HAVE_SETUID 1
-| #define HAVE_SETVBUF 1
-| #define HAVE_SHUTDOWN 1
-| #define HAVE_SIGACTION 1
-| #define HAVE_SIGALTSTACK 1
-| #define HAVE_SIGFILLSET 1
-| #define HAVE_SIGINTERRUPT 1
-| #define HAVE_SIGPENDING 1
-| #define HAVE_SIGRELSE 1
-| #define HAVE_SIGTIMEDWAIT 1
-| #define HAVE_SIGWAIT 1
-| #define HAVE_SIGWAITINFO 1
-| #define HAVE_SNPRINTF 1
-| #define HAVE_SPLICE 1
-| #define HAVE_STRFTIME 1
-| #define HAVE_STRLCPY 1
-| #define HAVE_STRSIGNAL 1
-| #define HAVE_SYMLINKAT 1
-| #define HAVE_SYNC 1
-| #define HAVE_SYSCONF 1
-| #define HAVE_SYSTEM 1
-| #define HAVE_TCGETPGRP 1
-| #define HAVE_TCSETPGRP 1
-| #define HAVE_TEMPNAM 1
-| #define HAVE_TIMEGM 1
-| #define HAVE_TIMES 1
-| #define HAVE_TMPFILE 1
-| #define HAVE_TMPNAM 1
-| #define HAVE_TMPNAM_R 1
-| #define HAVE_TRUNCATE 1
-| #define HAVE_TTYNAME 1
-| #define HAVE_UMASK 1
-| #define HAVE_UNAME 1
-| #define HAVE_UNLINKAT 1
-| #define HAVE_UTIMENSAT 1
-| #define HAVE_UTIMES 1
-| #define HAVE_VFORK 1
-| #define HAVE_WAIT 1
-| #define HAVE_WAIT3 1
-| #define HAVE_WAIT4 1
-| #define HAVE_WAITID 1
-| #define HAVE_WAITPID 1
-| #define HAVE_WCSCOLL 1
-| #define HAVE_WCSFTIME 1
-| #define HAVE_WCSXFRM 1
-| #define HAVE_WMEMCMP 1
-| #define HAVE_WRITEV 1
-| #define HAVE_DIRFD 1
-| #define HAVE_CHROOT 1
-| #define HAVE_LINK 1
-| #define HAVE_SYMLINK 1
-| #define HAVE_FCHDIR 1
-| #define HAVE_FSYNC 1
-| #define HAVE_FDATASYNC 1
-| #define HAVE_EPOLL 1
-| #define HAVE_EPOLL_CREATE1 1
-| #define HAVE_PRLIMIT 1
-| #define HAVE_MEMFD_CREATE 1
-| #define HAVE_EVENTFD 1
-| #define HAVE_FLOCK 1
-| #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
-| #define HAVE_ZLIB_COPY 1
-| /* end confdefs.h.  */
-| #include <stdio.h>
-| #ifdef HAVE_SYS_TYPES_H
-| # include <sys/types.h>
-| #endif
-| #ifdef HAVE_SYS_STAT_H
-| # include <sys/stat.h>
-| #endif
-| #ifdef STDC_HEADERS
-| # include <stdlib.h>
-| # include <stddef.h>
-| #else
-| # ifdef HAVE_STDLIB_H
-| #  include <stdlib.h>
-| # endif
-| #endif
-| #ifdef HAVE_STRING_H
-| # if !defined STDC_HEADERS && defined HAVE_MEMORY_H
-| #  include <memory.h>
-| # endif
-| # include <string.h>
-| #endif
-| #ifdef HAVE_STRINGS_H
-| # include <strings.h>
-| #endif
-| #ifdef HAVE_INTTYPES_H
-| # include <inttypes.h>
-| #endif
-| #ifdef HAVE_STDINT_H
-| # include <stdint.h>
-| #endif
-| #ifdef HAVE_UNISTD_H
-| # include <unistd.h>
-| #endif
-| #include <bzlib.h>
-configure:16703: result: no
-configure:16703: checking bzlib.h presence
-configure:16703: gcc -E   conftest.c
-conftest.c:335:10: fatal error: bzlib.h: No such file or directory
-  335 | #include <bzlib.h>
-      |          ^~~~~~~~~
-compilation terminated.
-configure:16703: $? = 1
-configure: failed program was:
-| /* confdefs.h */
-| #define _NETBSD_SOURCE 1
-| #define __BSD_VISIBLE 1
-| #define _DARWIN_C_SOURCE 1
-| #define _PYTHONFRAMEWORK ""
-| #define _XOPEN_SOURCE 700
-| #define _XOPEN_SOURCE_EXTENDED 1
-| #define _POSIX_C_SOURCE 200809L
-| #define STDC_HEADERS 1
-| #define HAVE_SYS_TYPES_H 1
-| #define HAVE_SYS_STAT_H 1
-| #define HAVE_STDLIB_H 1
-| #define HAVE_STRING_H 1
-| #define HAVE_MEMORY_H 1
-| #define HAVE_STRINGS_H 1
-| #define HAVE_INTTYPES_H 1
-| #define HAVE_STDINT_H 1
-| #define HAVE_UNISTD_H 1
-| #define __EXTENSIONS__ 1
-| #define _ALL_SOURCE 1
-| #define _GNU_SOURCE 1
-| #define _POSIX_PTHREAD_SEMANTICS 1
-| #define _TANDEM_SOURCE 1
-| #define PY_SUPPORT_TIER 1
-| #define STDC_HEADERS 1
-| #define HAVE_ALLOCA_H 1
-| #define HAVE_ASM_TYPES_H 1
-| #define HAVE_CRYPT_H 1
-| #define HAVE_DLFCN_H 1
-| #define HAVE_ENDIAN_H 1
-| #define HAVE_ERRNO_H 1
-| #define HAVE_FCNTL_H 1
-| #define HAVE_GRP_H 1
-| #define HAVE_LANGINFO_H 1
-| #define HAVE_LIBINTL_H 1
-| #define HAVE_LINUX_AUXVEC_H 1
-| #define HAVE_SYS_AUXV_H 1
-| #define HAVE_LINUX_LIMITS_H 1
-| #define HAVE_LINUX_MEMFD_H 1
-| #define HAVE_LINUX_RANDOM_H 1
-| #define HAVE_LINUX_SOUNDCARD_H 1
-| #define HAVE_LINUX_TIPC_H 1
-| #define HAVE_LINUX_WAIT_H 1
-| #define HAVE_NETDB_H 1
-| #define HAVE_NETINET_IN_H 1
-| #define HAVE_NETPACKET_PACKET_H 1
-| #define HAVE_POLL_H 1
-| #define HAVE_PTHREAD_H 1
-| #define HAVE_PTY_H 1
-| #define HAVE_SCHED_H 1
-| #define HAVE_SETJMP_H 1
-| #define HAVE_SHADOW_H 1
-| #define HAVE_SIGNAL_H 1
-| #define HAVE_SPAWN_H 1
-| #define HAVE_SYS_EPOLL_H 1
-| #define HAVE_SYS_EVENTFD_H 1
-| #define HAVE_SYS_FILE_H 1
-| #define HAVE_SYS_IOCTL_H 1
-| #define HAVE_SYS_MMAN_H 1
-| #define HAVE_SYS_PARAM_H 1
-| #define HAVE_SYS_POLL_H 1
-| #define HAVE_SYS_RANDOM_H 1
-| #define HAVE_SYS_RESOURCE_H 1
-| #define HAVE_SYS_SELECT_H 1
-| #define HAVE_SYS_SENDFILE_H 1
-| #define HAVE_SYS_SOCKET_H 1
-| #define HAVE_SYS_SOUNDCARD_H 1
-| #define HAVE_SYS_STAT_H 1
-| #define HAVE_SYS_STATVFS_H 1
-| #define HAVE_SYS_SYSCALL_H 1
-| #define HAVE_SYS_SYSMACROS_H 1
-| #define HAVE_SYS_TIME_H 1
-| #define HAVE_SYS_TIMES_H 1
-| #define HAVE_SYS_TYPES_H 1
-| #define HAVE_SYS_UIO_H 1
-| #define HAVE_SYS_UN_H 1
-| #define HAVE_SYS_UTSNAME_H 1
-| #define HAVE_SYS_WAIT_H 1
-| #define HAVE_SYS_XATTR_H 1
-| #define HAVE_SYSEXITS_H 1
-| #define HAVE_SYSLOG_H 1
-| #define HAVE_TERMIOS_H 1
-| #define HAVE_UTIME_H 1
-| #define HAVE_UTMP_H 1
-| #define HAVE_DIRENT_H 1
-| #define MAJOR_IN_SYSMACROS 1
-| #define HAVE_NET_IF_H 1
-| #define HAVE_LINUX_NETLINK_H 1
-| #define HAVE_LINUX_QRTR_H 1
-| #define HAVE_LINUX_VM_SOCKETS_H 1
-| #define HAVE_LINUX_CAN_H 1
-| #define HAVE_LINUX_CAN_BCM_H 1
-| #define HAVE_LINUX_CAN_J1939_H 1
-| #define HAVE_LINUX_CAN_RAW_H 1
-| #define HAVE_MAKEDEV 1
-| #define HAVE_HTOLE64 1
-| #define _LARGEFILE_SOURCE 1
-| #define _FILE_OFFSET_BITS 64
-| #if defined(SCO_DS)
-| #undef _OFF_T
-| #endif
-| #define RETSIGTYPE void
-| #define HAVE_SSIZE_T 1
-| #define HAVE_GCC_UINT128_T 1
-| #define SIZEOF_INT 4
-| #define SIZEOF_LONG 8
-| #define ALIGNOF_LONG 8
-| #define SIZEOF_LONG_LONG 8
-| #define SIZEOF_VOID_P 8
-| #define SIZEOF_SHORT 2
-| #define SIZEOF_FLOAT 4
-| #define SIZEOF_DOUBLE 8
-| #define SIZEOF_FPOS_T 16
-| #define SIZEOF_SIZE_T 8
-| #define ALIGNOF_SIZE_T 8
-| #define SIZEOF_PID_T 4
-| #define SIZEOF_UINTPTR_T 8
-| #define HAVE_LONG_DOUBLE 1
-| #define SIZEOF_LONG_DOUBLE 16
-| #define SIZEOF__BOOL 1
-| #define SIZEOF_OFF_T 8
-| #define SIZEOF_TIME_T 8
-| #define SIZEOF_PTHREAD_T 8
-| #define SIZEOF_PTHREAD_KEY_T 4
-| #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
-| #define HAVE_LIBDL 1
-| #define WITH_DECIMAL_CONTEXTVAR 1
-| #define _REENTRANT 1
-| #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
-| #define HAVE_PTHREAD_SIGMASK 1
-| #define HAVE_PTHREAD_GETCPUCLOCKID 1
-| #define ENABLE_IPV6 1
-| #define HAVE_LINUX_CAN_RAW_FD_FRAMES 1
-| #define HAVE_LINUX_CAN_RAW_JOIN_FILTERS 1
-| #define WITH_DOC_STRINGS 1
-| #define WITH_PYMALLOC 1
-| #define WITH_FREELISTS 1
-| #define PY_COERCE_C_LOCALE 1
-| #define HAVE_DLOPEN 1
-| #define HAVE_DYNAMIC_LOADING 1
-| #define HAVE_ACCEPT4 1
-| #define HAVE_ALARM 1
-| #define HAVE_BIND_TEXTDOMAIN_CODESET 1
-| #define HAVE_CHMOD 1
-| #define HAVE_CHOWN 1
-| #define HAVE_CLOCK 1
-| #define HAVE_CLOSE_RANGE 1
-| #define HAVE_CONFSTR 1
-| #define HAVE_COPY_FILE_RANGE 1
-| #define HAVE_CTERMID 1
-| #define HAVE_DUP 1
-| #define HAVE_DUP3 1
-| #define HAVE_EXECV 1
-| #define HAVE_EXPLICIT_BZERO 1
-| #define HAVE_FACCESSAT 1
-| #define HAVE_FCHMOD 1
-| #define HAVE_FCHMODAT 1
-| #define HAVE_FCHOWN 1
-| #define HAVE_FCHOWNAT 1
-| #define HAVE_FDOPENDIR 1
-| #define HAVE_FEXECVE 1
-| #define HAVE_FORK 1
-| #define HAVE_FPATHCONF 1
-| #define HAVE_FSTATAT 1
-| #define HAVE_FTIME 1
-| #define HAVE_FTRUNCATE 1
-| #define HAVE_FUTIMENS 1
-| #define HAVE_FUTIMES 1
-| #define HAVE_FUTIMESAT 1
-| #define HAVE_GAI_STRERROR 1
-| #define HAVE_GETEGID 1
-| #define HAVE_GETENTROPY 1
-| #define HAVE_GETEUID 1
-| #define HAVE_GETGID 1
-| #define HAVE_GETGRGID 1
-| #define HAVE_GETGRGID_R 1
-| #define HAVE_GETGRNAM_R 1
-| #define HAVE_GETGROUPLIST 1
-| #define HAVE_GETGROUPS 1
-| #define HAVE_GETHOSTNAME 1
-| #define HAVE_GETITIMER 1
-| #define HAVE_GETLOADAVG 1
-| #define HAVE_GETLOGIN 1
-| #define HAVE_GETPEERNAME 1
-| #define HAVE_GETPGID 1
-| #define HAVE_GETPID 1
-| #define HAVE_GETPPID 1
-| #define HAVE_GETPRIORITY 1
-| #define HAVE_GETPWENT 1
-| #define HAVE_GETPWNAM_R 1
-| #define HAVE_GETPWUID 1
-| #define HAVE_GETPWUID_R 1
-| #define HAVE_GETRESGID 1
-| #define HAVE_GETRESUID 1
-| #define HAVE_GETRUSAGE 1
-| #define HAVE_GETSID 1
-| #define HAVE_GETSPENT 1
-| #define HAVE_GETSPNAM 1
-| #define HAVE_GETUID 1
-| #define HAVE_GETWD 1
-| #define HAVE_IF_NAMEINDEX 1
-| #define HAVE_INITGROUPS 1
-| #define HAVE_KILL 1
-| #define HAVE_KILLPG 1
-| #define HAVE_LCHOWN 1
-| #define HAVE_LINKAT 1
-| #define HAVE_LOCKF 1
-| #define HAVE_LSTAT 1
-| #define HAVE_LUTIMES 1
-| #define HAVE_MADVISE 1
-| #define HAVE_MBRTOWC 1
-| #define HAVE_MEMRCHR 1
-| #define HAVE_MKDIRAT 1
-| #define HAVE_MKFIFO 1
-| #define HAVE_MKFIFOAT 1
-| #define HAVE_MKNOD 1
-| #define HAVE_MKNODAT 1
-| #define HAVE_MKTIME 1
-| #define HAVE_MMAP 1
-| #define HAVE_MREMAP 1
-| #define HAVE_NICE 1
-| #define HAVE_OPENAT 1
-| #define HAVE_OPENDIR 1
-| #define HAVE_PATHCONF 1
-| #define HAVE_PAUSE 1
-| #define HAVE_PIPE 1
-| #define HAVE_PIPE2 1
-| #define HAVE_POLL 1
-| #define HAVE_POSIX_FADVISE 1
-| #define HAVE_POSIX_FALLOCATE 1
-| #define HAVE_POSIX_SPAWN 1
-| #define HAVE_POSIX_SPAWNP 1
-| #define HAVE_PREAD 1
-| #define HAVE_PREADV 1
-| #define HAVE_PREADV2 1
-| #define HAVE_PTHREAD_CONDATTR_SETCLOCK 1
-| #define HAVE_PTHREAD_KILL 1
-| #define HAVE_PWRITE 1
-| #define HAVE_PWRITEV 1
-| #define HAVE_PWRITEV2 1
-| #define HAVE_READLINK 1
-| #define HAVE_READLINKAT 1
-| #define HAVE_READV 1
-| #define HAVE_REALPATH 1
-| #define HAVE_RENAMEAT 1
-| #define HAVE_SCHED_GET_PRIORITY_MAX 1
-| #define HAVE_SCHED_RR_GET_INTERVAL 1
-| #define HAVE_SCHED_SETAFFINITY 1
-| #define HAVE_SCHED_SETPARAM 1
-| #define HAVE_SCHED_SETSCHEDULER 1
-| #define HAVE_SEM_CLOCKWAIT 1
-| #define HAVE_SEM_GETVALUE 1
-| #define HAVE_SEM_OPEN 1
-| #define HAVE_SEM_TIMEDWAIT 1
-| #define HAVE_SEM_UNLINK 1
-| #define HAVE_SENDFILE 1
-| #define HAVE_SETEGID 1
-| #define HAVE_SETEUID 1
-| #define HAVE_SETGID 1
-| #define HAVE_SETHOSTNAME 1
-| #define HAVE_SETITIMER 1
-| #define HAVE_SETLOCALE 1
-| #define HAVE_SETPGID 1
-| #define HAVE_SETPGRP 1
-| #define HAVE_SETPRIORITY 1
-| #define HAVE_SETREGID 1
-| #define HAVE_SETRESGID 1
-| #define HAVE_SETRESUID 1
-| #define HAVE_SETREUID 1
-| #define HAVE_SETSID 1
-| #define HAVE_SETUID 1
-| #define HAVE_SETVBUF 1
-| #define HAVE_SHUTDOWN 1
-| #define HAVE_SIGACTION 1
-| #define HAVE_SIGALTSTACK 1
-| #define HAVE_SIGFILLSET 1
-| #define HAVE_SIGINTERRUPT 1
-| #define HAVE_SIGPENDING 1
-| #define HAVE_SIGRELSE 1
-| #define HAVE_SIGTIMEDWAIT 1
-| #define HAVE_SIGWAIT 1
-| #define HAVE_SIGWAITINFO 1
-| #define HAVE_SNPRINTF 1
-| #define HAVE_SPLICE 1
-| #define HAVE_STRFTIME 1
-| #define HAVE_STRLCPY 1
-| #define HAVE_STRSIGNAL 1
-| #define HAVE_SYMLINKAT 1
-| #define HAVE_SYNC 1
-| #define HAVE_SYSCONF 1
-| #define HAVE_SYSTEM 1
-| #define HAVE_TCGETPGRP 1
-| #define HAVE_TCSETPGRP 1
-| #define HAVE_TEMPNAM 1
-| #define HAVE_TIMEGM 1
-| #define HAVE_TIMES 1
-| #define HAVE_TMPFILE 1
-| #define HAVE_TMPNAM 1
-| #define HAVE_TMPNAM_R 1
-| #define HAVE_TRUNCATE 1
-| #define HAVE_TTYNAME 1
-| #define HAVE_UMASK 1
-| #define HAVE_UNAME 1
-| #define HAVE_UNLINKAT 1
-| #define HAVE_UTIMENSAT 1
-| #define HAVE_UTIMES 1
-| #define HAVE_VFORK 1
-| #define HAVE_WAIT 1
-| #define HAVE_WAIT3 1
-| #define HAVE_WAIT4 1
-| #define HAVE_WAITID 1
-| #define HAVE_WAITPID 1
-| #define HAVE_WCSCOLL 1
-| #define HAVE_WCSFTIME 1
-| #define HAVE_WCSXFRM 1
-| #define HAVE_WMEMCMP 1
-| #define HAVE_WRITEV 1
-| #define HAVE_DIRFD 1
-| #define HAVE_CHROOT 1
-| #define HAVE_LINK 1
-| #define HAVE_SYMLINK 1
-| #define HAVE_FCHDIR 1
-| #define HAVE_FSYNC 1
-| #define HAVE_FDATASYNC 1
-| #define HAVE_EPOLL 1
-| #define HAVE_EPOLL_CREATE1 1
-| #define HAVE_PRLIMIT 1
-| #define HAVE_MEMFD_CREATE 1
-| #define HAVE_EVENTFD 1
-| #define HAVE_FLOCK 1
-| #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
-| #define HAVE_ZLIB_COPY 1
-| /* end confdefs.h.  */
-| #include <bzlib.h>
-configure:16703: result: no
-configure:16703: checking for bzlib.h
-configure:16703: result: no
+configure:16559: $PKG_CONFIG --exists --print-errors "bzip2"
+Package bzip2 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `bzip2.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'bzip2', required by 'virtual:world', not found
+configure:16562: $? = 1
+configure:16576: $PKG_CONFIG --exists --print-errors "bzip2"
+Package bzip2 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `bzip2.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'bzip2', required by 'virtual:world', not found
+configure:16579: $? = 1
+configure:16593: result: no
+Package 'bzip2', required by 'virtual:world', not found
+configure:16620: checking bzlib.h usability
+configure:16620: gcc -c    conftest.c >&5
+configure:16620: $? = 0
+configure:16620: result: yes
+configure:16620: checking bzlib.h presence
+configure:16620: gcc -E   conftest.c
+configure:16620: $? = 0
+configure:16620: result: yes
+configure:16620: checking for bzlib.h
+configure:16620: result: yes
+configure:16626: checking for BZ2_bzCompress in -lbz2
+configure:16651: gcc -o conftest      conftest.c -lbz2  -ldl  >&5
+configure:16651: $? = 0
+configure:16660: result: yes
 configure:16782: checking for LIBLZMA
-configure:16920: result: no
-configure:16933: checking lzma.h usability
-configure:16933: gcc -c    conftest.c >&5
-conftest.c:368:10: fatal error: lzma.h: No such file or directory
-  368 | #include <lzma.h>
+configure:16789: $PKG_CONFIG --exists --print-errors "liblzma"
+Package liblzma was not found in the pkg-config search path.
+Perhaps you should add the directory containing `liblzma.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'liblzma', required by 'virtual:world', not found
+configure:16792: $? = 1
+configure:16806: $PKG_CONFIG --exists --print-errors "liblzma"
+Package liblzma was not found in the pkg-config search path.
+Perhaps you should add the directory containing `liblzma.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'liblzma', required by 'virtual:world', not found
+configure:16809: $? = 1
+configure:16823: result: no
+Package 'liblzma', required by 'virtual:world', not found
+configure:16850: checking lzma.h usability
+configure:16850: gcc -c    conftest.c >&5
+conftest.c:370:10: fatal error: lzma.h: No such file or directory
+  370 | #include <lzma.h>
       |          ^~~~~~~~
 compilation terminated.
-configure:16933: $? = 1
+configure:16850: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define _NETBSD_SOURCE 1
@@ -15071,6 +14191,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -15276,8 +14398,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | /* end confdefs.h.  */
 | #include <stdio.h>
 | #ifdef HAVE_SYS_TYPES_H
@@ -15313,14 +14435,14 @@ configure: failed program was:
 | # include <unistd.h>
 | #endif
 | #include <lzma.h>
-configure:16933: result: no
-configure:16933: checking lzma.h presence
-configure:16933: gcc -E   conftest.c
-conftest.c:335:10: fatal error: lzma.h: No such file or directory
-  335 | #include <lzma.h>
+configure:16850: result: no
+configure:16850: checking lzma.h presence
+configure:16850: gcc -E   conftest.c
+conftest.c:337:10: fatal error: lzma.h: No such file or directory
+  337 | #include <lzma.h>
       |          ^~~~~~~~
 compilation terminated.
-configure:16933: $? = 1
+configure:16850: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define _NETBSD_SOURCE 1
@@ -15448,6 +14570,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -15653,13 +14777,13 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | /* end confdefs.h.  */
 | #include <lzma.h>
-configure:16933: result: no
-configure:16933: checking for lzma.h
-configure:16933: result: no
+configure:16850: result: no
+configure:16850: checking for lzma.h
+configure:16850: result: no
 configure:17014: checking for hstrerror
 configure:17030: gcc -c   conftest.c >&5
 configure:17030: $? = 0
@@ -15752,7 +14876,7 @@ configure:17968: $? = 0
 configure:17968: result: yes
 configure:18068: checking for fseek64
 configure:18068: gcc -o conftest    conftest.c -ldl  >&5
-/usr/bin/ld: /tmp/ccFVY4Zf.o: in function `main':
+/usr/bin/ld: /tmp/cc2LZjKP.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `fseek64'
 collect2: error: ld returned 1 exit status
 configure:18068: $? = 1
@@ -15883,6 +15007,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -16088,8 +15214,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -16163,7 +15289,7 @@ configure:18068: $? = 0
 configure:18068: result: yes
 configure:18068: checking for ftell64
 configure:18068: gcc -o conftest    conftest.c -ldl  >&5
-/usr/bin/ld: /tmp/ccMOsp1U.o: in function `main':
+/usr/bin/ld: /tmp/cc5pP12J.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `ftell64'
 collect2: error: ld returned 1 exit status
 configure:18068: $? = 1
@@ -16294,6 +15420,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -16499,8 +15627,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -16584,10 +15712,10 @@ configure:18094: $? = 0
 configure:18094: result: yes
 configure:18110: gcc -c   conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:368:1: error: too many arguments to function 'getpgrp'
-  368 | getpgrp(0);
+conftest.c:370:1: error: too many arguments to function 'getpgrp'
+  370 | getpgrp(0);
       | ^~~~~~~
-In file included from conftest.c:364:
+In file included from conftest.c:366:
 /usr/include/unistd.h:656:16: note: declared here
   656 | extern __pid_t getpgrp (void) __THROW;
       |                ^~~~~~~
@@ -16719,6 +15847,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -16924,8 +16054,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -16968,10 +16098,10 @@ configure:18122: checking for setpgrp
 configure:18122: result: yes
 configure:18138: gcc -c   conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:369:1: error: too many arguments to function 'setpgrp'
-  369 | setpgrp(0,0);
+conftest.c:371:1: error: too many arguments to function 'setpgrp'
+  371 | setpgrp(0,0);
       | ^~~~~~~
-In file included from conftest.c:365:
+In file included from conftest.c:367:
 /usr/include/unistd.h:682:12: note: declared here
   682 | extern int setpgrp (void) __THROW;
       |            ^~~~~~~
@@ -17103,6 +16233,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -17308,8 +16440,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -17350,398 +16482,13 @@ configure: failed program was:
 |   return 0;
 | }
 configure:18153: checking for LIBCRYPT
-configure:18291: result: no
-configure:18300: checking for library containing crypt_r
-configure:18331: gcc -o conftest    conftest.c -ldl  >&5
-/usr/bin/ld: /tmp/ccUcdBPl.o: in function `main':
-conftest.c:(.text+0xe): undefined reference to `crypt_r'
-collect2: error: ld returned 1 exit status
-configure:18331: $? = 1
-configure: failed program was:
-| /* confdefs.h */
-| #define _NETBSD_SOURCE 1
-| #define __BSD_VISIBLE 1
-| #define _DARWIN_C_SOURCE 1
-| #define _PYTHONFRAMEWORK ""
-| #define _XOPEN_SOURCE 700
-| #define _XOPEN_SOURCE_EXTENDED 1
-| #define _POSIX_C_SOURCE 200809L
-| #define STDC_HEADERS 1
-| #define HAVE_SYS_TYPES_H 1
-| #define HAVE_SYS_STAT_H 1
-| #define HAVE_STDLIB_H 1
-| #define HAVE_STRING_H 1
-| #define HAVE_MEMORY_H 1
-| #define HAVE_STRINGS_H 1
-| #define HAVE_INTTYPES_H 1
-| #define HAVE_STDINT_H 1
-| #define HAVE_UNISTD_H 1
-| #define __EXTENSIONS__ 1
-| #define _ALL_SOURCE 1
-| #define _GNU_SOURCE 1
-| #define _POSIX_PTHREAD_SEMANTICS 1
-| #define _TANDEM_SOURCE 1
-| #define PY_SUPPORT_TIER 1
-| #define STDC_HEADERS 1
-| #define HAVE_ALLOCA_H 1
-| #define HAVE_ASM_TYPES_H 1
-| #define HAVE_CRYPT_H 1
-| #define HAVE_DLFCN_H 1
-| #define HAVE_ENDIAN_H 1
-| #define HAVE_ERRNO_H 1
-| #define HAVE_FCNTL_H 1
-| #define HAVE_GRP_H 1
-| #define HAVE_LANGINFO_H 1
-| #define HAVE_LIBINTL_H 1
-| #define HAVE_LINUX_AUXVEC_H 1
-| #define HAVE_SYS_AUXV_H 1
-| #define HAVE_LINUX_LIMITS_H 1
-| #define HAVE_LINUX_MEMFD_H 1
-| #define HAVE_LINUX_RANDOM_H 1
-| #define HAVE_LINUX_SOUNDCARD_H 1
-| #define HAVE_LINUX_TIPC_H 1
-| #define HAVE_LINUX_WAIT_H 1
-| #define HAVE_NETDB_H 1
-| #define HAVE_NETINET_IN_H 1
-| #define HAVE_NETPACKET_PACKET_H 1
-| #define HAVE_POLL_H 1
-| #define HAVE_PTHREAD_H 1
-| #define HAVE_PTY_H 1
-| #define HAVE_SCHED_H 1
-| #define HAVE_SETJMP_H 1
-| #define HAVE_SHADOW_H 1
-| #define HAVE_SIGNAL_H 1
-| #define HAVE_SPAWN_H 1
-| #define HAVE_SYS_EPOLL_H 1
-| #define HAVE_SYS_EVENTFD_H 1
-| #define HAVE_SYS_FILE_H 1
-| #define HAVE_SYS_IOCTL_H 1
-| #define HAVE_SYS_MMAN_H 1
-| #define HAVE_SYS_PARAM_H 1
-| #define HAVE_SYS_POLL_H 1
-| #define HAVE_SYS_RANDOM_H 1
-| #define HAVE_SYS_RESOURCE_H 1
-| #define HAVE_SYS_SELECT_H 1
-| #define HAVE_SYS_SENDFILE_H 1
-| #define HAVE_SYS_SOCKET_H 1
-| #define HAVE_SYS_SOUNDCARD_H 1
-| #define HAVE_SYS_STAT_H 1
-| #define HAVE_SYS_STATVFS_H 1
-| #define HAVE_SYS_SYSCALL_H 1
-| #define HAVE_SYS_SYSMACROS_H 1
-| #define HAVE_SYS_TIME_H 1
-| #define HAVE_SYS_TIMES_H 1
-| #define HAVE_SYS_TYPES_H 1
-| #define HAVE_SYS_UIO_H 1
-| #define HAVE_SYS_UN_H 1
-| #define HAVE_SYS_UTSNAME_H 1
-| #define HAVE_SYS_WAIT_H 1
-| #define HAVE_SYS_XATTR_H 1
-| #define HAVE_SYSEXITS_H 1
-| #define HAVE_SYSLOG_H 1
-| #define HAVE_TERMIOS_H 1
-| #define HAVE_UTIME_H 1
-| #define HAVE_UTMP_H 1
-| #define HAVE_DIRENT_H 1
-| #define MAJOR_IN_SYSMACROS 1
-| #define HAVE_NET_IF_H 1
-| #define HAVE_LINUX_NETLINK_H 1
-| #define HAVE_LINUX_QRTR_H 1
-| #define HAVE_LINUX_VM_SOCKETS_H 1
-| #define HAVE_LINUX_CAN_H 1
-| #define HAVE_LINUX_CAN_BCM_H 1
-| #define HAVE_LINUX_CAN_J1939_H 1
-| #define HAVE_LINUX_CAN_RAW_H 1
-| #define HAVE_MAKEDEV 1
-| #define HAVE_HTOLE64 1
-| #define _LARGEFILE_SOURCE 1
-| #define _FILE_OFFSET_BITS 64
-| #if defined(SCO_DS)
-| #undef _OFF_T
-| #endif
-| #define RETSIGTYPE void
-| #define HAVE_SSIZE_T 1
-| #define HAVE_GCC_UINT128_T 1
-| #define SIZEOF_INT 4
-| #define SIZEOF_LONG 8
-| #define ALIGNOF_LONG 8
-| #define SIZEOF_LONG_LONG 8
-| #define SIZEOF_VOID_P 8
-| #define SIZEOF_SHORT 2
-| #define SIZEOF_FLOAT 4
-| #define SIZEOF_DOUBLE 8
-| #define SIZEOF_FPOS_T 16
-| #define SIZEOF_SIZE_T 8
-| #define ALIGNOF_SIZE_T 8
-| #define SIZEOF_PID_T 4
-| #define SIZEOF_UINTPTR_T 8
-| #define HAVE_LONG_DOUBLE 1
-| #define SIZEOF_LONG_DOUBLE 16
-| #define SIZEOF__BOOL 1
-| #define SIZEOF_OFF_T 8
-| #define SIZEOF_TIME_T 8
-| #define SIZEOF_PTHREAD_T 8
-| #define SIZEOF_PTHREAD_KEY_T 4
-| #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
-| #define HAVE_LIBDL 1
-| #define WITH_DECIMAL_CONTEXTVAR 1
-| #define _REENTRANT 1
-| #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
-| #define HAVE_PTHREAD_SIGMASK 1
-| #define HAVE_PTHREAD_GETCPUCLOCKID 1
-| #define ENABLE_IPV6 1
-| #define HAVE_LINUX_CAN_RAW_FD_FRAMES 1
-| #define HAVE_LINUX_CAN_RAW_JOIN_FILTERS 1
-| #define WITH_DOC_STRINGS 1
-| #define WITH_PYMALLOC 1
-| #define WITH_FREELISTS 1
-| #define PY_COERCE_C_LOCALE 1
-| #define HAVE_DLOPEN 1
-| #define HAVE_DYNAMIC_LOADING 1
-| #define HAVE_ACCEPT4 1
-| #define HAVE_ALARM 1
-| #define HAVE_BIND_TEXTDOMAIN_CODESET 1
-| #define HAVE_CHMOD 1
-| #define HAVE_CHOWN 1
-| #define HAVE_CLOCK 1
-| #define HAVE_CLOSE_RANGE 1
-| #define HAVE_CONFSTR 1
-| #define HAVE_COPY_FILE_RANGE 1
-| #define HAVE_CTERMID 1
-| #define HAVE_DUP 1
-| #define HAVE_DUP3 1
-| #define HAVE_EXECV 1
-| #define HAVE_EXPLICIT_BZERO 1
-| #define HAVE_FACCESSAT 1
-| #define HAVE_FCHMOD 1
-| #define HAVE_FCHMODAT 1
-| #define HAVE_FCHOWN 1
-| #define HAVE_FCHOWNAT 1
-| #define HAVE_FDOPENDIR 1
-| #define HAVE_FEXECVE 1
-| #define HAVE_FORK 1
-| #define HAVE_FPATHCONF 1
-| #define HAVE_FSTATAT 1
-| #define HAVE_FTIME 1
-| #define HAVE_FTRUNCATE 1
-| #define HAVE_FUTIMENS 1
-| #define HAVE_FUTIMES 1
-| #define HAVE_FUTIMESAT 1
-| #define HAVE_GAI_STRERROR 1
-| #define HAVE_GETEGID 1
-| #define HAVE_GETENTROPY 1
-| #define HAVE_GETEUID 1
-| #define HAVE_GETGID 1
-| #define HAVE_GETGRGID 1
-| #define HAVE_GETGRGID_R 1
-| #define HAVE_GETGRNAM_R 1
-| #define HAVE_GETGROUPLIST 1
-| #define HAVE_GETGROUPS 1
-| #define HAVE_GETHOSTNAME 1
-| #define HAVE_GETITIMER 1
-| #define HAVE_GETLOADAVG 1
-| #define HAVE_GETLOGIN 1
-| #define HAVE_GETPEERNAME 1
-| #define HAVE_GETPGID 1
-| #define HAVE_GETPID 1
-| #define HAVE_GETPPID 1
-| #define HAVE_GETPRIORITY 1
-| #define HAVE_GETPWENT 1
-| #define HAVE_GETPWNAM_R 1
-| #define HAVE_GETPWUID 1
-| #define HAVE_GETPWUID_R 1
-| #define HAVE_GETRESGID 1
-| #define HAVE_GETRESUID 1
-| #define HAVE_GETRUSAGE 1
-| #define HAVE_GETSID 1
-| #define HAVE_GETSPENT 1
-| #define HAVE_GETSPNAM 1
-| #define HAVE_GETUID 1
-| #define HAVE_GETWD 1
-| #define HAVE_IF_NAMEINDEX 1
-| #define HAVE_INITGROUPS 1
-| #define HAVE_KILL 1
-| #define HAVE_KILLPG 1
-| #define HAVE_LCHOWN 1
-| #define HAVE_LINKAT 1
-| #define HAVE_LOCKF 1
-| #define HAVE_LSTAT 1
-| #define HAVE_LUTIMES 1
-| #define HAVE_MADVISE 1
-| #define HAVE_MBRTOWC 1
-| #define HAVE_MEMRCHR 1
-| #define HAVE_MKDIRAT 1
-| #define HAVE_MKFIFO 1
-| #define HAVE_MKFIFOAT 1
-| #define HAVE_MKNOD 1
-| #define HAVE_MKNODAT 1
-| #define HAVE_MKTIME 1
-| #define HAVE_MMAP 1
-| #define HAVE_MREMAP 1
-| #define HAVE_NICE 1
-| #define HAVE_OPENAT 1
-| #define HAVE_OPENDIR 1
-| #define HAVE_PATHCONF 1
-| #define HAVE_PAUSE 1
-| #define HAVE_PIPE 1
-| #define HAVE_PIPE2 1
-| #define HAVE_POLL 1
-| #define HAVE_POSIX_FADVISE 1
-| #define HAVE_POSIX_FALLOCATE 1
-| #define HAVE_POSIX_SPAWN 1
-| #define HAVE_POSIX_SPAWNP 1
-| #define HAVE_PREAD 1
-| #define HAVE_PREADV 1
-| #define HAVE_PREADV2 1
-| #define HAVE_PTHREAD_CONDATTR_SETCLOCK 1
-| #define HAVE_PTHREAD_KILL 1
-| #define HAVE_PWRITE 1
-| #define HAVE_PWRITEV 1
-| #define HAVE_PWRITEV2 1
-| #define HAVE_READLINK 1
-| #define HAVE_READLINKAT 1
-| #define HAVE_READV 1
-| #define HAVE_REALPATH 1
-| #define HAVE_RENAMEAT 1
-| #define HAVE_SCHED_GET_PRIORITY_MAX 1
-| #define HAVE_SCHED_RR_GET_INTERVAL 1
-| #define HAVE_SCHED_SETAFFINITY 1
-| #define HAVE_SCHED_SETPARAM 1
-| #define HAVE_SCHED_SETSCHEDULER 1
-| #define HAVE_SEM_CLOCKWAIT 1
-| #define HAVE_SEM_GETVALUE 1
-| #define HAVE_SEM_OPEN 1
-| #define HAVE_SEM_TIMEDWAIT 1
-| #define HAVE_SEM_UNLINK 1
-| #define HAVE_SENDFILE 1
-| #define HAVE_SETEGID 1
-| #define HAVE_SETEUID 1
-| #define HAVE_SETGID 1
-| #define HAVE_SETHOSTNAME 1
-| #define HAVE_SETITIMER 1
-| #define HAVE_SETLOCALE 1
-| #define HAVE_SETPGID 1
-| #define HAVE_SETPGRP 1
-| #define HAVE_SETPRIORITY 1
-| #define HAVE_SETREGID 1
-| #define HAVE_SETRESGID 1
-| #define HAVE_SETRESUID 1
-| #define HAVE_SETREUID 1
-| #define HAVE_SETSID 1
-| #define HAVE_SETUID 1
-| #define HAVE_SETVBUF 1
-| #define HAVE_SHUTDOWN 1
-| #define HAVE_SIGACTION 1
-| #define HAVE_SIGALTSTACK 1
-| #define HAVE_SIGFILLSET 1
-| #define HAVE_SIGINTERRUPT 1
-| #define HAVE_SIGPENDING 1
-| #define HAVE_SIGRELSE 1
-| #define HAVE_SIGTIMEDWAIT 1
-| #define HAVE_SIGWAIT 1
-| #define HAVE_SIGWAITINFO 1
-| #define HAVE_SNPRINTF 1
-| #define HAVE_SPLICE 1
-| #define HAVE_STRFTIME 1
-| #define HAVE_STRLCPY 1
-| #define HAVE_STRSIGNAL 1
-| #define HAVE_SYMLINKAT 1
-| #define HAVE_SYNC 1
-| #define HAVE_SYSCONF 1
-| #define HAVE_SYSTEM 1
-| #define HAVE_TCGETPGRP 1
-| #define HAVE_TCSETPGRP 1
-| #define HAVE_TEMPNAM 1
-| #define HAVE_TIMEGM 1
-| #define HAVE_TIMES 1
-| #define HAVE_TMPFILE 1
-| #define HAVE_TMPNAM 1
-| #define HAVE_TMPNAM_R 1
-| #define HAVE_TRUNCATE 1
-| #define HAVE_TTYNAME 1
-| #define HAVE_UMASK 1
-| #define HAVE_UNAME 1
-| #define HAVE_UNLINKAT 1
-| #define HAVE_UTIMENSAT 1
-| #define HAVE_UTIMES 1
-| #define HAVE_VFORK 1
-| #define HAVE_WAIT 1
-| #define HAVE_WAIT3 1
-| #define HAVE_WAIT4 1
-| #define HAVE_WAITID 1
-| #define HAVE_WAITPID 1
-| #define HAVE_WCSCOLL 1
-| #define HAVE_WCSFTIME 1
-| #define HAVE_WCSXFRM 1
-| #define HAVE_WMEMCMP 1
-| #define HAVE_WRITEV 1
-| #define HAVE_DIRFD 1
-| #define HAVE_CHROOT 1
-| #define HAVE_LINK 1
-| #define HAVE_SYMLINK 1
-| #define HAVE_FCHDIR 1
-| #define HAVE_FSYNC 1
-| #define HAVE_FDATASYNC 1
-| #define HAVE_EPOLL 1
-| #define HAVE_EPOLL_CREATE1 1
-| #define HAVE_PRLIMIT 1
-| #define HAVE_MEMFD_CREATE 1
-| #define HAVE_EVENTFD 1
-| #define HAVE_FLOCK 1
-| #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
-| #define HAVE_ZLIB_COPY 1
-| #define HAVE_HSTRERROR 1
-| #define HAVE_GETSERVBYNAME 1
-| #define HAVE_GETSERVBYPORT 1
-| #define HAVE_GETHOSTBYNAME 1
-| #define HAVE_GETHOSTBYADDR 1
-| #define HAVE_GETPROTOBYNAME 1
-| #define HAVE_INET_ATON 1
-| #define HAVE_INET_NTOA 1
-| #define HAVE_INET_PTON 1
-| #define HAVE_GETPEERNAME 1
-| #define HAVE_GETSOCKNAME 1
-| #define HAVE_ACCEPT 1
-| #define HAVE_BIND 1
-| #define HAVE_CONNECT 1
-| #define HAVE_LISTEN 1
-| #define HAVE_RECVFROM 1
-| #define HAVE_SENDTO 1
-| #define HAVE_SETSOCKOPT 1
-| #define HAVE_SOCKET 1
-| #define HAVE_SETGROUPS 1
-| #define HAVE_OPENPTY 1
-| #define HAVE_LOGIN_TTY 1
-| #define HAVE_FORKPTY 1
-| #define HAVE_FSEEKO 1
-| #define HAVE_FSTATVFS 1
-| #define HAVE_FTELLO 1
-| #define HAVE_STATVFS 1
-| #define HAVE_DUP2 1
-| #define HAVE_GETPGRP 1
-| #define HAVE_SETPGRP 1
-| /* end confdefs.h.  */
-| 
-| /* Override any GCC internal prototype to avoid an error.
-|    Use char because int might match the return type of a GCC
-|    builtin and then its argument prototype would still apply.  */
-| #ifdef __cplusplus
-| extern "C"
-| #endif
-| char crypt_r ();
-| int
-| main ()
-| {
-| return crypt_r ();
-|   ;
-|   return 0;
-| }
-configure:18331: gcc -o conftest    conftest.c -lcrypt  -ldl  >&5
-configure:18331: $? = 0
-configure:18348: result: -lcrypt
+configure:18160: $PKG_CONFIG --exists --print-errors "libxcrypt >= 3.1.1"
+configure:18163: $? = 0
+configure:18177: $PKG_CONFIG --exists --print-errors "libxcrypt >= 3.1.1"
+configure:18180: $? = 0
+configure:18376: result: yes
 configure:18392: checking for crypt or crypt_r
-configure:18421: gcc -o conftest     conftest.c -lcrypt -ldl  >&5
+configure:18421: gcc -o conftest     conftest.c -lcrypt  -ldl  >&5
 configure:18421: $? = 0
 configure:18430: result: yes
 configure:18442: checking for clock_gettime
@@ -17801,8 +16548,8 @@ configure:19090: result: yes
 configure:19100: checking for struct stat.st_flags
 configure:19100: gcc -c   conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:417:12: error: 'struct stat' has no member named 'st_flags'
-  417 | if (ac_aggr.st_flags)
+conftest.c:419:12: error: 'struct stat' has no member named 'st_flags'
+  419 | if (ac_aggr.st_flags)
       |            ^
 configure:19100: $? = 1
 configure: failed program was:
@@ -17932,6 +16679,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -18137,8 +16886,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -18229,8 +16978,8 @@ configure: failed program was:
 | }
 configure:19100: gcc -c   conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:417:19: error: 'struct stat' has no member named 'st_flags'
-  417 | if (sizeof ac_aggr.st_flags)
+conftest.c:419:19: error: 'struct stat' has no member named 'st_flags'
+  419 | if (sizeof ac_aggr.st_flags)
       |                   ^
 configure:19100: $? = 1
 configure: failed program was:
@@ -18360,6 +17109,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -18565,8 +17316,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -18659,8 +17410,8 @@ configure:19100: result: no
 configure:19110: checking for struct stat.st_gen
 configure:19110: gcc -c   conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:417:13: error: 'struct stat' has no member named 'st_gen'; did you mean 'st_dev'?
-  417 | if (ac_aggr.st_gen)
+conftest.c:419:13: error: 'struct stat' has no member named 'st_gen'; did you mean 'st_dev'?
+  419 | if (ac_aggr.st_gen)
       |             ^~~~~~
       |             st_dev
 configure:19110: $? = 1
@@ -18791,6 +17542,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -18996,8 +17749,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -19088,8 +17841,8 @@ configure: failed program was:
 | }
 configure:19110: gcc -c   conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:417:20: error: 'struct stat' has no member named 'st_gen'; did you mean 'st_dev'?
-  417 | if (sizeof ac_aggr.st_gen)
+conftest.c:419:20: error: 'struct stat' has no member named 'st_gen'; did you mean 'st_dev'?
+  419 | if (sizeof ac_aggr.st_gen)
       |                    ^~~~~~
       |                    st_dev
 configure:19110: $? = 1
@@ -19220,6 +17973,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -19425,8 +18180,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -19519,8 +18274,8 @@ configure:19110: result: no
 configure:19120: checking for struct stat.st_birthtime
 configure:19120: gcc -c   conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:417:12: error: 'struct stat' has no member named 'st_birthtime'
-  417 | if (ac_aggr.st_birthtime)
+conftest.c:419:12: error: 'struct stat' has no member named 'st_birthtime'
+  419 | if (ac_aggr.st_birthtime)
       |            ^
 configure:19120: $? = 1
 configure: failed program was:
@@ -19650,6 +18405,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -19855,8 +18612,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -19947,8 +18704,8 @@ configure: failed program was:
 | }
 configure:19120: gcc -c   conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:417:19: error: 'struct stat' has no member named 'st_birthtime'
-  417 | if (sizeof ac_aggr.st_birthtime)
+conftest.c:419:19: error: 'struct stat' has no member named 'st_birthtime'
+  419 | if (sizeof ac_aggr.st_birthtime)
       |                   ^
 configure:19120: $? = 1
 configure: failed program was:
@@ -20078,6 +18835,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -20283,8 +19042,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -20393,10 +19152,10 @@ configure:19168: result: yes
 configure:19180: checking for time.h that defines altzone
 configure:19197: gcc -c   conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:388:8: error: 'altzone' undeclared (first use in this function)
-  388 | return altzone;
+conftest.c:390:8: error: 'altzone' undeclared (first use in this function)
+  390 | return altzone;
       |        ^~~~~~~
-conftest.c:388:8: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:390:8: note: each undeclared identifier is reported only once for each function it appears in
 configure:19197: $? = 1
 configure: failed program was:
 | /* confdefs.h */
@@ -20525,6 +19284,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -20730,8 +19491,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -20826,8 +19587,8 @@ configure:19542: result: yes
 configure:19554: checking if sockaddr has sa_len member
 configure:19573: gcc -c   conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:396:2: error: 'struct sockaddr' has no member named 'sa_len'
-  396 | x.sa_len = 0;
+conftest.c:398:2: error: 'struct sockaddr' has no member named 'sa_len'
+  398 | x.sa_len = 0;
       |  ^
 configure:19573: $? = 1
 configure: failed program was:
@@ -20957,6 +19718,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -21162,8 +19925,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -21262,8 +20025,8 @@ configure:20016: result: yes
 configure:20026: checking whether we can use gcc inline assembler to get and set mc68881 fpcr
 configure:20047: gcc -o conftest    conftest.c -ldl  >&5
 conftest.c: Assembler messages:
-conftest.c:402: Error: no such instruction: `fmove.l %fpcr,%eax'
-conftest.c:403: Error: no such instruction: `fmove.l -4(%rbp),%fpcr'
+conftest.c:404: Error: no such instruction: `fmove.l %fpcr,%eax'
+conftest.c:405: Error: no such instruction: `fmove.l -4(%rbp),%fpcr'
 configure:20047: $? = 1
 configure: failed program was:
 | /* confdefs.h */
@@ -21392,6 +20155,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -21597,8 +20362,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -21682,82 +20447,82 @@ configure:20106: $? = 0
 configure:20118: result: no
 configure:20139: checking for acosh
 configure:20139: gcc -o conftest    conftest.c -ldl  -lm >&5
-conftest.c:419:6: warning: conflicting types for built-in function 'acosh'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
-  419 | char acosh ();
+conftest.c:421:6: warning: conflicting types for built-in function 'acosh'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
+  421 | char acosh ();
       |      ^~~~~
-conftest.c:407:1: note: 'acosh' is declared in header '<math.h>'
-  406 | # include <limits.h>
-  407 | #else
-configure:20139: $? = 0
-configure:20139: result: yes
-configure:20139: checking for asinh
-configure:20139: gcc -o conftest    conftest.c -ldl  -lm >&5
-conftest.c:420:6: warning: conflicting types for built-in function 'asinh'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
-  420 | char asinh ();
-      |      ^~~~~
-conftest.c:408:1: note: 'asinh' is declared in header '<math.h>'
-  407 | # include <limits.h>
-  408 | #else
-configure:20139: $? = 0
-configure:20139: result: yes
-configure:20139: checking for atanh
-configure:20139: gcc -o conftest    conftest.c -ldl  -lm >&5
-conftest.c:421:6: warning: conflicting types for built-in function 'atanh'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
-  421 | char atanh ();
-      |      ^~~~~
-conftest.c:409:1: note: 'atanh' is declared in header '<math.h>'
+conftest.c:409:1: note: 'acosh' is declared in header '<math.h>'
   408 | # include <limits.h>
   409 | #else
 configure:20139: $? = 0
 configure:20139: result: yes
-configure:20139: checking for erf
+configure:20139: checking for asinh
 configure:20139: gcc -o conftest    conftest.c -ldl  -lm >&5
-conftest.c:422:6: warning: conflicting types for built-in function 'erf'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
-  422 | char erf ();
-      |      ^~~
-conftest.c:410:1: note: 'erf' is declared in header '<math.h>'
+conftest.c:422:6: warning: conflicting types for built-in function 'asinh'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
+  422 | char asinh ();
+      |      ^~~~~
+conftest.c:410:1: note: 'asinh' is declared in header '<math.h>'
   409 | # include <limits.h>
   410 | #else
 configure:20139: $? = 0
 configure:20139: result: yes
-configure:20139: checking for erfc
+configure:20139: checking for atanh
 configure:20139: gcc -o conftest    conftest.c -ldl  -lm >&5
-conftest.c:423:6: warning: conflicting types for built-in function 'erfc'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
-  423 | char erfc ();
-      |      ^~~~
-conftest.c:411:1: note: 'erfc' is declared in header '<math.h>'
+conftest.c:423:6: warning: conflicting types for built-in function 'atanh'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
+  423 | char atanh ();
+      |      ^~~~~
+conftest.c:411:1: note: 'atanh' is declared in header '<math.h>'
   410 | # include <limits.h>
   411 | #else
 configure:20139: $? = 0
 configure:20139: result: yes
-configure:20139: checking for expm1
+configure:20139: checking for erf
 configure:20139: gcc -o conftest    conftest.c -ldl  -lm >&5
-conftest.c:424:6: warning: conflicting types for built-in function 'expm1'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
-  424 | char expm1 ();
-      |      ^~~~~
-conftest.c:412:1: note: 'expm1' is declared in header '<math.h>'
+conftest.c:424:6: warning: conflicting types for built-in function 'erf'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
+  424 | char erf ();
+      |      ^~~
+conftest.c:412:1: note: 'erf' is declared in header '<math.h>'
   411 | # include <limits.h>
   412 | #else
 configure:20139: $? = 0
 configure:20139: result: yes
-configure:20139: checking for log1p
+configure:20139: checking for erfc
 configure:20139: gcc -o conftest    conftest.c -ldl  -lm >&5
-conftest.c:425:6: warning: conflicting types for built-in function 'log1p'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
-  425 | char log1p ();
-      |      ^~~~~
-conftest.c:413:1: note: 'log1p' is declared in header '<math.h>'
+conftest.c:425:6: warning: conflicting types for built-in function 'erfc'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
+  425 | char erfc ();
+      |      ^~~~
+conftest.c:413:1: note: 'erfc' is declared in header '<math.h>'
   412 | # include <limits.h>
   413 | #else
 configure:20139: $? = 0
 configure:20139: result: yes
-configure:20139: checking for log2
+configure:20139: checking for expm1
 configure:20139: gcc -o conftest    conftest.c -ldl  -lm >&5
-conftest.c:426:6: warning: conflicting types for built-in function 'log2'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
-  426 | char log2 ();
-      |      ^~~~
-conftest.c:414:1: note: 'log2' is declared in header '<math.h>'
+conftest.c:426:6: warning: conflicting types for built-in function 'expm1'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
+  426 | char expm1 ();
+      |      ^~~~~
+conftest.c:414:1: note: 'expm1' is declared in header '<math.h>'
   413 | # include <limits.h>
   414 | #else
+configure:20139: $? = 0
+configure:20139: result: yes
+configure:20139: checking for log1p
+configure:20139: gcc -o conftest    conftest.c -ldl  -lm >&5
+conftest.c:427:6: warning: conflicting types for built-in function 'log1p'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
+  427 | char log1p ();
+      |      ^~~~~
+conftest.c:415:1: note: 'log1p' is declared in header '<math.h>'
+  414 | # include <limits.h>
+  415 | #else
+configure:20139: $? = 0
+configure:20139: result: yes
+configure:20139: checking for log2
+configure:20139: gcc -o conftest    conftest.c -ldl  -lm >&5
+conftest.c:428:6: warning: conflicting types for built-in function 'log2'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
+  428 | char log2 ();
+      |      ^~~~
+conftest.c:416:1: note: 'log2' is declared in header '<math.h>'
+  415 | # include <limits.h>
+  416 | #else
 configure:20139: $? = 0
 configure:20139: result: yes
 configure:20153: checking whether POSIX semaphores are enabled
@@ -21803,10 +20568,10 @@ configure:20327: result: yes
 configure:20338: checking whether RTLD_MEMBER is declared
 configure:20338: gcc -c   conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:420:10: error: 'RTLD_MEMBER' undeclared (first use in this function)
-  420 |   (void) RTLD_MEMBER;
+conftest.c:422:10: error: 'RTLD_MEMBER' undeclared (first use in this function)
+  422 |   (void) RTLD_MEMBER;
       |          ^~~~~~~~~~~
-conftest.c:420:10: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:422:10: note: each undeclared identifier is reported only once for each function it appears in
 configure:20338: $? = 1
 configure: failed program was:
 | /* confdefs.h */
@@ -21935,6 +20700,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -22140,8 +20907,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -22264,13 +21031,13 @@ configure:20473: checking whether wchar_t is usable
 configure:20485: result: no
 configure:20506: checking whether byte ordering is bigendian
 configure:20521: gcc -c   conftest.c >&5
-conftest.c:415:16: error: unknown type name 'not'
-  415 |                not a universal capable compiler
+conftest.c:417:16: error: unknown type name 'not'
+  417 |                not a universal capable compiler
       |                ^~~
-conftest.c:415:22: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'universal'
-  415 |                not a universal capable compiler
+conftest.c:417:22: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'universal'
+  417 |                not a universal capable compiler
       |                      ^~~~~~~~~
-conftest.c:415:22: error: unknown type name 'universal'
+conftest.c:417:22: error: unknown type name 'universal'
 configure:20521: $? = 1
 configure: failed program was:
 | /* confdefs.h */
@@ -22399,6 +21166,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -22604,8 +21373,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -22695,12 +21464,12 @@ configure:20566: gcc -c   conftest.c >&5
 configure:20566: $? = 0
 configure:20584: gcc -c   conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:421:18: error: unknown type name 'not'; did you mean 'ino_t'?
-  421 |                  not big endian
+conftest.c:423:18: error: unknown type name 'not'; did you mean 'ino_t'?
+  423 |                  not big endian
       |                  ^~~
       |                  ino_t
-conftest.c:421:26: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'endian'
-  421 |                  not big endian
+conftest.c:423:26: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'endian'
+  423 |                  not big endian
       |                          ^~~~~~
 configure:20584: $? = 1
 configure: failed program was:
@@ -22830,6 +21599,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -23035,8 +21806,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -23283,6 +22054,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -23488,8 +22261,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -23717,6 +22490,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -23922,8 +22697,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -24151,6 +22926,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -24356,8 +23133,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -24585,6 +23362,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -24790,8 +23569,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -25019,6 +23798,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -25224,8 +24005,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -25453,6 +24234,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -25658,8 +24441,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -25890,6 +24673,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -26095,8 +24880,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -26323,6 +25108,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -26528,8 +25315,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -26645,8 +25432,8 @@ configure:21514: result: yes
 configure:21524: checking for tv_nsec2 in struct stat
 configure:21543: gcc -c   conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:423:3: error: 'struct stat' has no member named 'st_mtimespec'
-  423 | st.st_mtimespec.tv_nsec = 1;
+conftest.c:425:3: error: 'struct stat' has no member named 'st_mtimespec'
+  425 | st.st_mtimespec.tv_nsec = 1;
       |   ^
 configure:21543: $? = 1
 configure: failed program was:
@@ -26776,6 +25563,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -26981,8 +25770,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -27108,16 +25897,16 @@ configure:21618: $? = 0
 configure:21625: result: yes
 configure:21639: checking whether WINDOW has _flags
 configure:21661: gcc -c   -I/usr/include/ncursesw conftest.c >&5
-In file included from conftest.c:423:
+In file included from conftest.c:425:
 /usr/include/ncursesw/curses.h:151: warning: "NCURSES_OPAQUE" redefined
   151 | #define NCURSES_OPAQUE       1
       | 
-conftest.c:422: note: this is the location of the previous definition
-  422 |   #define NCURSES_OPAQUE 0
+conftest.c:424: note: this is the location of the previous definition
+  424 |   #define NCURSES_OPAQUE 0
       | 
 conftest.c: In function 'main':
-conftest.c:430:4: error: invalid use of incomplete typedef 'WINDOW' {aka 'struct _win_st'}
-  430 |   w->_flags = 0;
+conftest.c:432:4: error: invalid use of incomplete typedef 'WINDOW' {aka 'struct _win_st'}
+  432 |   w->_flags = 0;
       |    ^~
 configure:21661: $? = 1
 configure: failed program was:
@@ -27247,6 +26036,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -27452,8 +26243,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -27616,8 +26407,8 @@ configure:22263: gcc -c   conftest.c >&5
 configure:22263: $? = 0
 configure:22263: gcc -c   conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:446:24: error: expected expression before ')' token
-  446 | if (sizeof ((socklen_t)))
+conftest.c:448:24: error: expected expression before ')' token
+  448 | if (sizeof ((socklen_t)))
       |                        ^
 configure:22263: $? = 1
 configure: failed program was:
@@ -27747,6 +26538,8 @@ configure: failed program was:
 | #define SIZEOF_PTHREAD_KEY_T 4
 | #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 | #define HAVE_LIBDL 1
+| #define HAVE_UUID_H 1
+| #define HAVE_UUID_GENERATE_TIME_SAFE 1
 | #define WITH_DECIMAL_CONTEXTVAR 1
 | #define _REENTRANT 1
 | #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -27952,8 +26745,8 @@ configure: failed program was:
 | #define HAVE_EVENTFD 1
 | #define HAVE_FLOCK 1
 | #define HAVE_GETPAGESIZE 1
-| #define HAVE_ZLIB_H 1
 | #define HAVE_ZLIB_COPY 1
+| #define HAVE_BZLIB_H 1
 | #define HAVE_HSTRERROR 1
 | #define HAVE_GETSERVBYNAME 1
 | #define HAVE_GETSERVBYPORT 1
@@ -28139,32 +26932,20 @@ configure:22910: gcc -o conftest    conftest.c -ldl  >&5
 configure:22910: $? = 0
 configure:22910: result: yes
 configure:22992: checking for pkg-config
-configure:23022: result: no
-configure:23066: checking for openssl/ssl.h in /usr/local/ssl
-configure:23077: result: no
-configure:23066: checking for openssl/ssl.h in /usr/lib/ssl
-configure:23077: result: no
-configure:23066: checking for openssl/ssl.h in /usr/ssl
-configure:23077: result: no
-configure:23066: checking for openssl/ssl.h in /usr/pkg
-configure:23077: result: no
-configure:23066: checking for openssl/ssl.h in /usr/local
-configure:23077: result: no
-configure:23066: checking for openssl/ssl.h in /usr
-configure:23073: result: yes
+configure:23019: result: /usr/bin/pkg-config
 configure:23089: checking whether compiling and linking against OpenSSL works
-Trying link with OPENSSL_LDFLAGS=-L/usr/lib; OPENSSL_LIBS=-lssl -lcrypto; OPENSSL_INCLUDES=-I/usr/include
-configure:23111: gcc -o conftest  -I/usr/include   -L/usr/lib conftest.c -lssl -lcrypto -ldl  >&5
+Trying link with OPENSSL_LDFLAGS=; OPENSSL_LIBS=-lssl -lcrypto ; OPENSSL_INCLUDES=
+configure:23111: gcc -o conftest      conftest.c -lssl -lcrypto  -ldl  >&5
 configure:23111: $? = 0
 configure:23113: result: yes
 configure:23146: checking for --with-openssl-rpath
 configure:23185: result: 
 configure:23238: checking whether OpenSSL provides required ssl module APIs
-configure:23270: gcc -o conftest  -I/usr/include   -L/usr/lib  conftest.c -ldl  -lssl -lcrypto >&5
+configure:23270: gcc -o conftest       conftest.c -ldl  -lssl -lcrypto  >&5
 configure:23270: $? = 0
 configure:23279: result: yes
 configure:23299: checking whether OpenSSL provides required hashlib module APIs
-configure:23328: gcc -o conftest  -I/usr/include   -L/usr/lib  conftest.c -ldl   -lcrypto >&5
+configure:23328: gcc -o conftest       conftest.c -ldl   -lcrypto >&5
 configure:23328: $? = 0
 configure:23337: result: yes
 configure:23351: checking for --with-ssl-default-suites
@@ -28172,7 +26953,20 @@ configure:23380: result: python
 configure:23393: checking for --with-builtin-hashlib-hashes
 configure:23414: result: md5,sha1,sha256,sha512,sha3,blake2
 configure:23448: checking for LIBB2
-configure:23507: result: no
+configure:23455: $PKG_CONFIG --exists --print-errors "libb2"
+Package libb2 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `libb2.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'libb2', required by 'virtual:world', not found
+configure:23458: $? = 1
+configure:23472: $PKG_CONFIG --exists --print-errors "libb2"
+Package libb2 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `libb2.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'libb2', required by 'virtual:world', not found
+configure:23475: $? = 1
+configure:23489: result: no
+Package 'libb2', required by 'virtual:world', not found
 configure:23527: checking for --disable-test-modules
 configure:23550: result: yes
 configure:23666: checking for additional Modules/Setup files
@@ -28232,11 +27026,11 @@ configure:25239: result: disabled
 configure:25243: checking for stdlib extension module _tkinter
 configure:25273: result: missing
 configure:25277: checking for stdlib extension module _uuid
-configure:25307: result: missing
+configure:25307: result: yes
 configure:25312: checking for stdlib extension module zlib
 configure:25342: result: yes
 configure:25366: checking for stdlib extension module _bz2
-configure:25396: result: missing
+configure:25396: result: yes
 configure:25400: checking for stdlib extension module _lzma
 configure:25430: result: missing
 configure:25435: checking for stdlib extension module _ssl
@@ -28280,17 +27074,16 @@ generated by GNU Autoconf 2.69.  Invocation command line was
 
 on myapp-VirtualBox
 
-config.status:1680: creating Makefile.pre
-config.status:1680: creating Misc/python.pc
-config.status:1680: creating Misc/python-embed.pc
-config.status:1680: creating Misc/python-config.sh
-config.status:1680: creating Modules/Setup.bootstrap
-config.status:1680: creating Modules/Setup.stdlib
-config.status:1680: creating Modules/ld_so_aix
-config.status:1680: creating pyconfig.h
+config.status:1686: creating Makefile.pre
+config.status:1686: creating Misc/python.pc
+config.status:1686: creating Misc/python-embed.pc
+config.status:1686: creating Misc/python-config.sh
+config.status:1686: creating Modules/Setup.bootstrap
+config.status:1686: creating Modules/Setup.stdlib
+config.status:1686: creating Modules/ld_so_aix
+config.status:1686: creating pyconfig.h
 configure:27457: creating Modules/Setup.local
 configure:27464: creating Makefile
-configure:27472: WARNING: pkg-config is missing. Some dependencies may not be detected correctly.
 configure:27481:
 
 If you want a release build with all stable optimizations active (PGO, etc),
@@ -28690,7 +27483,7 @@ ac_cv_header_alloca_h=yes
 ac_cv_header_asm_types_h=yes
 ac_cv_header_bluetooth_bluetooth_h=no
 ac_cv_header_bluetooth_h=no
-ac_cv_header_bzlib_h=no
+ac_cv_header_bzlib_h=yes
 ac_cv_header_conio_h=no
 ac_cv_header_crypt_h=yes
 ac_cv_header_curses_h=yes
@@ -28802,12 +27595,11 @@ ac_cv_header_util_h=no
 ac_cv_header_utime_h=yes
 ac_cv_header_utmp_h=yes
 ac_cv_header_uuid_h=no
-ac_cv_header_uuid_uuid_h=no
 ac_cv_header_wchar_h=yes
-ac_cv_header_zlib_h=yes
 ac_cv_host=x86_64-pc-linux-gnu
 ac_cv_kpthread=no
 ac_cv_kthread=no
+ac_cv_lib_bz2_BZ2_bzCompress=yes
 ac_cv_lib_c_inet_aton=yes
 ac_cv_lib_curses_filter=yes
 ac_cv_lib_curses_has_key=yes
@@ -28826,8 +27618,6 @@ ac_cv_lib_intl_textdomain=no
 ac_cv_lib_nsl_t_open=no
 ac_cv_lib_sendfile_sendfile=no
 ac_cv_lib_socket_socket=no
-ac_cv_lib_z_gzread=yes
-ac_cv_lib_z_inflateCopy=yes
 ac_cv_member_siginfo_t_si_band=yes
 ac_cv_member_struct_passwd_pw_gecos=yes
 ac_cv_member_struct_passwd_pw_passwd=yes
@@ -28844,6 +27634,7 @@ ac_cv_objext=o
 ac_cv_path_EGREP='/usr/bin/grep -E'
 ac_cv_path_GREP=/usr/bin/grep
 ac_cv_path_SED=/usr/bin/sed
+ac_cv_path_ac_pt_PKG_CONFIG=/usr/bin/pkg-config
 ac_cv_path_install='/usr/bin/install -c'
 ac_cv_path_mkdir=/usr/bin/mkdir
 ac_cv_posix_semaphores_enabled=yes
@@ -28852,6 +27643,7 @@ ac_cv_prog_PYTHON_FOR_REGEN=python3.10
 ac_cv_prog_TRUE=true
 ac_cv_prog_ac_ct_AR=ar
 ac_cv_prog_ac_ct_CC=gcc
+ac_cv_prog_ac_ct_PKG_CONFIG=/usr/bin/pkg-config
 ac_cv_prog_ac_ct_READELF=readelf
 ac_cv_prog_cc_c89=
 ac_cv_prog_cc_g=yes
@@ -28861,7 +27653,6 @@ ac_cv_pthread_key_t_is_arithmetic_type=yes
 ac_cv_pthread_system_supported=yes
 ac_cv_rshift_extends_sign=yes
 ac_cv_safe_to_define___extensions__=yes
-ac_cv_search_crypt_r=-lcrypt
 ac_cv_search_login_tty='none required'
 ac_cv_search_opendir='none required'
 ac_cv_search_sem_init='none required'
@@ -28911,11 +27702,17 @@ ac_cv_working_signed_char_c=yes
 ac_cv_working_tzset=yes
 ac_cv_x87_double_rounding=no
 ax_cv_c_float_words_bigendian=no
+pkg_cv_LIBCRYPT_CFLAGS=
+pkg_cv_LIBCRYPT_LIBS='-lcrypt '
+pkg_cv_LIBUUID_CFLAGS='-I/usr/include/uuid '
+pkg_cv_LIBUUID_LIBS='-luuid '
+pkg_cv_ZLIB_CFLAGS=
+pkg_cv_ZLIB_LIBS='-lz '
 py_cv_lib_readline=no
 py_cv_module__asyncio=yes
 py_cv_module__bisect=yes
 py_cv_module__blake2=yes
-py_cv_module__bz2=missing
+py_cv_module__bz2=yes
 py_cv_module__codecs_cn=yes
 py_cv_module__codecs_hk=yes
 py_cv_module__codecs_iso2022=yes
@@ -28963,7 +27760,7 @@ py_cv_module__testinternalcapi=yes
 py_cv_module__testmultiphase=yes
 py_cv_module__tkinter=missing
 py_cv_module__typing=yes
-py_cv_module__uuid=missing
+py_cv_module__uuid=yes
 py_cv_module__xxsubinterpreters=yes
 py_cv_module__xxtestfuzz=yes
 py_cv_module__zoneinfo=yes
@@ -29007,7 +27804,7 @@ BLDLIBRARY='$(LDLIBRARY)'
 BLDSHARED='$(CC) -shared'
 BUILDEXEEXT=''
 BZIP2_CFLAGS=''
-BZIP2_LIBS=''
+BZIP2_LIBS='-lbz2'
 CC='gcc'
 CCSHARED='-fPIC'
 CFLAGS=''
@@ -29080,7 +27877,7 @@ LIBB2_CFLAGS=''
 LIBB2_LIBS=''
 LIBC=''
 LIBCRYPT_CFLAGS=''
-LIBCRYPT_LIBS='-lcrypt'
+LIBCRYPT_LIBS='-lcrypt '
 LIBEXPAT_CFLAGS='-I$(srcdir)/Modules/expat'
 LIBEXPAT_INTERNAL='$(LIBEXPAT_HEADERS) $(LIBEXPAT_A)'
 LIBEXPAT_LDFLAGS='-lm $(LIBEXPAT_A)'
@@ -29102,8 +27899,8 @@ LIBS='-ldl '
 LIBSQLITE3_CFLAGS=' -I$(srcdir)/Modules/_sqlite'
 LIBSQLITE3_LIBS='-lsqlite3'
 LIBTOOL_CRUFT=''
-LIBUUID_CFLAGS=''
-LIBUUID_LIBS=''
+LIBUUID_CFLAGS='-I/usr/include/uuid '
+LIBUUID_LIBS='-luuid '
 LINKCC='$(PURIFY) $(MAINCC)'
 LINKFORSHARED='-Xlinker -export-dynamic'
 LINK_PYTHON_DEPS='$(LIBRARY_DEPS)'
@@ -29133,7 +27930,7 @@ MODULE_AUDIOOP_STATE=yes
 MODULE_AUDIOOP_TRUE=''
 MODULE_BINASCII_CFLAGS=-DUSE_ZLIB_CRC32 
 MODULE_BINASCII_FALSE='#'
-MODULE_BINASCII_LDFLAGS=-lz
+MODULE_BINASCII_LDFLAGS=-lz 
 MODULE_BINASCII_STATE=yes
 MODULE_BINASCII_TRUE=''
 MODULE_BLOCK='MODULE__IO_STATE=yes
@@ -29201,7 +27998,7 @@ MODULE_XXLIMITED_STATE=yes
 MODULE_XXLIMITED_TRUE=''
 MODULE_ZLIB_CFLAGS=
 MODULE_ZLIB_FALSE='#'
-MODULE_ZLIB_LDFLAGS=-lz
+MODULE_ZLIB_LDFLAGS=-lz 
 MODULE_ZLIB_STATE=yes
 MODULE_ZLIB_TRUE=''
 MODULE__ASYNCIO_FALSE='#'
@@ -29215,9 +28012,11 @@ MODULE__BLAKE2_FALSE='#'
 MODULE__BLAKE2_LDFLAGS=
 MODULE__BLAKE2_STATE=yes
 MODULE__BLAKE2_TRUE=''
-MODULE__BZ2_FALSE=''
-MODULE__BZ2_STATE=missing
-MODULE__BZ2_TRUE='#'
+MODULE__BZ2_CFLAGS=
+MODULE__BZ2_FALSE='#'
+MODULE__BZ2_LDFLAGS=-lbz2
+MODULE__BZ2_STATE=yes
+MODULE__BZ2_TRUE=''
 MODULE__CODECS_CN_FALSE='#'
 MODULE__CODECS_CN_STATE=yes
 MODULE__CODECS_CN_TRUE=''
@@ -29241,7 +28040,7 @@ MODULE__CONTEXTVARS_STATE=yes
 MODULE__CONTEXTVARS_TRUE=''
 MODULE__CRYPT_CFLAGS=
 MODULE__CRYPT_FALSE='#'
-MODULE__CRYPT_LDFLAGS=-lcrypt
+MODULE__CRYPT_LDFLAGS=-lcrypt 
 MODULE__CRYPT_STATE=yes
 MODULE__CRYPT_TRUE=''
 MODULE__CSV_FALSE='#'
@@ -29267,9 +28066,9 @@ MODULE__ELEMENTTREE_TRUE=''
 MODULE__GDBM_FALSE=''
 MODULE__GDBM_STATE=missing
 MODULE__GDBM_TRUE='#'
-MODULE__HASHLIB_CFLAGS=-I/usr/include
+MODULE__HASHLIB_CFLAGS=
 MODULE__HASHLIB_FALSE='#'
-MODULE__HASHLIB_LDFLAGS=-L/usr/lib   -lcrypto
+MODULE__HASHLIB_LDFLAGS=   -lcrypto
 MODULE__HASHLIB_STATE=yes
 MODULE__HASHLIB_TRUE=''
 MODULE__HEAPQ_FALSE='#'
@@ -29338,9 +28137,9 @@ MODULE__SOCKET_TRUE=''
 MODULE__SQLITE3_FALSE=''
 MODULE__SQLITE3_STATE=disabled
 MODULE__SQLITE3_TRUE='#'
-MODULE__SSL_CFLAGS=-I/usr/include
+MODULE__SSL_CFLAGS=
 MODULE__SSL_FALSE='#'
-MODULE__SSL_LDFLAGS=-L/usr/lib  -lssl -lcrypto
+MODULE__SSL_LDFLAGS=  -lssl -lcrypto 
 MODULE__SSL_STATE=yes
 MODULE__SSL_TRUE=''
 MODULE__STATISTICS_FALSE='#'
@@ -29374,9 +28173,11 @@ MODULE__TKINTER_TRUE='#'
 MODULE__TYPING_FALSE='#'
 MODULE__TYPING_STATE=yes
 MODULE__TYPING_TRUE=''
-MODULE__UUID_FALSE=''
-MODULE__UUID_STATE=missing
-MODULE__UUID_TRUE='#'
+MODULE__UUID_CFLAGS=-I/usr/include/uuid 
+MODULE__UUID_FALSE='#'
+MODULE__UUID_LDFLAGS=-luuid 
+MODULE__UUID_STATE=yes
+MODULE__UUID_TRUE=''
 MODULE__XXSUBINTERPRETERS_FALSE='#'
 MODULE__XXSUBINTERPRETERS_STATE=yes
 MODULE__XXSUBINTERPRETERS_TRUE=''
@@ -29391,9 +28192,9 @@ MULTIARCH_CPPFLAGS='-DMULTIARCH=\"x86_64-linux-gnu\"'
 NODE=''
 NO_AS_NEEDED='-Wl,--no-as-needed'
 OBJEXT='o'
-OPENSSL_INCLUDES='-I/usr/include'
-OPENSSL_LDFLAGS='-L/usr/lib'
-OPENSSL_LIBS='-lssl -lcrypto'
+OPENSSL_INCLUDES=''
+OPENSSL_LDFLAGS=''
+OPENSSL_LIBS='-lssl -lcrypto '
 OPENSSL_RPATH=''
 OPT='-DNDEBUG -g -fwrapv -O3 -Wall'
 OTHER_LIBTOOL_OPT=''
@@ -29406,7 +28207,7 @@ PACKAGE_VERSION='3.11'
 PATH_SEPARATOR=':'
 PGO_PROF_GEN_FLAG='-fprofile-generate'
 PGO_PROF_USE_FLAG='-fprofile-use -fprofile-correction'
-PKG_CONFIG=''
+PKG_CONFIG='/usr/bin/pkg-config'
 PKG_CONFIG_LIBDIR=''
 PKG_CONFIG_PATH=''
 PLATFORM_HEADERS=''
@@ -29450,7 +28251,7 @@ WHEEL_PKG_DIR=''
 X11_CFLAGS=''
 X11_LIBS=''
 ZLIB_CFLAGS=''
-ZLIB_LIBS='-lz'
+ZLIB_LIBS='-lz '
 _PYTHON_HOST_PLATFORM=''
 ac_ct_AR='ar'
 ac_ct_CC='gcc'
@@ -29621,6 +28422,8 @@ target_alias=''
 #define SIZEOF_PTHREAD_KEY_T 4
 #define PTHREAD_KEY_T_IS_COMPATIBLE_WITH_INT 1
 #define HAVE_LIBDL 1
+#define HAVE_UUID_H 1
+#define HAVE_UUID_GENERATE_TIME_SAFE 1
 #define WITH_DECIMAL_CONTEXTVAR 1
 #define _REENTRANT 1
 #define PTHREAD_SYSTEM_SCHED_SUPPORTED 1
@@ -29826,8 +28629,8 @@ target_alias=''
 #define HAVE_EVENTFD 1
 #define HAVE_FLOCK 1
 #define HAVE_GETPAGESIZE 1
-#define HAVE_ZLIB_H 1
 #define HAVE_ZLIB_COPY 1
+#define HAVE_BZLIB_H 1
 #define HAVE_HSTRERROR 1
 #define HAVE_GETSERVBYNAME 1
 #define HAVE_GETSERVBYPORT 1

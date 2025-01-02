@@ -69,9 +69,9 @@ version_info := 23:1:17
 
 # Variables needed for `freetype-config' and `freetype.pc'.
 #
-PKG_CONFIG         := 
-REQUIRES_PRIVATE   := 
-LIBS_PRIVATE       := -lz
+PKG_CONFIG         := /usr/bin/pkg-config
+REQUIRES_PRIVATE   := zlib
+LIBS_PRIVATE       := 
 LIBSSTATIC_CONFIG  := -lfreetype -lz
 build_libtool_libs := 
 ft_version         := 23.1.17
