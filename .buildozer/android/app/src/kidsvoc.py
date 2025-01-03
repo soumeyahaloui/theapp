@@ -101,6 +101,41 @@ LANGUAGES = {
     }
 }
 
+ARABIC_TO_ENGLISH_IMAGES = {
+    "الحيوانات": "animals.png",
+    "الألوان": "colors.png",
+    "الفواكه": "fruits.png",
+    "الخضروات": "vegetables.png",
+    "الأرقام": "numbers.png",
+    "الأشكال": "shapes.png",
+    "الأفعال": "actions.png",
+    "العائلة والأشخاص": "family_and_people.png",
+    "أجزاء الجسم": "body_parts.png",
+    "الملابس": "clothing.png",
+    "الطعام والمشروبات": "food_and_drinks.png",
+    "الطقس والطبيعة": "weather_and_nature.png",
+    "المواصلات": "transportation.png",
+    "الأشياء المنزلية": "household_items.png",
+    "المدرسة والتعليم": "school_and_education.png",
+    "المهن": "professions.png",
+    "الرياضة والترفيه": "sports_and_entertainment.png",
+    "التكنولوجيا": "technology.png",
+    "الأماكن": "places.png",
+    "الوقت والأيام": "time_and_days.png",
+    "المهرجانات والاحتفالات": "festivals_and_celebrations.png",
+    "المتضادات": "opposites.png",
+    "الصفات والوصف": "adjectives_and_descriptions.png",
+}
+
+ANIMAL_ARABIC_TO_ENGLISH_IMAGES = {
+    "حيوانات أليفة": "domestic_animals.png",
+    "حيوانات برية": "wild_animals.png",
+    "حيوانات المزرعة": "farm_animals.png",
+    "طيور": "birds.png",
+    "كائنات بحرية": "marine_creatures.png",
+    "حشرات": "insects.png",
+}
+
 
 class FirstScreen(Screen):
     def __init__(self, **kwargs):
@@ -287,17 +322,19 @@ class SecondScreen(Screen):
             )
 
             if self.language == 'Arabe':
-                # Set Arabic image as the button content
-                button.clear_widgets()
-                category_image = Image(
-                    source=resource_find(f'assets/images/text/categories/{category}.png'),
-                    allow_stretch=True,
-                    keep_ratio=True,
-                    size_hint=(None, None),
-                    size=button.size,
-                    pos_hint={'center_x': 0.5, 'center_y': 0.5}
-                )
-                button.add_widget(category_image)
+                # Use the mapped English filename for Arabic
+                image_filename = ARABIC_TO_ENGLISH_IMAGES.get(category, None)
+                if image_filename:
+                    button.clear_widgets()
+                    category_image = Image(
+                        source=resource_find(f'assets/images/text/categories/{image_filename}'),
+                        allow_stretch=True,
+                        keep_ratio=True,
+                        size_hint=(None, None),
+                        size=button.size,
+                        pos_hint={'center_x': 0.5, 'center_y': 0.5}
+                    )
+                    button.add_widget(category_image)
 
             # Bind "Animaux" or "الحيوانات" to open AnimalCategoryScreen
             if category in ["Animaux", "الحيوانات"]:
@@ -306,6 +343,7 @@ class SecondScreen(Screen):
                 button.bind(on_press=lambda instance, cat=category: print(f"{cat} selected"))
 
             self.grid.add_widget(button)
+
 
     def update_language(self, language):
         self.language = language
@@ -389,17 +427,19 @@ class AnimalCategoryScreen(Screen):
             )
 
             if self.language == 'Arabe':
-                # Set Arabic image as the button content
-                button.clear_widgets()
-                category_image = Image(
-                    source=resource_find(f'assets/images/text/animalcategories/{category}.png'),
-                    allow_stretch=True,
-                    keep_ratio=True,
-                    size_hint=(None, None),
-                    size=button.size,
-                    pos_hint={'center_x': 0.5, 'center_y': 0.5}
-                )
-                button.add_widget(category_image)
+                # Use the mapped English filename for Arabic animal categories
+                image_filename = ANIMAL_ARABIC_TO_ENGLISH_IMAGES.get(category, None)
+                if image_filename:
+                    button.clear_widgets()
+                    category_image = Image(
+                        source=resource_find(f'assets/images/text/animalcategories/{image_filename}'),
+                        allow_stretch=True,
+                        keep_ratio=True,
+                        size_hint=(None, None),
+                        size=button.size,
+                        pos_hint={'center_x': 0.5, 'center_y': 0.5}
+                    )
+                    button.add_widget(category_image)
 
             # Bind "Animaux Sauvages" or "حيوانات برية" to open WildAnimalsScreen
             if category in ["Animaux Sauvages", "حيوانات برية"]:
@@ -408,6 +448,7 @@ class AnimalCategoryScreen(Screen):
                 button.bind(on_press=lambda instance, cat=category: print(f"{cat} category selected"))
 
             self.grid.add_widget(button)
+
 
     def update_language(self, language):
         self.language = language
