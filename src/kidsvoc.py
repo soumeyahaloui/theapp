@@ -27,6 +27,16 @@ LabelBase.register(name='FrenchFont', fn_regular='assets/fonts/Roboto-Regular.tt
 with open('assets/manifest.json', 'r') as f:
     manifest = json.load(f)
 
+class LoadingScreen(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.add_widget(Label(text="Loading...", font_size="24sp"))
+
+    def on_enter(self):
+        from kivy.clock import Clock
+        Clock.schedule_once(lambda dt: setattr(self.manager, 'current', 'first'), 2)
+
+
 class IconButton(ButtonBehavior, Image):
     pass
 
@@ -602,11 +612,30 @@ class MyApp(App):
         Window.size = (400, 720)
         sm = ScreenManager()
         sm.language = 'Français'
+
+        # Add all screens to the ScreenManager
+        sm.add_widget(LoadingScreen(name='loading'))
         sm.add_widget(FirstScreen(name='first'))
         sm.add_widget(SecondScreen(name='second'))
         sm.add_widget(AnimalCategoryScreen(name='animal_categories'))
         sm.add_widget(WildAnimalsScreen(name='wild_animals'))
+
+        # Set the initial screen to the loading screen
+        sm.current = 'loading'
+
+        # Trigger a forced layout refresh
+        from kivy.clock import Clock
+        Clock.schedule_once(lambda dt: self.refresh_layout(sm))
+
         return sm
+
+    def refresh_layout(self, sm):
+        # Refresh the layout for all widgets in the ScreenManager
+        sm.do_layout()
+        for screen in sm.screens:
+            screen.do_layout()
+
+
 
 if __name__ == '__main__':
     MyApp().run()
