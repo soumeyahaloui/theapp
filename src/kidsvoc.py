@@ -477,9 +477,7 @@ class WildAnimalsScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.language = 'Français'
-        self.current_index = 0  # Keep track of the current image index
-        self.animal_data = []  # Placeholder for animal data
-        self.image_display = None
+        self.back_button = None
         self.init_ui()
 
     def init_ui(self):
@@ -489,9 +487,19 @@ class WildAnimalsScreen(Screen):
             keep_ratio=False
         ))
 
-        # Load animal data
+        # Create a horizontal ScrollView
+        scroll_view = ScrollView(size_hint=(1, 1), do_scroll_x=True, do_scroll_y=False)
+        horizontal_layout = BoxLayout(
+            orientation='horizontal',
+            spacing=dp(70),
+            padding=[dp(10), dp(20), dp(10), dp(20)],
+            size_hint_x=None,
+            height=dp(520)
+        )
+        horizontal_layout.bind(minimum_width=horizontal_layout.setter('width'))
+
         try:
-            self.animal_data = [
+            animals = [
                 {
                     "image": manifest["images"]["animals"][i],
                     "audio_ar": manifest["audio"]["ar"][i],
@@ -500,20 +508,70 @@ class WildAnimalsScreen(Screen):
                 for i in range(len(manifest["images"]["animals"]))
             ]
         except (KeyError, IndexError):
-            self.animal_data = []
+            animals = []
 
-        # Display the first image
-        self.image_display = Image(
-            source=resource_find(f'assets/images/animals/{self.animal_data[self.current_index]["image"]}'),
-            size_hint=(None, None),
-            size=(dp(300), dp(400)),
-            pos_hint={'center_x': 0.5, 'center_y': 0.6},
-            allow_stretch=True,
-            keep_ratio=True
-        )
-        self.add_widget(self.image_display)
+        for animal in animals:
+            frame_layout = FloatLayout(size_hint=(None, None), size=(dp(320), dp(520)))
 
-        # Back Button
+            img = Image(
+                source=resource_find(f'assets/images/animals/{animal["image"]}'),
+                size_hint=(None, None),
+                size=(dp(300), dp(400)),
+                pos_hint={'x': 0, 'top': 1},
+                allow_stretch=True,
+                keep_ratio=False
+            )
+            frame_layout.add_widget(img)
+
+            ar_button = Button(
+                size_hint=(None, None),
+                size=(dp(100), dp(100)),
+                pos_hint={'right': 1.2, 'center_y': 0.35},
+                background_normal='',
+                background_down='',
+                background_color=(0, 0, 0, 0)
+            )
+            frame_layout.add_widget(ar_button)
+
+            ar_icon = Image(
+                source='assets/images/icon/speaker.png',
+                size_hint=(None, None),
+                size=(dp(100), dp(100)),
+                pos_hint={'right': 1.2, 'center_y': 0.35},
+                allow_stretch=False,
+                keep_ratio=True
+            )
+            frame_layout.add_widget(ar_icon)
+
+            fr_button = Button(
+                size_hint=(None, None),
+                size=(dp(100), dp(100)),
+                pos_hint={'right': 1.2, 'center_y': 0.62},
+                background_normal='',
+                background_down='',
+                background_color=(0, 0, 0, 0)
+            )
+            frame_layout.add_widget(fr_button)
+
+            fr_icon = Image(
+                source='assets/images/icon/speaker.png',
+                size_hint=(None, None),
+                size=(dp(100), dp(100)),
+                pos_hint={'right': 1.2, 'center_y': 0.62},
+                allow_stretch=False,
+                keep_ratio=True
+            )
+            frame_layout.add_widget(fr_icon)
+
+            ar_button.bind(on_press=lambda instance, audio=animal["audio_ar"]: self.play_audio(audio))
+            fr_button.bind(on_press=lambda instance, audio=animal["audio_fr"]: self.play_audio(audio))
+
+            horizontal_layout.add_widget(frame_layout)
+
+        scroll_view.add_widget(horizontal_layout)
+        self.add_widget(scroll_view)
+
+        # Back button
         self.back_button = CustomButton(
             text=LANGUAGES[self.language]['back'],
             size_hint=(None, None),
@@ -522,35 +580,6 @@ class WildAnimalsScreen(Screen):
         )
         self.back_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'animal_categories'))
         self.add_widget(self.back_button)
-
-        # Bind touch events for swiping
-        self.bind(on_touch_down=self.on_touch_down, on_touch_up=self.on_touch_up)
-        self.start_x = 0  # Track initial touch position
-
-    def on_touch_down(self, touch):
-        self.start_x = touch.x  # Record the starting x position of the swipe
-        return super().on_touch_down(touch)
-
-    def on_touch_up(self, touch):
-        end_x = touch.x  # Record the ending x position of the swipe
-        if end_x - self.start_x > 50:  # Swipe to the right
-            self.show_previous_image()
-        elif self.start_x - end_x > 50:  # Swipe to the left
-            self.show_next_image()
-        return super().on_touch_up(touch)
-
-    def show_previous_image(self):
-        if self.current_index > 0:
-            self.current_index -= 1
-            self.update_image()
-
-    def show_next_image(self):
-        if self.current_index < len(self.animal_data) - 1:
-            self.current_index += 1
-            self.update_image()
-
-    def update_image(self):
-        self.image_display.source = resource_find(f'assets/images/animals/{self.animal_data[self.current_index]["image"]}')
 
     def play_audio(self, audio_file):
         audio_path = (
