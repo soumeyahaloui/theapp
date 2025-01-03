@@ -477,7 +477,9 @@ class WildAnimalsScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.language = 'Français'
-        self.back_button = None  # Define the back button here
+        self.current_index = 0  # Keep track of the current image index
+        self.animal_data = []  # Placeholder for animal data
+        self.image_display = None
         self.init_ui()
 
     def init_ui(self):
@@ -487,17 +489,9 @@ class WildAnimalsScreen(Screen):
             keep_ratio=False
         ))
 
-        scroll_view = ScrollView(size_hint=(1, 1))
-        grid_layout = GridLayout(
-            cols=1,
-            spacing=dp(10),
-            padding=[dp(10), dp(20), dp(10), dp(20)],
-            size_hint_y=None
-        )
-        grid_layout.bind(minimum_height=grid_layout.setter('height'))
-
+        # Load animal data
         try:
-            animals = [
+            self.animal_data = [
                 {
                     "image": manifest["images"]["animals"][i],
                     "audio_ar": manifest["audio"]["ar"][i],
@@ -506,69 +500,20 @@ class WildAnimalsScreen(Screen):
                 for i in range(len(manifest["images"]["animals"]))
             ]
         except (KeyError, IndexError):
-            animals = []
+            self.animal_data = []
 
-        for animal in animals:
-            frame_layout = FloatLayout(size_hint=(None, None), size=(dp(190), dp(210)))
-            img = Image(
-                source=resource_find(f'assets/images/animals/{animal["image"]}'),
-                size_hint=(None, None),
-                size=(dp(270), dp(340)),
-                pos_hint={'x': 0, 'center_y': 0.65},
-                allow_stretch=True,
-                keep_ratio=False
-            )
-            frame_layout.add_widget(img)
+        # Display the first image
+        self.image_display = Image(
+            source=resource_find(f'assets/images/animals/{self.animal_data[self.current_index]["image"]}'),
+            size_hint=(None, None),
+            size=(dp(300), dp(400)),
+            pos_hint={'center_x': 0.5, 'center_y': 0.6},
+            allow_stretch=True,
+            keep_ratio=True
+        )
+        self.add_widget(self.image_display)
 
-            fr_button = Button(
-                size_hint=(None, None),
-                size=(dp(130), dp(130)),
-                pos_hint={'right': 2, 'center_y': 0.70},
-                background_normal='',
-                background_down='',
-                background_color=(0, 0, 0, 0)
-            )
-            frame_layout.add_widget(fr_button)
-
-            fr_icon = Image(
-                source='assets/images/icon/speaker.png',
-                size_hint=(None, None),
-                size=(dp(130), dp(130)),
-                pos_hint={'right': 2, 'center_y': 0.70},
-                allow_stretch=False,
-                keep_ratio=True
-            )
-            frame_layout.add_widget(fr_icon)
-
-            ar_button = Button(
-                size_hint=(None, None),
-                size=(dp(130), dp(130)),
-                pos_hint={'right': 2, 'center_y': 0.10},
-                background_normal='',
-                background_down='',
-                background_color=(0, 0, 0, 0)
-            )
-            frame_layout.add_widget(ar_button)
-
-            ar_icon = Image(
-                source='assets/images/icon/speaker.png',
-                size_hint=(None, None),
-                size=(dp(130), dp(130)),
-                pos_hint={'right': 2, 'center_y': 0.10},
-                allow_stretch=False,
-                keep_ratio=True
-            )
-            frame_layout.add_widget(ar_icon)
-
-            fr_button.bind(on_press=lambda instance, audio=animal["audio_fr"]: self.play_audio(audio))
-            ar_button.bind(on_press=lambda instance, audio=animal["audio_ar"]: self.play_audio(audio))
-
-            grid_layout.add_widget(frame_layout)
-
-        scroll_view.add_widget(grid_layout)
-        self.add_widget(scroll_view)
-
-        # Create the back button
+        # Back Button
         self.back_button = CustomButton(
             text=LANGUAGES[self.language]['back'],
             size_hint=(None, None),
@@ -577,6 +522,35 @@ class WildAnimalsScreen(Screen):
         )
         self.back_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'animal_categories'))
         self.add_widget(self.back_button)
+
+        # Bind touch events for swiping
+        self.bind(on_touch_down=self.on_touch_down, on_touch_up=self.on_touch_up)
+        self.start_x = 0  # Track initial touch position
+
+    def on_touch_down(self, touch):
+        self.start_x = touch.x  # Record the starting x position of the swipe
+        return super().on_touch_down(touch)
+
+    def on_touch_up(self, touch):
+        end_x = touch.x  # Record the ending x position of the swipe
+        if end_x - self.start_x > 50:  # Swipe to the right
+            self.show_previous_image()
+        elif self.start_x - end_x > 50:  # Swipe to the left
+            self.show_next_image()
+        return super().on_touch_up(touch)
+
+    def show_previous_image(self):
+        if self.current_index > 0:
+            self.current_index -= 1
+            self.update_image()
+
+    def show_next_image(self):
+        if self.current_index < len(self.animal_data) - 1:
+            self.current_index += 1
+            self.update_image()
+
+    def update_image(self):
+        self.image_display.source = resource_find(f'assets/images/animals/{self.animal_data[self.current_index]["image"]}')
 
     def play_audio(self, audio_file):
         audio_path = (
@@ -591,31 +565,6 @@ class WildAnimalsScreen(Screen):
             sound.play()
         else:
             print(f"Failed to load sound: {audio_file}")
-
-    def update_language(self, language):
-        """Update UI elements based on the selected language."""
-        self.language = language
-        self.clear_widgets()
-        self.init_ui()
-
-        if language == 'Arabe':
-            # Switch to Arabic image for back button
-            self.back_button.clear_widgets()
-            back_button_image = Image(
-                source=resource_find('assets/images/text/back.png'),  # Path to Arabic back.png
-                allow_stretch=True,
-                keep_ratio=True,
-                size_hint=(None, None),
-                size=self.back_button.size,
-                pos_hint={'center_x': 0.5, 'center_y': 0.5},
-            )
-            self.back_button.add_widget(back_button_image)
-        else:
-            # Switch back to French text
-            self.back_button.clear_widgets()
-            self.back_button.label.text = LANGUAGES['Français']['back']
-            self.back_button.label.font_name = 'FrenchFont'
-            self.back_button.add_widget(self.back_button.label)
 
 
 class MyApp(App):
