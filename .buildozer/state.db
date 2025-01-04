@@ -1,1 +1,1 @@
-{"android:sdk_installation": ["31", "21", "25b", "/home/myapp/Android/Sdk", "/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c"], "cache.build_id": "60", "android:latestapk": "kidsvoc-1.0-arm64-v8a_armeabi-v7a-debug.apk", "android:latestmode": "debug"}
+{"android:sdk_installation": ["31", "21", "25b", "/home/myapp/Android/Sdk", "/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c"], "cache.build_id": "61", "android:latestapk": "kidsvoc-1.0-arm64-v8a_armeabi-v7a-debug.apk", "android:latestmode": "debug"}
