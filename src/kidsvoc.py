@@ -18,6 +18,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.graphics import Color, RoundedRectangle
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.carousel import Carousel
 
 
 
@@ -498,6 +499,8 @@ class WildAnimalsScreen(Screen):
         )
         horizontal_layout.bind(minimum_width=horizontal_layout.setter('width'))
 
+        carousel = Carousel(direction='right', loop=True, size_hint=(1, 1))
+
         try:
             animals = [
                 {
@@ -511,38 +514,40 @@ class WildAnimalsScreen(Screen):
             animals = []
 
         for animal in animals:
-            frame_layout = FloatLayout(size_hint=(None, None), size=(dp(320), dp(520)))
+            frame_layout = FloatLayout(size_hint=(1, 1))
 
             img = Image(
                 source=resource_find(f'assets/images/animals/{animal["image"]}'),
                 size_hint=(None, None),
                 size=(dp(300), dp(400)),
-                pos_hint={'x': 0, 'top': 1},
+                pos_hint={'center_x': 0.5, 'center_y': 0.5},
                 allow_stretch=True,
                 keep_ratio=False
-            )
+    )
             frame_layout.add_widget(img)
 
+    # Arabic audio button
             ar_button = Button(
-                size_hint=(None, None),
-                size=(dp(100), dp(100)),
-                pos_hint={'right': 1.2, 'center_y': 0.35},
-                background_normal='',
-                background_down='',
-                background_color=(0, 0, 0, 0)
-            )
+               size_hint=(None, None),
+               size=(dp(100), dp(100)),
+               pos_hint={'right': 1.2, 'center_y': 0.35},
+               background_normal='',
+               background_down='',
+               background_color=(0, 0, 0, 0)
+    )
             frame_layout.add_widget(ar_button)
 
             ar_icon = Image(
-                source='assets/images/icon/speaker.png',
-                size_hint=(None, None),
-                size=(dp(100), dp(100)),
-                pos_hint={'right': 1.2, 'center_y': 0.35},
-                allow_stretch=False,
-                keep_ratio=True
-            )
+              source='assets/images/icon/speaker.png',
+              size_hint=(None, None),
+              size=(dp(100), dp(100)),
+              pos_hint={'right': 1.2, 'center_y': 0.35},
+              allow_stretch=False,
+              keep_ratio=True
+    )
             frame_layout.add_widget(ar_icon)
 
+    # French audio button
             fr_button = Button(
                 size_hint=(None, None),
                 size=(dp(100), dp(100)),
@@ -563,13 +568,15 @@ class WildAnimalsScreen(Screen):
             )
             frame_layout.add_widget(fr_icon)
 
+    # Bind audio buttons to play audio
             ar_button.bind(on_press=lambda instance, audio=animal["audio_ar"]: self.play_audio(audio))
             fr_button.bind(on_press=lambda instance, audio=animal["audio_fr"]: self.play_audio(audio))
-
-            horizontal_layout.add_widget(frame_layout)
-
-        scroll_view.add_widget(horizontal_layout)
-        self.add_widget(scroll_view)
+        
+            # Add the frame layout to the carousel
+            carousel.add_widget(frame_layout)
+        
+        # Add the carousel to your parent widget
+        self.add_widget(carousel)
 
         # Back button
         self.back_button = CustomButton(
