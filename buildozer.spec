@@ -16,7 +16,6 @@ fullscreen = 1
 android.permissions = READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
 android.ndk_path = /home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c
 android.sdk_path = /home/myapp/Android/Sdk
-gles = 2  # Use OpenGL ES 2.0
 
 
 [buildozer]

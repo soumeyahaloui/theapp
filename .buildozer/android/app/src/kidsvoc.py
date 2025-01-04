@@ -602,21 +602,11 @@ class MyApp(App):
         Window.size = (400, 720)
         sm = ScreenManager()
         sm.language = 'Français'
-
-        # Add screens
         sm.add_widget(FirstScreen(name='first'))
         sm.add_widget(SecondScreen(name='second'))
         sm.add_widget(AnimalCategoryScreen(name='animal_categories'))
         sm.add_widget(WildAnimalsScreen(name='wild_animals'))
-
-        # Schedule a layout refresh after building
-        from kivy.clock import Clock
-        Clock.schedule_once(lambda dt: self.refresh_layout(sm))
-
         return sm
 
-    def refresh_layout(self, sm):
-        # Refresh layout for the entire ScreenManager
-        sm.do_layout()
-        for screen in sm.screens:
-            screen.do_layout()
+if __name__ == '__main__':
+    MyApp().run()
