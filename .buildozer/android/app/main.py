@@ -10,8 +10,8 @@ Config.set('graphics', 'width', str(Window.width))
 Config.set('graphics', 'height', str(Window.height))
 Config.write()
 
-Window.fullscreen = True  # Use the full screen of the device
-Window.size = (Window.width, Window.height) 
+Window.size = (400, 720)  # Set window size explicitly
+
 
 from kidsvoc import MyApp
 

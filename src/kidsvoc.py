@@ -521,7 +521,7 @@ class WildAnimalsScreen(Screen):
             img = Image(
                 source=resource_find(f'assets/images/animals/{animal["image"]}'),
                 size_hint=(None, None),
-                size=(dp(300), dp(400)),
+                size=(dp(400), dp(715)),
                 pos_hint={'center_x': 0.5, 'center_y': 0.5},
                 allow_stretch=True,
                 keep_ratio=False
