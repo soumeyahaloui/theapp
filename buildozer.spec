@@ -19,6 +19,7 @@ android.ndk_path = /home/myapp/Desktop/kidsvoc/.buildozer/android/platform/andro
 android.sdk_path = /home/myapp/Android/Sdk
 
 
+
 [buildozer]
 log_level = 2
 warn_on_root = 1
