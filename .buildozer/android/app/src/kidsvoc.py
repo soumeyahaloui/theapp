@@ -19,6 +19,8 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.graphics import Color, RoundedRectangle
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.carousel import Carousel
+from kivy.clock import Clock
+
 
 
 
@@ -602,9 +604,13 @@ class WildAnimalsScreen(Screen):
         else:
             print(f"Failed to load sound: {audio_file}")
 
+def on_window_resize(instance, value):
+    print(f"Window resized: {Window.size}")
 
 class MyApp(App):
     def build(self):
+        Window.bind(on_size=on_window_resize)
+
         self.icon = resource_find('assets/images/icon/appkidicon.png')
         Window.size = (400, 720)
         sm = ScreenManager()
@@ -613,6 +619,8 @@ class MyApp(App):
         sm.add_widget(SecondScreen(name='second'))
         sm.add_widget(AnimalCategoryScreen(name='animal_categories'))
         sm.add_widget(WildAnimalsScreen(name='wild_animals'))
+
+        Clock.schedule_once(lambda dt: setattr(sm, 'current', 'first'), 0.5)
         return sm
 
 if __name__ == '__main__':

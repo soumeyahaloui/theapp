@@ -5,12 +5,13 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 from kivy.config import Config
 from kivy.core.window import Window
 
-Config.set('graphics', 'resizable', False)
-Config.set('graphics', 'width', '400')
-Config.set('graphics', 'height', '720')
+Config.set('graphics', 'resizable', True)
+Config.set('graphics', 'width', str(Window.width))
+Config.set('graphics', 'height', str(Window.height))
 Config.write()
 
-Window.size = (400, 720)
+Window.fullscreen = True  # Use the full screen of the device
+Window.size = (Window.width, Window.height) 
 
 from kidsvoc import MyApp
 
