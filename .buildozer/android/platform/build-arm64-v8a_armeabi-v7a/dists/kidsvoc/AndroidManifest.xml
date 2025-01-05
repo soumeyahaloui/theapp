@@ -58,6 +58,7 @@
         
 
         
+        <meta-data android:name="android.max_aspect" android:value="2.1"/>
         <meta-data android:name="wakelock" android:value="0"/>
 
         <activity android:name="org.kivy.android.PythonActivity"

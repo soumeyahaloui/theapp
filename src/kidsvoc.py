@@ -620,7 +620,8 @@ class MyApp(App):
         sm.add_widget(AnimalCategoryScreen(name='animal_categories'))
         sm.add_widget(WildAnimalsScreen(name='wild_animals'))
 
-        Clock.schedule_once(lambda dt: setattr(sm, 'current', 'first'), 0.5)
+        Clock.schedule_once(lambda dt: setattr(sm, 'current', 'first'), 1.0)
+
         return sm
 
 if __name__ == '__main__':
