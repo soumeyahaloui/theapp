@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "org.example.kidsvoc-merged_res-4:/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "2,4,3,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,185,100,237",
+                        "endColumns": "44,51,84,42",
+                        "endOffsets": "95,232,180,275"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,100,152,237",
+                        "endColumns": "44,51,84,42",
+                        "endOffsets": "95,147,232,275"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -532,43 +532,23 @@ class WildAnimalsScreen(Screen):
             ar_button = Button(
                size_hint=(None, None),
                size=(dp(100), dp(100)),
-               pos_hint={'right': 1.2, 'center_y': 0.35},
+               pos_hint={'right': 0.65, 'center_y': 0.12},
                background_normal='',
                background_down='',
                background_color=(0, 0, 0, 0)
     )
             frame_layout.add_widget(ar_button)
 
-            ar_icon = Image(
-              source='assets/images/icon/speaker.png',
-              size_hint=(None, None),
-              size=(dp(100), dp(100)),
-              pos_hint={'right': 1.2, 'center_y': 0.35},
-              allow_stretch=False,
-              keep_ratio=True
-    )
-            frame_layout.add_widget(ar_icon)
-
     # French audio button
             fr_button = Button(
                 size_hint=(None, None),
                 size=(dp(100), dp(100)),
-                pos_hint={'right': 1.2, 'center_y': 0.62},
+                pos_hint={'right': 0.65, 'center_y': 0.42},
                 background_normal='',
                 background_down='',
                 background_color=(0, 0, 0, 0)
             )
             frame_layout.add_widget(fr_button)
-
-            fr_icon = Image(
-                source='assets/images/icon/speaker.png',
-                size_hint=(None, None),
-                size=(dp(100), dp(100)),
-                pos_hint={'right': 1.2, 'center_y': 0.62},
-                allow_stretch=False,
-                keep_ratio=True
-            )
-            frame_layout.add_widget(fr_icon)
 
     # Bind audio buttons to play audio
             ar_button.bind(on_press=lambda instance, audio=animal["audio_ar"]: self.play_audio(audio))

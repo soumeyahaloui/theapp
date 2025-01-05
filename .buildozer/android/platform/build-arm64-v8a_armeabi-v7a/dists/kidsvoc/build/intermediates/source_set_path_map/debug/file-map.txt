@@ -1,0 +1,7 @@
+org.example.kidsvoc-pngs-0 /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/build/generated/res/pngs/debug
+org.example.kidsvoc-resValues-1 /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/build/generated/res/resValues/debug
+org.example.kidsvoc-packageDebugResources-2 /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+org.example.kidsvoc-packageDebugResources-3 /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+org.example.kidsvoc-merged_res-4 /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/build/intermediates/merged_res/debug
+org.example.kidsvoc-debug-5 /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/src/debug/res
+org.example.kidsvoc-main-6 /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/src/main/res
