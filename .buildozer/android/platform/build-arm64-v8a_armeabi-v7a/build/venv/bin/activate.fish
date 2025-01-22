@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/venv"
+set -gx VIRTUAL_ENV "/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

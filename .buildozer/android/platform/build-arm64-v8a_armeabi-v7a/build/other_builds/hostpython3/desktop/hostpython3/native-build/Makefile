@@ -29,10 +29,10 @@ MODLIBS=           $(LOCALMODLIBS) $(BASEMODLIBS)
 
 # === Variables set by configure
 VERSION=	3.11
-srcdir=		/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3
-VPATH=		/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3
-abs_srcdir=	/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3
-abs_builddir=	/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build
+srcdir=		/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3
+VPATH=		/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3
+abs_srcdir=	/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3
+abs_builddir=	/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build
 
 
 CC=		gcc
@@ -319,7 +319,9 @@ MODULE_BINASCII_LDFLAGS=-lz
 MODULE__BZ2_STATE=yes
 MODULE__BZ2_CFLAGS=
 MODULE__BZ2_LDFLAGS=-lbz2
-MODULE__LZMA_STATE=missing
+MODULE__LZMA_STATE=yes
+MODULE__LZMA_CFLAGS=
+MODULE__LZMA_LDFLAGS=-llzma 
 MODULE__SSL_STATE=yes
 MODULE__SSL_CFLAGS=
 MODULE__SSL_LDFLAGS=  -lssl -lcrypto 
@@ -399,7 +401,7 @@ BUILDPYTHON=	python$(BUILDEXE)
 
 HOSTRUNNER= 
 
-PYTHON_FOR_REGEN?=python3.10
+PYTHON_FOR_REGEN?=python3.9
 UPDATE_FILE=$(PYTHON_FOR_REGEN) $(srcdir)/Tools/scripts/update_file.py
 PYTHON_FOR_BUILD=./$(BUILDPYTHON) -E
 # Single-platform builds depend on $(BUILDPYTHON). Cross builds use an

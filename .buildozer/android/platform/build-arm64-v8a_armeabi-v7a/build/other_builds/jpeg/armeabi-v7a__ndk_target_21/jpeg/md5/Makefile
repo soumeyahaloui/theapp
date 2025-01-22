@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg
+CMAKE_SOURCE_DIR = /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg
+CMAKE_BINARY_DIR = /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,14 +142,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(CMAKE_COMMAND) -E cmake_progress_start /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg/CMakeFiles /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg/md5//CMakeFiles/progress.marks
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 md5/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg/CMakeFiles 0
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(CMAKE_COMMAND) -E cmake_progress_start /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg/CMakeFiles /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg/md5//CMakeFiles/progress.marks
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 md5/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 md5/clean
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 md5/clean
 .PHONY : clean
 
 # The main clean target
@@ -158,22 +158,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 md5/preinstall
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 md5/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 md5/preinstall
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 md5/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 md5/CMakeFiles/md5cmp.dir/rule:
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 md5/CMakeFiles/md5cmp.dir/rule
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 md5/CMakeFiles/md5cmp.dir/rule
 .PHONY : md5/CMakeFiles/md5cmp.dir/rule
 
 # Convenience name for target.
@@ -182,7 +182,7 @@ md5cmp: md5/CMakeFiles/md5cmp.dir/rule
 
 # fast build rule for target.
 md5cmp/fast:
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/build
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/build
 .PHONY : md5cmp/fast
 
 md5.o: md5.c.o
@@ -190,7 +190,7 @@ md5.o: md5.c.o
 
 # target to build an object file
 md5.c.o:
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5.c.o
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5.c.o
 .PHONY : md5.c.o
 
 md5.i: md5.c.i
@@ -198,7 +198,7 @@ md5.i: md5.c.i
 
 # target to preprocess a source file
 md5.c.i:
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5.c.i
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5.c.i
 .PHONY : md5.c.i
 
 md5.s: md5.c.s
@@ -206,7 +206,7 @@ md5.s: md5.c.s
 
 # target to generate assembly for a file
 md5.c.s:
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5.c.s
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5.c.s
 .PHONY : md5.c.s
 
 md5cmp.o: md5cmp.c.o
@@ -214,7 +214,7 @@ md5cmp.o: md5cmp.c.o
 
 # target to build an object file
 md5cmp.c.o:
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5cmp.c.o
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5cmp.c.o
 .PHONY : md5cmp.c.o
 
 md5cmp.i: md5cmp.c.i
@@ -222,7 +222,7 @@ md5cmp.i: md5cmp.c.i
 
 # target to preprocess a source file
 md5cmp.c.i:
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5cmp.c.i
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5cmp.c.i
 .PHONY : md5cmp.c.i
 
 md5cmp.s: md5cmp.c.s
@@ -230,7 +230,7 @@ md5cmp.s: md5cmp.c.s
 
 # target to generate assembly for a file
 md5cmp.c.s:
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5cmp.c.s
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5cmp.c.s
 .PHONY : md5cmp.c.s
 
 md5hl.o: md5hl.c.o
@@ -238,7 +238,7 @@ md5hl.o: md5hl.c.o
 
 # target to build an object file
 md5hl.c.o:
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5hl.c.o
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5hl.c.o
 .PHONY : md5hl.c.o
 
 md5hl.i: md5hl.c.i
@@ -246,7 +246,7 @@ md5hl.i: md5hl.c.i
 
 # target to preprocess a source file
 md5hl.c.i:
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5hl.c.i
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5hl.c.i
 .PHONY : md5hl.c.i
 
 md5hl.s: md5hl.c.s
@@ -254,7 +254,7 @@ md5hl.s: md5hl.c.s
 
 # target to generate assembly for a file
 md5hl.c.s:
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5hl.c.s
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(MAKE) $(MAKESILENT) -f md5/CMakeFiles/md5cmp.dir/build.make md5/CMakeFiles/md5cmp.dir/md5hl.c.s
 .PHONY : md5hl.c.s
 
 # Help Target
@@ -291,6 +291,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -1,5 +1,5 @@
 md5/CMakeFiles/md5cmp.dir/md5.c.o: \
-  /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg/md5/md5.c \
+  /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg/md5/md5.c \
   /home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/string.h \
   /home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/sys/cdefs.h \
   /home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/android/versioning.h \
@@ -27,4 +27,4 @@ md5/CMakeFiles/md5cmp.dir/md5.c.o: \
   /home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/asm-generic/posix_types.h \
   /home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/bits/pthread_types.h \
   /home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/bits/fortify/string.h \
-  /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg/md5/md5.h
+  /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg/md5/md5.h

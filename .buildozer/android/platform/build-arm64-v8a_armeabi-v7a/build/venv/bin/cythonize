@@ -1,4 +1,4 @@
-#!/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/venv/bin/python
+#!/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

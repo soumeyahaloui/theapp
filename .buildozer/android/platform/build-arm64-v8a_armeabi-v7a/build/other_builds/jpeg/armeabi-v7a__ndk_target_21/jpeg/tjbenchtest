@@ -21,9 +21,9 @@ runme()
 
 EXT=bmp
 IMAGES="vgl_5674_0098.${EXT} vgl_6434_0018a.${EXT} vgl_6548_0026a.${EXT} nightshot_iso_100.${EXT}"
-IMGDIR=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg/testimages
+IMGDIR=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg/testimages
 OUTDIR=`mktemp -d /tmp/__tjbenchtest_output.XXXXXX`
-EXEDIR=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg
+EXEDIR=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg
 BMPARG=
 NSARG=
 YUVARG=

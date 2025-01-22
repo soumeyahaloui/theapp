@@ -423,18 +423,18 @@ $config_headers
 
 Report bugs to <https://github.com/python/cpython/issues/>."
 
-ac_cs_config="'--host=arm-linux-androideabi' '--build=x86_64-pc-linux-gnu' '--enable-shared' '--enable-ipv6' 'ac_cv_file__dev_ptmx=yes' 'ac_cv_file__dev_ptc=no' '--without-ensurepip' 'ac_cv_little_endian_double=yes' 'ac_cv_header_sys_eventfd_h=no' '--prefix=/usr/local' '--exec-prefix=/usr/local' '--enable-loadable-sqlite-extensions' '--with-build-python=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build/python3' '--with-openssl=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/arm64-v8a__ndk_target_21/openssl1.1' '--with-openssl=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1' 'build_alias=x86_64-pc-linux-gnu' 'host_alias=arm-linux-androideabi' 'PKG_CONFIG_PATH=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi' 'CC=/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang' 'CFLAGS=-fPIC -DANDROID' 'LDFLAGS=  -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/libs_collections/kidsvoc/armeabi-v7a -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3/obj/local/armeabi-v7a -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/.libs -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1 -L/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/21' 'LIBS= -lsqlite3 -lffi -lcrypto1.1 -lssl1.1 -lz' 'CPPFLAGS=-DANDROID -I/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/python-installs/kidsvoc/armeabi-v7a/include/python3.1 -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3 -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/include -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1/include -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1/include/internal -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1/include/openssl -I/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include'"
+ac_cs_config="'--host=arm-linux-androideabi' '--build=x86_64-pc-linux-gnu' '--enable-shared' '--enable-ipv6' 'ac_cv_file__dev_ptmx=yes' 'ac_cv_file__dev_ptc=no' '--without-ensurepip' 'ac_cv_little_endian_double=yes' 'ac_cv_header_sys_eventfd_h=no' '--prefix=/usr/local' '--exec-prefix=/usr/local' '--enable-loadable-sqlite-extensions' '--with-build-python=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build/python3' '--with-openssl=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/arm64-v8a__ndk_target_21/openssl1.1' '--with-openssl=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1' 'build_alias=x86_64-pc-linux-gnu' 'host_alias=arm-linux-androideabi' 'PKG_CONFIG_PATH=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi' 'CC=/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang' 'CFLAGS=-fPIC -DANDROID' 'LDFLAGS=  -L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/libs_collections/kidsvoc/armeabi-v7a -L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3/obj/local/armeabi-v7a -L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/.libs -L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1 -L/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/21' 'LIBS= -lsqlite3 -lffi -lcrypto1.1 -lssl1.1 -lz' 'CPPFLAGS=-DANDROID -I/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include -I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/python-installs/kidsvoc/armeabi-v7a/include/python3.1 -I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3 -I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/include -I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1/include -I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1/include/internal -I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1/include/openssl -I/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include'"
 ac_cs_version="\
 python config.status 3.11
-configured by /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/python3/armeabi-v7a__ndk_target_21/python3/configure, generated by GNU Autoconf 2.69,
+configured by /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/python3/armeabi-v7a__ndk_target_21/python3/configure, generated by GNU Autoconf 2.69,
   with options \"$ac_cs_config\"
 
 Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/python3/armeabi-v7a__ndk_target_21/python3/android-build'
-srcdir='/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/python3/armeabi-v7a__ndk_target_21/python3'
+ac_pwd='/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/python3/armeabi-v7a__ndk_target_21/python3/android-build'
+srcdir='/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/python3/armeabi-v7a__ndk_target_21/python3'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/usr/bin/mkdir -p'
 test -n "$AWK" || AWK=awk
@@ -514,7 +514,7 @@ if $ac_cs_silent; then
 fi
 
 if $ac_cs_recheck; then
-  set X /bin/bash '/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/python3/armeabi-v7a__ndk_target_21/python3/configure'  '--host=arm-linux-androideabi' '--build=x86_64-pc-linux-gnu' '--enable-shared' '--enable-ipv6' 'ac_cv_file__dev_ptmx=yes' 'ac_cv_file__dev_ptc=no' '--without-ensurepip' 'ac_cv_little_endian_double=yes' 'ac_cv_header_sys_eventfd_h=no' '--prefix=/usr/local' '--exec-prefix=/usr/local' '--enable-loadable-sqlite-extensions' '--with-build-python=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build/python3' '--with-openssl=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/arm64-v8a__ndk_target_21/openssl1.1' '--with-openssl=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1' 'build_alias=x86_64-pc-linux-gnu' 'host_alias=arm-linux-androideabi' 'PKG_CONFIG_PATH=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi' 'CC=/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang' 'CFLAGS=-fPIC -DANDROID' 'LDFLAGS=  -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/libs_collections/kidsvoc/armeabi-v7a -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3/obj/local/armeabi-v7a -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/.libs -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1 -L/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/21' 'LIBS= -lsqlite3 -lffi -lcrypto1.1 -lssl1.1 -lz' 'CPPFLAGS=-DANDROID -I/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/python-installs/kidsvoc/armeabi-v7a/include/python3.1 -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3 -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/include -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1/include -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1/include/internal -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1/include/openssl -I/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include' $ac_configure_extra_args --no-create --no-recursion
+  set X /bin/bash '/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/python3/armeabi-v7a__ndk_target_21/python3/configure'  '--host=arm-linux-androideabi' '--build=x86_64-pc-linux-gnu' '--enable-shared' '--enable-ipv6' 'ac_cv_file__dev_ptmx=yes' 'ac_cv_file__dev_ptc=no' '--without-ensurepip' 'ac_cv_little_endian_double=yes' 'ac_cv_header_sys_eventfd_h=no' '--prefix=/usr/local' '--exec-prefix=/usr/local' '--enable-loadable-sqlite-extensions' '--with-build-python=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build/python3' '--with-openssl=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/arm64-v8a__ndk_target_21/openssl1.1' '--with-openssl=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1' 'build_alias=x86_64-pc-linux-gnu' 'host_alias=arm-linux-androideabi' 'PKG_CONFIG_PATH=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi' 'CC=/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang' 'CFLAGS=-fPIC -DANDROID' 'LDFLAGS=  -L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/libs_collections/kidsvoc/armeabi-v7a -L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3/obj/local/armeabi-v7a -L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/.libs -L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1 -L/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/21' 'LIBS= -lsqlite3 -lffi -lcrypto1.1 -lssl1.1 -lz' 'CPPFLAGS=-DANDROID -I/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include -I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/python-installs/kidsvoc/armeabi-v7a/include/python3.1 -I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3 -I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/include -I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1/include -I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1/include/internal -I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1/include/openssl -I/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include' $ac_configure_extra_args --no-create --no-recursion
   shift
   $as_echo "running CONFIG_SHELL=/bin/bash $*" >&6
   CONFIG_SHELL='/bin/bash'
@@ -702,17 +702,19 @@ S["MODULE_BLOCK"]="MODULE__IO_STATE=yes\n"\
 "MODULE_BINASCII_CFLAGS=-DUSE_ZLIB_CRC32 \n"\
 "MODULE_BINASCII_LDFLAGS=-lz \n"\
 "MODULE__BZ2_STATE=missing\n"\
-"MODULE__LZMA_STATE=missing\n"\
+"MODULE__LZMA_STATE=yes\n"\
+"MODULE__LZMA_CFLAGS=\n"\
+"MODULE__LZMA_LDFLAGS=-llzma \n"\
 "MODULE__SSL_STATE=yes\n"\
-"MODULE__SSL_CFLAGS=-I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_"\
-"target_21/openssl1.1/include\n"\
-"MODULE__SSL_LDFLAGS=-L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk"\
-"_target_21/openssl1.1/lib  -lssl -lcrypto\n"\
+"MODULE__SSL_CFLAGS=-I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk"\
+"_target_21/openssl1.1/include\n"\
+"MODULE__SSL_LDFLAGS=-L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__nd"\
+"k_target_21/openssl1.1/lib  -lssl -lcrypto\n"\
 "MODULE__HASHLIB_STATE=yes\n"\
-"MODULE__HASHLIB_CFLAGS=-I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__"\
-"ndk_target_21/openssl1.1/include\n"\
-"MODULE__HASHLIB_LDFLAGS=-L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a_"\
-"_ndk_target_21/openssl1.1/lib   -lcrypto\n"\
+"MODULE__HASHLIB_CFLAGS=-I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a_"\
+"_ndk_target_21/openssl1.1/include\n"\
+"MODULE__HASHLIB_LDFLAGS=-L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a"\
+"__ndk_target_21/openssl1.1/lib   -lcrypto\n"\
 "MODULE__TESTCAPI_STATE=yes\n"\
 "MODULE__TESTCLINIC_STATE=yes\n"\
 "MODULE__TESTINTERNALCAPI_STATE=yes\n"\
@@ -749,8 +751,8 @@ S["MODULE__HASHLIB_FALSE"]="#"
 S["MODULE__HASHLIB_TRUE"]=""
 S["MODULE__SSL_FALSE"]="#"
 S["MODULE__SSL_TRUE"]=""
-S["MODULE__LZMA_FALSE"]=""
-S["MODULE__LZMA_TRUE"]="#"
+S["MODULE__LZMA_FALSE"]="#"
+S["MODULE__LZMA_TRUE"]=""
 S["MODULE__BZ2_FALSE"]=""
 S["MODULE__BZ2_TRUE"]="#"
 S["MODULE_BINASCII_FALSE"]="#"
@@ -885,11 +887,11 @@ S["TEST_MODULES"]="yes"
 S["LIBB2_LIBS"]=""
 S["LIBB2_CFLAGS"]=""
 S["OPENSSL_RPATH"]=""
-S["OPENSSL_LDFLAGS"]="-L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1."\
-"1/lib"
+S["OPENSSL_LDFLAGS"]="-L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1"\
+".1/lib"
 S["OPENSSL_LIBS"]="-lssl -lcrypto"
-S["OPENSSL_INCLUDES"]="-I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1."\
-"1/include"
+S["OPENSSL_INCLUDES"]="-I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1"\
+".1/include"
 S["ENSUREPIP"]="no"
 S["SRCDIRS"]="  Modules   Modules/_blake2   Modules/_ctypes   Modules/_decimal   Modules/_decimal/libmpdec   Modules/_io   Modules/_multiprocessing   Modules/_sha"\
 "3   Modules/_sqlite   Modules/_sre   Modules/_xxtestfuzz   Modules/cjkcodecs   Modules/expat   Objects   Parser   Programs   Python   Python/frozen_"\
@@ -914,7 +916,7 @@ S["HAVE_GETHOSTBYNAME_R_6_ARG"]=""
 S["LIBCRYPT_LIBS"]="-lcrypt "
 S["LIBCRYPT_CFLAGS"]=""
 S["LIBOBJS"]=""
-S["LIBLZMA_LIBS"]=""
+S["LIBLZMA_LIBS"]="-llzma "
 S["LIBLZMA_CFLAGS"]=""
 S["BZIP2_LIBS"]=""
 S["BZIP2_CFLAGS"]=""
@@ -943,8 +945,8 @@ S["LIBNSL_CFLAGS"]=""
 S["LIBMPDEC_INTERNAL"]="$(LIBMPDEC_HEADERS) $(LIBMPDEC_A)"
 S["LIBMPDEC_LDFLAGS"]="-lm $(LIBMPDEC_A)"
 S["LIBMPDEC_CFLAGS"]="-I$(srcdir)/Modules/_decimal/libmpdec -DCONFIG_32=1 -DANSI=1"
-S["LIBFFI_INCLUDEDIR"]="/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/inclu"\
-"de"
+S["LIBFFI_INCLUDEDIR"]="/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/incl"\
+"ude"
 S["LIBEXPAT_INTERNAL"]="$(LIBEXPAT_HEADERS) $(LIBEXPAT_A)"
 S["LIBEXPAT_LDFLAGS"]="-lm $(LIBEXPAT_A)"
 S["LIBEXPAT_CFLAGS"]="-I$(srcdir)/Modules/expat"
@@ -1034,20 +1036,20 @@ S["OBJEXT"]="o"
 S["EXEEXT"]=""
 S["ac_ct_CC"]=""
 S["CPPFLAGS"]="-DANDROID -I/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include -I/ho"\
-"me/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/python-installs/kidsvoc/armeabi-v7a/include/python3.1 -I/home/"\
-"myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3 -I/home/m"\
-"yapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/include -I/h"\
-"ome/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1/in"\
-"clude -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/ope"\
-"nssl1.1/include/internal -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a"\
-"__ndk_target_21/openssl1.1/include/openssl -I/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux"\
-"-x86_64/sysroot/usr/include"
-S["LDFLAGS"]="  -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/libs_collections/kidsvoc/armeabi-v7a -L/home/myapp/Desk"\
-"top/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3/obj/local/armeabi-v"\
-"7a -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/"\
-".libs -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/ope"\
-"nssl1.1 -L/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-a"\
-"ndroideabi/21 -march=armv7-a -Wl,--fix-cortex-a8"
+"me/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/python-installs/kidsvoc/armeabi-v7a/include/python3.1 -I/home"\
+"/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3 -I/home"\
+"/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/include -"\
+"I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1."\
+"1/include -I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_2"\
+"1/openssl1.1/include/internal -I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armea"\
+"bi-v7a__ndk_target_21/openssl1.1/include/openssl -I/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt"\
+"/linux-x86_64/sysroot/usr/include"
+S["LDFLAGS"]="  -L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/libs_collections/kidsvoc/armeabi-v7a -L/home/hadeel/De"\
+"sktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3/obj/local/armeabi"\
+"-v7a -L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libf"\
+"fi/.libs -L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21"\
+"/openssl1.1 -L/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-lin"\
+"ux-androideabi/21 -march=armv7-a -Wl,--fix-cortex-a8"
 S["CFLAGS"]="-fPIC -DANDROID"
 S["CC"]="/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang"
 S["EXPORT_MACOSX_DEPLOYMENT_TARGET"]="#"
@@ -1071,45 +1073,45 @@ S["LIPO_32BIT_FLAGS"]=""
 S["ARCH_RUN_32BIT"]=""
 S["UNIVERSALSDK"]=""
 S["PKG_CONFIG_LIBDIR"]=""
-S["PKG_CONFIG_PATH"]="/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi"
+S["PKG_CONFIG_PATH"]="/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi"
 S["PKG_CONFIG"]="/usr/bin/pkg-config"
 S["CONFIG_ARGS"]=" '--host=arm-linux-androideabi' '--build=x86_64-pc-linux-gnu' '--enable-shared' '--enable-ipv6' 'ac_cv_file__dev_ptmx=yes' 'ac_cv_file__dev_ptc=no' "\
 "'--without-ensurepip' 'ac_cv_little_endian_double=yes' 'ac_cv_header_sys_eventfd_h=no' '--prefix=/usr/local' '--exec-prefix=/usr/local' '--enable-lo"\
-"adable-sqlite-extensions' '--with-build-python=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds"\
-"/hostpython3/desktop/hostpython3/native-build/python3' '--with-openssl=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeab"\
-"i-v7a/build/other_builds/openssl/arm64-v8a__ndk_target_21/openssl1.1' '--with-openssl=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-a"\
-"rm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1' 'build_alias=x86_64-pc-linux-gnu' 'host_alias=arm-linux-andro"\
-"ideabi' 'PKG_CONFIG_PATH=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__n"\
-"dk_target_21/libffi' 'CC=/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-l"\
-"inux-androideabi21-clang' 'CFLAGS=-fPIC -DANDROID' 'LDFLAGS=  -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/b"\
-"uild/libs_collections/kidsvoc/armeabi-v7a -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/sq"\
-"lite3/armeabi-v7a__ndk_target_21/sqlite3/obj/local/armeabi-v7a -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/"\
-"build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/.libs -L/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v"\
-"7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1 -L/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolc"\
-"hains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/21' 'LIBS= -lsqlite3 -lffi -lcrypto1.1 -lssl1.1 -lz' 'CPPFLAGS=-DANDROID -I/h"\
-"ome/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include -I/home/myapp/Deskt"\
-"op/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/python-installs/kidsvoc/armeabi-v7a/include/python3.1 -I/home/myapp/Desktop/"\
-"theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3 -I/home/myapp/Desktop/t"\
-"heapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/include -I/home/myapp/Desk"\
-"top/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1/include -I/home/"\
-"myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1/includ"\
-"e/internal -I/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_2"\
-"1/openssl1.1/include/openssl -I/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroo"\
-"t/usr/include'"
+"adable-sqlite-extensions' '--with-build-python=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_build"\
+"s/hostpython3/desktop/hostpython3/native-build/python3' '--with-openssl=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_arme"\
+"abi-v7a/build/other_builds/openssl/arm64-v8a__ndk_target_21/openssl1.1' '--with-openssl=/home/hadeel/Desktop/theapp/.buildozer/android/platform/buil"\
+"d-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1' 'build_alias=x86_64-pc-linux-gnu' 'host_alias=arm-linux-an"\
+"droideabi' 'PKG_CONFIG_PATH=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7"\
+"a__ndk_target_21/libffi' 'CC=/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/bin/armv"\
+"7a-linux-androideabi21-clang' 'CFLAGS=-fPIC -DANDROID' 'LDFLAGS=  -L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-"\
+"v7a/build/libs_collections/kidsvoc/armeabi-v7a -L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_bui"\
+"lds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3/obj/local/armeabi-v7a -L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armea"\
+"bi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/.libs -L/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_a"\
+"rmeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1 -L/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r2"\
+"7c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/21' 'LIBS= -lsqlite3 -lffi -lcrypto1.1 -lssl1.1 -lz' 'CPPFLAGS=-DANDR"\
+"OID -I/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include -I/home/had"\
+"eel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/python-installs/kidsvoc/armeabi-v7a/include/python3.1 -I/home/hadee"\
+"l/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3 -I/home/hadee"\
+"l/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi/include -I/home"\
+"/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1/incl"\
+"ude -I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/open"\
+"ssl1.1/include/internal -I/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a"\
+"__ndk_target_21/openssl1.1/include/openssl -I/home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c/toolchains/llvm/prebuilt/linux"\
+"-x86_64/sysroot/usr/include'"
 S["SOVERSION"]="1.0"
 S["VERSION"]="3.11"
-S["PYTHON_FOR_REGEN"]="/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build/p"\
-"ython3"
+S["PYTHON_FOR_REGEN"]="/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build/"\
+"python3"
 S["PYTHON_FOR_BUILD_DEPS"]=""
 S["FREEZE_MODULE_DEPS"]="$(FREEZE_MODULE_BOOTSTRAP_DEPS)"
 S["FREEZE_MODULE"]="$(FREEZE_MODULE_BOOTSTRAP)"
 S["FREEZE_MODULE_BOOTSTRAP_DEPS"]="$(srcdir)/Programs/_freeze_module.py"
 S["FREEZE_MODULE_BOOTSTRAP"]="$(PYTHON_FOR_FREEZE) $(srcdir)/Programs/_freeze_module.py"
-S["PYTHON_FOR_FREEZE"]="/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build/p"\
-"ython3"
+S["PYTHON_FOR_FREEZE"]="/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build/"\
+"python3"
 S["PYTHON_FOR_BUILD"]="_PYTHON_PROJECT_BASE=$(abs_builddir) _PYTHON_HOST_PLATFORM=$(_PYTHON_HOST_PLATFORM) PYTHONPATH=$(shell test -f pybuilddir.txt && echo $(abs_builddir"\
-")/`cat pybuilddir.txt`:)$(srcdir)/Lib _PYTHON_SYSCONFIGDATA_NAME=_sysconfigdata_$(ABIFLAGS)_$(MACHDEP)_$(MULTIARCH) /home/myapp/Desktop/theapp/.buil"\
-"dozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build/python3"
+")/`cat pybuilddir.txt`:)$(srcdir)/Lib _PYTHON_SYSCONFIGDATA_NAME=_sysconfigdata_$(ABIFLAGS)_$(MACHDEP)_$(MULTIARCH) /home/hadeel/Desktop/theapp/.bui"\
+"ldozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build/python3"
 S["host_os"]="linux-androideabi"
 S["host_vendor"]="unknown"
 S["host_cpu"]="arm"

@@ -8,10 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/arm64-v8a__ndk_target_21/jpeg/md5/md5.c" "CMakeFiles/tjunittest-static.dir/md5/md5.c.o" "gcc" "CMakeFiles/tjunittest-static.dir/md5/md5.c.o.d"
-  "/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/arm64-v8a__ndk_target_21/jpeg/md5/md5hl.c" "CMakeFiles/tjunittest-static.dir/md5/md5hl.c.o" "gcc" "CMakeFiles/tjunittest-static.dir/md5/md5hl.c.o.d"
-  "/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/arm64-v8a__ndk_target_21/jpeg/tjunittest.c" "CMakeFiles/tjunittest-static.dir/tjunittest.c.o" "gcc" "CMakeFiles/tjunittest-static.dir/tjunittest.c.o.d"
-  "/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/arm64-v8a__ndk_target_21/jpeg/tjutil.c" "CMakeFiles/tjunittest-static.dir/tjutil.c.o" "gcc" "CMakeFiles/tjunittest-static.dir/tjutil.c.o.d"
+  "/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/arm64-v8a__ndk_target_21/jpeg/md5/md5.c" "CMakeFiles/tjunittest-static.dir/md5/md5.c.o" "gcc" "CMakeFiles/tjunittest-static.dir/md5/md5.c.o.d"
+  "/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/arm64-v8a__ndk_target_21/jpeg/md5/md5hl.c" "CMakeFiles/tjunittest-static.dir/md5/md5hl.c.o" "gcc" "CMakeFiles/tjunittest-static.dir/md5/md5hl.c.o.d"
+  "/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/arm64-v8a__ndk_target_21/jpeg/tjunittest.c" "CMakeFiles/tjunittest-static.dir/tjunittest.c.o" "gcc" "CMakeFiles/tjunittest-static.dir/tjunittest.c.o.d"
+  "/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/arm64-v8a__ndk_target_21/jpeg/tjutil.c" "CMakeFiles/tjunittest-static.dir/tjutil.c.o" "gcc" "CMakeFiles/tjunittest-static.dir/tjutil.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -186,40 +186,40 @@
 /* #undef HAVE_CTERMID_R */
 
 /* Define if you have the 'filter' function. */
-#define HAVE_CURSES_FILTER 1
+/* #undef HAVE_CURSES_FILTER */
 
 /* Define to 1 if you have the <curses.h> header file. */
-#define HAVE_CURSES_H 1
+/* #undef HAVE_CURSES_H */
 
 /* Define if you have the 'has_key' function. */
-#define HAVE_CURSES_HAS_KEY 1
+/* #undef HAVE_CURSES_HAS_KEY */
 
 /* Define if you have the 'immedok' function. */
-#define HAVE_CURSES_IMMEDOK 1
+/* #undef HAVE_CURSES_IMMEDOK */
 
 /* Define if you have the 'is_pad' function. */
-#define HAVE_CURSES_IS_PAD 1
+/* #undef HAVE_CURSES_IS_PAD */
 
 /* Define if you have the 'is_term_resized' function. */
-#define HAVE_CURSES_IS_TERM_RESIZED 1
+/* #undef HAVE_CURSES_IS_TERM_RESIZED */
 
 /* Define if you have the 'resizeterm' function. */
-#define HAVE_CURSES_RESIZETERM 1
+/* #undef HAVE_CURSES_RESIZETERM */
 
 /* Define if you have the 'resize_term' function. */
-#define HAVE_CURSES_RESIZE_TERM 1
+/* #undef HAVE_CURSES_RESIZE_TERM */
 
 /* Define if you have the 'syncok' function. */
-#define HAVE_CURSES_SYNCOK 1
+/* #undef HAVE_CURSES_SYNCOK */
 
 /* Define if you have the 'typeahead' function. */
-#define HAVE_CURSES_TYPEAHEAD 1
+/* #undef HAVE_CURSES_TYPEAHEAD */
 
 /* Define if you have the 'use_env' function. */
-#define HAVE_CURSES_USE_ENV 1
+/* #undef HAVE_CURSES_USE_ENV */
 
 /* Define if you have the 'wchgat' function. */
-#define HAVE_CURSES_WCHGAT 1
+/* #undef HAVE_CURSES_WCHGAT */
 
 /* Define to 1 if you have the <db.h> header file. */
 /* #undef HAVE_DB_H */
@@ -819,7 +819,7 @@
 #define HAVE_NANOSLEEP 1
 
 /* Define to 1 if you have the <ncurses.h> header file. */
-#define HAVE_NCURSES_H 1
+/* #undef HAVE_NCURSES_H */
 
 /* Define to 1 if you have the <ndbm.h> header file. */
 /* #undef HAVE_NDBM_H */
@@ -1387,7 +1387,7 @@
 #define HAVE_TERMIOS_H 1
 
 /* Define to 1 if you have the <term.h> header file. */
-#define HAVE_TERM_H 1
+/* #undef HAVE_TERM_H */
 
 /* Define to 1 if you have the `timegm' function. */
 #define HAVE_TIMEGM 1
@@ -1523,7 +1523,7 @@
 #define MAJOR_IN_SYSMACROS 1
 
 /* Define if mvwdelch in curses.h is an expression. */
-#define MVWDELCH_IS_EXPRESSION 1
+/* #undef MVWDELCH_IS_EXPRESSION */
 
 /* Define to the address where bug reports for this package should be sent. */
 /* #undef PACKAGE_BUGREPORT */

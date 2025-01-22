@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg/rdjpgcom.c" "CMakeFiles/rdjpgcom.dir/rdjpgcom.c.o" "gcc" "CMakeFiles/rdjpgcom.dir/rdjpgcom.c.o.d"
+  "/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/jpeg/armeabi-v7a__ndk_target_21/jpeg/rdjpgcom.c" "CMakeFiles/rdjpgcom.dir/rdjpgcom.c.o" "gcc" "CMakeFiles/rdjpgcom.dir/rdjpgcom.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

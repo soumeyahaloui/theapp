@@ -1,4 +1,8 @@
 arabic-reshaper
-bidict
+certifi
+chardet
+idna
 kivy[base]
 python-bidi
+requests
+urllib3

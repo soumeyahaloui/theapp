@@ -1,14 +1,14 @@
-#Sun Jan 05 21:01:08 WEST 2025
+#Wed Jan 22 21:54:25 WEST 2025
 path.4=9/classes.dex
 path.3=5/classes.dex
 path.2=2/classes.dex
 path.1=10/classes.dex
 path.0=0/classes.dex
-base.4=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex
-base.3=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex
-base.2=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/build/intermediates/dex/debug/mergeProjectDexDebug/2/classes.dex
-base.1=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/build/intermediates/dex/debug/mergeProjectDexDebug/10/classes.dex
-base.0=/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.4=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex
+base.3=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex
+base.2=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/build/intermediates/dex/debug/mergeProjectDexDebug/2/classes.dex
+base.1=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/build/intermediates/dex/debug/mergeProjectDexDebug/10/classes.dex
+base.0=/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/kidsvoc/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
 renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex

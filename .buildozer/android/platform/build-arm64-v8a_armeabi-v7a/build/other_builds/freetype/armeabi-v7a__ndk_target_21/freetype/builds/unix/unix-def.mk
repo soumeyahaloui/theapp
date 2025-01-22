@@ -56,7 +56,7 @@ DISTCLEAN += $(OBJ_BUILD)/config.cache  \
 
 # Standard installation variables.
 #
-prefix       := /home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/freetype/armeabi-v7a__ndk_target_21/freetype
+prefix       := /home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/freetype/armeabi-v7a__ndk_target_21/freetype
 exec_prefix  := ${prefix}
 libdir       := ${exec_prefix}/lib
 bindir       := ${exec_prefix}/bin

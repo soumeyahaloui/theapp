@@ -188,7 +188,7 @@ func_exec_program ()
 
   if test -f "$progdir/$program"; then
     # Add our own library path to LD_LIBRARY_PATH
-    LD_LIBRARY_PATH="/home/myapp/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/png/arm64-v8a__ndk_target_21/png/.libs:$LD_LIBRARY_PATH"
+    LD_LIBRARY_PATH="/home/hadeel/Desktop/theapp/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/png/arm64-v8a__ndk_target_21/png/.libs:$LD_LIBRARY_PATH"
 
     # Some systems cannot cope with colon-terminated LD_LIBRARY_PATH
     # The second colon is a workaround for a bug in BeOS R4 sed
