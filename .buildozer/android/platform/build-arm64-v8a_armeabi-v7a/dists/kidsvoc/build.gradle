@@ -23,7 +23,7 @@ apply plugin: 'com.android.application'
 android {
     namespace 'org.example.kidsvoc'
     compileSdkVersion 31
-    buildToolsVersion '36.0.0-rc3'
+    buildToolsVersion '36.0.0-rc4'
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 31
