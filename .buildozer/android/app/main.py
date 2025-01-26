@@ -2,7 +2,7 @@ import sys
 import os
 from kivy.config import Config
 
-# Set screen size to match a typical Android device
+# Configure the screen size to simulate a typical Android device
 Config.set('graphics', 'width', '360')
 Config.set('graphics', 'height', '640')
 Config.set('graphics', 'resizable', False)
@@ -17,6 +17,6 @@ def main():
     app = MyApp()
     app.run()
 
-# Ensure that the main function is called only when this script is executed directly
+# Ensure the script runs only when executed directly
 if __name__ == '__main__':
     main()
