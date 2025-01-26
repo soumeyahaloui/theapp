@@ -24,19 +24,23 @@ def configure_app_window():
     Window.clearcolor = (1, 1, 1, 1)
 
     if platform == 'android':
-        Window.size = (Window.width, Window.height)  # Maintain full-screen sizing
-        Window.fullscreen = True  # Explicitly set to full-screen mode
-        Clock.schedule_once(lambda dt: Window.canvas.ask_update(), 0.1)
+        # Ensure fullscreen and enforce the correct window size
+        Clock.schedule_once(lambda dt: setattr(Window, "fullscreen", "auto"), 0.1)
+        Clock.schedule_once(lambda dt: setattr(Window, "size", (Window.width, Window.height)), 0.2)
 
+    Clock.schedule_once(lambda dt: Window.canvas.ask_update(), 0.3)
 
 class LoadingScreen(Screen):
     """A screen to display the loading image."""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        Clock.schedule_once(self.add_loading_image, 0.1)  # Delay loading the image
+
+    def add_loading_image(self, *args):
         self.add_widget(Image(source="assets/images/backgrounds/loading.png", allow_stretch=True, keep_ratio=False))
 
     def on_enter(self):
-        Clock.schedule_once(self.switch_to_main_app, 2.5)
+        Clock.schedule_once(self.switch_to_main_app, 5)
 
     def switch_to_main_app(self, *args):
         self.manager.current = "main_app"
