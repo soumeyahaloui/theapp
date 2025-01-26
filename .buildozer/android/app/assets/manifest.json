@@ -1,11 +1,23 @@
 {
   "audio": {
-    "ar": ["elephant_ar.mp3", "lion_ar.mp3", "monkey_ar.mp3", "tiger_ar.mp3"],
-    "fr": ["elephant_fr.mp3", "lion_fr.mp3", "monkey_fr.mp3", "tiger_fr.mp3"]
+    "ar": [
+      "1_ar.mp3", "2_ar.mp3", "3_ar.mp3", "4_ar.mp3", "5_ar.mp3",
+      "6_ar.mp3", "7_ar.mp3", "8_ar.mp3", "9_ar.mp3", "10_ar.mp3",
+      "11_ar.mp3", "12_ar.mp3", "13_ar.mp3", "14_ar.mp3", "15_ar.mp3"
+    ],
+    "fr": [
+      "1_fr.mp3", "2_fr.mp3", "3_fr.mp3", "4_fr.mp3", "5_fr.mp3",
+      "6_fr.mp3", "7_fr.mp3", "8_fr.mp3", "9_fr.mp3", "10_fr.mp3",
+      "11_fr.mp3", "12_fr.mp3", "13_fr.mp3", "14_fr.mp3", "15_fr.mp3"
+    ]
   },
   "images": {
     "icon": ["appkidicon.png"],
-    "animals": ["elephant.png", "lion.png", "monkey.png", "tiger.png"],
+    "animals": [
+      "1.png", "2.png", "3.png", "4.png", "5.png",
+      "6.png", "7.png", "8.png", "9.png", "10.png",
+      "11.png", "12.png", "13.png", "14.png", "15.png"
+    ],
     "backgrounds": ["wallpaperlogo.png", "purple.png"]
   }
-} 
+}

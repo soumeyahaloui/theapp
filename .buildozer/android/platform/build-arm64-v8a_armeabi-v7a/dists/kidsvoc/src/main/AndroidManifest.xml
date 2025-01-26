@@ -52,13 +52,14 @@
                  android:allowBackup="true"
                  
                  
-                 android:theme="@android:style/Theme.NoTitleBar"
+                 android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                  android:hardwareAccelerated="true"
                  android:extractNativeLibs="true" >
         
 
         
         <meta-data android:name="android.max_aspect" android:value="2.1"/>
+        <meta-data android:name="android.supportsRtl" android:value="true"/>
         <meta-data android:name="wakelock" android:value="0"/>
 
         <activity android:name="org.kivy.android.PythonActivity"
