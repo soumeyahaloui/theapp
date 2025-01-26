@@ -267,6 +267,108 @@ class FirstScreen(Screen):
             if hasattr(screen, 'update_language'):
                 screen.update_language(language)
 
+class SecondScreen(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.back_button = None
+        self.grid = None
+        self.scroll_view = None
+        self.language = 'Français'  # Default language
+        self.init_ui()
+
+    def init_ui(self):
+        self.add_widget(Image(
+            source=resource_find('assets/images/backgrounds/wallpaperlogo.png'),
+            allow_stretch=True, keep_ratio=False
+        ))
+        layout = FloatLayout()
+        self.scroll_view = ScrollView(
+            size_hint=(None, None),
+            size=(dp(320), dp(520)),
+            bar_width=dp(10),
+            pos_hint={'center_x': 0.5, 'center_y': 0.5}
+        )
+        self.grid = GridLayout(
+            cols=2,
+            spacing=dp(10),
+            padding=[dp(10), dp(20), dp(10), dp(20)],
+            size_hint=(None, None),
+            width=dp(300),
+            size_hint_y=None
+        )
+        self.grid.bind(minimum_height=self.grid.setter('height'))
+        
+        self.add_category_buttons()
+        self.scroll_view.add_widget(self.grid)
+        layout.add_widget(self.scroll_view)
+
+        # Back Button
+        self.back_button = CustomButton(
+            text=LANGUAGES[self.language]['back'],
+            size_hint=(None, None),
+            size=(dp(80), dp(40)),
+            pos_hint={'x': 0.05, 'top': 0.1}
+        )
+        self.back_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'first'))
+        layout.add_widget(self.back_button)
+        self.add_widget(layout)
+
+    def add_category_buttons(self):
+        categories = LANGUAGES[self.language]['categories']
+        for category in categories:
+            button = CustomButton(
+                text=category if self.language != 'Arabe' else '',
+                size_hint=(None, None),
+                size=(dp(140), dp(50))
+            )
+
+            if self.language == 'Arabe':
+                # Use the mapped English filename for Arabic
+                image_filename = ARABIC_TO_ENGLISH_IMAGES.get(category, None)
+                if image_filename:
+                    button.clear_widgets()
+                    category_image = Image(
+                        source=resource_find(f'assets/images/text/categories/{image_filename}'),
+                        allow_stretch=True,
+                        keep_ratio=True,
+                        size_hint=(None, None),
+                        size=button.size,
+                        pos_hint={'center_x': 0.5, 'center_y': 0.5}
+                    )
+                    button.add_widget(category_image)
+
+            # Bind "Animaux" or "الحيوانات" to open AnimalCategoryScreen
+            if category in ["Animaux", "الحيوانات"]:
+                button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'animal_categories'))
+            else:
+                button.bind(on_press=lambda instance, cat=category: print(f"{cat} selected"))
+
+            self.grid.add_widget(button)
+
+
+    def update_language(self, language):
+        self.language = language
+        self.grid.clear_widgets()  # Clear existing buttons
+        self.add_category_buttons()
+
+        # Update Back Button
+        if language == 'Arabe':
+            self.back_button.clear_widgets()
+            back_button_image = Image(
+                source=resource_find('assets/images/text/back.png'),
+                allow_stretch=True,
+                keep_ratio=True,
+                size_hint=(None, None),
+                size=self.back_button.size,
+                pos_hint={'center_x': 0.5, 'center_y': 0.5}
+            )
+            self.back_button.add_widget(back_button_image)
+        else:
+            self.back_button.clear_widgets()
+            self.back_button.label.text = LANGUAGES['Français']['back']
+            self.back_button.label.font_name = 'FrenchFont'
+            self.back_button.add_widget(self.back_button.label)
+
 class MyApp(App):
     """Main application class."""
     def build(self):
@@ -275,6 +377,7 @@ class MyApp(App):
 
         # ScreenManager setup
         sm = ScreenManager(transition=FadeTransition())
+        sm.add_widget(SecondScreen(name='second'))
         sm.add_widget(FirstScreen(name='first'))
         return sm
 

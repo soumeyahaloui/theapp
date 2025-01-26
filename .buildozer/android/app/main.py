@@ -2,10 +2,11 @@ import sys
 import os
 from kivy.config import Config
 
-# Configure the screen size to simulate a typical Android device
-Config.set('graphics', 'width', '360')
-Config.set('graphics', 'height', '640')
-Config.set('graphics', 'resizable', False)
+# Configure the screen size for Android devices
+Config.set('graphics', 'resizable', False)  # Disable resizing
+Config.set('graphics', 'width', '360')  # Remove if you want Kivy to handle dynamically
+Config.set('graphics', 'height', '640')  # Remove if you want Kivy to handle dynamically
+Config.set('graphics', 'fullscreen', 'false')  # Ensure fullscreen works correctly
 Config.write()
 
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
