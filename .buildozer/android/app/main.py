@@ -8,7 +8,6 @@ from kivy.utils import platform
 from kivy.uix.image import Image
 from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
 
-# Add the src directory to the path to ensure proper imports
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 from kidsvoc import MyApp  # Import the main app class
 
@@ -21,13 +20,13 @@ def configure_app_window():
     Config.set('graphics', 'fullscreen', '0')
     Config.write()
 
-    # Set the background color to match your loading image's primary color
-    Window.clearcolor = (1, 1, 1, 1)  # White background for smooth transitions
+    Window.size = (400, 720) 
+    Window.clearcolor = (1, 1, 1, 1)
 
     if platform == 'android':
-        Window.size = (Window.width, Window.height)
-        Window.canvas.ask_update()  # Ensure canvas is updated
-    Clock.schedule_once(lambda dt: Window.canvas.ask_update(), 0.1)  # Redraw for stability
+        Window.size = (Window.width, Window.height)  # Maintain full-screen sizing
+        Window.fullscreen = True  # Explicitly set to full-screen mode
+        Clock.schedule_once(lambda dt: Window.canvas.ask_update(), 0.1)
 
 
 class LoadingScreen(Screen):
@@ -37,31 +36,26 @@ class LoadingScreen(Screen):
         self.add_widget(Image(source="assets/images/backgrounds/loading.png", allow_stretch=True, keep_ratio=False))
 
     def on_enter(self):
-        # Simulate loading time, then transition to the main app
-        Clock.schedule_once(self.switch_to_main_app, 2.5)  # Keep loading screen for 2.5 seconds
+        Clock.schedule_once(self.switch_to_main_app, 2.5)
 
     def switch_to_main_app(self, *args):
-        self.manager.current = "main_app"  # Switch to the main app screen
+        self.manager.current = "main_app"
 
 
 def main():
     """Main entry point of the application."""
     configure_app_window()
 
-    # Setup the ScreenManager
     sm = ScreenManager(transition=FadeTransition())
     sm.add_widget(LoadingScreen(name="loading"))
 
-    # Wrap the MyApp root widget into a Screen and add it to the ScreenManager
     app_root = MyApp().build()
     main_screen = Screen(name="main_app")
     main_screen.add_widget(app_root)
     sm.add_widget(main_screen)
 
-    # Start with the loading screen
     sm.current = "loading"
 
-    # Run the app
     from kivy.base import runTouchApp
     runTouchApp(sm)
 
