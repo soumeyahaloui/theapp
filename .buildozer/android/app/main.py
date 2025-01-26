@@ -21,7 +21,8 @@ def configure_app_window():
     Config.set('graphics', 'fullscreen', '0')
     Config.write()
 
-    Window.clearcolor = (1, 1, 1, 1)  # Set default white background
+    # Set the background color to match your loading image's primary color
+    Window.clearcolor = (1, 1, 1, 1)  # White background for smooth transitions
 
     if platform == 'android':
         Window.size = (Window.width, Window.height)
@@ -37,7 +38,7 @@ class LoadingScreen(Screen):
 
     def on_enter(self):
         # Simulate loading time, then transition to the main app
-        Clock.schedule_once(self.switch_to_main_app, 3)  # Adjust time as needed
+        Clock.schedule_once(self.switch_to_main_app, 2.5)  # Keep loading screen for 2.5 seconds
 
     def switch_to_main_app(self, *args):
         self.manager.current = "main_app"  # Switch to the main app screen
@@ -47,25 +48,22 @@ def main():
     """Main entry point of the application."""
     configure_app_window()
 
-    # Setup ScreenManager
+    # Setup the ScreenManager
     sm = ScreenManager(transition=FadeTransition())
-
-    # Add the loading screen
     sm.add_widget(LoadingScreen(name="loading"))
 
-    # Wrap MyApp's root widget in a Screen and add it to ScreenManager
+    # Wrap the MyApp root widget into a Screen and add it to the ScreenManager
     app_root = MyApp().build()
     main_screen = Screen(name="main_app")
     main_screen.add_widget(app_root)
     sm.add_widget(main_screen)
 
-    # Set the starting screen
+    # Start with the loading screen
     sm.current = "loading"
 
     # Run the app
     from kivy.base import runTouchApp
     runTouchApp(sm)
-
 
 
 if __name__ == '__main__':
