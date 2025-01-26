@@ -2,40 +2,52 @@ import os
 import json
 from kivy.app import App
 from kivy.metrics import dp
+from kivy.config import Config
 from kivy.uix.label import Label
 from kivy.uix.image import Image
+from kivy.uix.popup import Popup
+from kivy.uix.button import Button
 from kivy.core.window import Window
+from kivy.core.text import LabelBase
+from kivy.core.audio import SoundLoader
 from kivy.resources import resource_find
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import ButtonBehavior
+from kivy.uix.scrollview import ScrollView
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.graphics import Color, RoundedRectangle
 from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
+from kivy.uix.carousel import Carousel
+from kivy.clock import Clock
 
-# Load the manifest file
+
+
+
+LabelBase.register(name='ArabicFont', fn_regular='assets/fonts/NotoNaskhArabic-Regular.ttf')
+LabelBase.register(name='FrenchFont', fn_regular='assets/fonts/Roboto-Regular.ttf')
+
 with open('assets/manifest.json', 'r') as f:
     manifest = json.load(f)
 
 class IconButton(ButtonBehavior, Image):
-    """Custom button class with image behavior."""
     pass
 
 class CustomButton(ButtonBehavior, FloatLayout):
-    """Custom button with dynamic styling and text wrapping."""
     def __init__(self, text, **kwargs):
         super().__init__(**kwargs)
         with self.canvas.before:
             Color(0.2, 0.5, 0.8, 1)
             self.bg_rect = RoundedRectangle(size=self.size, pos=self.pos, radius=[dp(20)])
         self.bind(size=self.update_bg, pos=self.update_bg)
-
+        
         self.label = Label(
             text=text,
             font_size="20sp",
             color=(1, 1, 1, 1),
             size_hint=(None, None),
             size=self.size,
-            text_size=(self.width - dp(20), None),
+            text_size=(self.width - dp(20), None),  # Allow wrapping within button
             pos_hint={'center_x': 0.5, 'center_y': 0.5},
             halign='center',
             valign='middle',
@@ -49,32 +61,211 @@ class CustomButton(ButtonBehavior, FloatLayout):
         self.bg_rect.pos = self.pos
 
     def adjust_height(self, *args):
-        """Dynamically adjust the height based on text size."""
+        # Dynamically adjust the height based on the label's texture size
         self.size = (self.size[0], max(dp(50), self.label.texture_size[1] + dp(20)))
 
+
+LANGUAGES = {
+    'Français': {
+        'start': "Démarrer",
+        'settings': "Paramètres",
+        'language': "Langue",
+        'help': "Aide",
+        'about': "À propos",
+        'back': "< Retour",
+        'categories': [
+            "Couleurs", "Formes", "Nombres", "Fruits", "Légumes", "Actions",
+            "Parties du Corps", "Animaux", "Famille et Personnes", "Vêtements", "Nourriture et Boissons",
+            "Temps et Nature", "Transport", "Objets Ménagers", "École et Éducation",
+            "Métiers", "Sports et Loisirs", "Technologie", "Lieux", "Temps et Jours",
+            "Festivals et Célébrations", "Professions", "Contraires", "Adjectifs et Descriptions"
+        ],
+        'animalcategories': [
+            "Animaux Domestiques", "Animaux Sauvages", "Animaux de Ferme", "Oiseaux", "Créatures Marines", "Insectes"
+        ]
+    },
+    'Arabe': {
+        'start': "ابدأ",
+        'settings': "إعدادات",
+        'language': "اللغة",
+        'help': "مساعدة",
+        'about': "حول",
+        'back': "< رجوع",
+        'categories': [
+            "الحيوانات", "الألوان", "الفواكه", "الخضروات", "الأرقام", "الأشكال",
+            "الأفعال", "العائلة والأشخاص", "أجزاء الجسم", "الملابس", "الطعام والمشروبات",
+            "الطقس والطبيعة", "المواصلات", "الأشياء المنزلية", "المدرسة والتعليم",
+            "المهن", "الرياضة والترفيه", "التكنولوجيا", "الأماكن", "الوقت والأيام",
+            "المهرجانات والاحتفالات", "المهن", "المتضادات", "الصفات والوصف"
+        ],
+        'animalcategories': [
+            "حيوانات أليفة", "حيوانات برية", "حيوانات المزرعة", "طيور", "كائنات بحرية", "حشرات"
+        ]
+    }
+}
+
+ARABIC_TO_ENGLISH_IMAGES = {
+    "الحيوانات": "animals.png",
+    "الألوان": "colors.png",
+    "الفواكه": "fruits.png",
+    "الخضروات": "vegetables.png",
+    "الأرقام": "numbers.png",
+    "الأشكال": "shapes.png",
+    "الأفعال": "actions.png",
+    "العائلة والأشخاص": "family_and_people.png",
+    "أجزاء الجسم": "body_parts.png",
+    "الملابس": "clothing.png",
+    "الطعام والمشروبات": "food_and_drinks.png",
+    "الطقس والطبيعة": "weather_and_nature.png",
+    "المواصلات": "transportation.png",
+    "الأشياء المنزلية": "household_items.png",
+    "المدرسة والتعليم": "school_and_education.png",
+    "المهن": "professions.png",
+    "الرياضة والترفيه": "sports_and_entertainment.png",
+    "التكنولوجيا": "technology.png",
+    "الأماكن": "places.png",
+    "الوقت والأيام": "time_and_days.png",
+    "المهرجانات والاحتفالات": "festivals_and_celebrations.png",
+    "المتضادات": "opposites.png",
+    "الصفات والوصف": "adjectives_and_descriptions.png",
+}
+
+ANIMAL_ARABIC_TO_ENGLISH_IMAGES = {
+    "حيوانات أليفة": "domestic_animals.png",
+    "حيوانات برية": "wild_animals.png",
+    "حيوانات المزرعة": "farm_animals.png",
+    "طيور": "birds.png",
+    "كائنات بحرية": "marine_creatures.png",
+    "حشرات": "insects.png",
+}
+
+
 class FirstScreen(Screen):
-    """The main screen displayed on app start."""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.start_button = None
+        self.settings_button = None
+        self.settings_popup = None
+        self.language_popup = None
+        self.language = 'Français'  # Default language
         self.init_ui()
 
     def init_ui(self):
-        # Background image
         self.add_widget(Image(
             source=resource_find('assets/images/backgrounds/purple.png'),
             allow_stretch=True, keep_ratio=False
         ))
-
-        # Float layout with settings button
         layout = FloatLayout()
-        settings_button = IconButton(
+
+        # Create the start button with default French text
+        self.start_button = CustomButton(
+            text=LANGUAGES['Français']['start'],
+            size_hint=(None, None),
+            size=(dp(240), dp(80)),
+            pos_hint={'center_x': 0.5, 'center_y': 0.15}
+        )
+        self.start_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'second'))
+        layout.add_widget(self.start_button)
+
+        # Settings button
+        self.settings_button = IconButton(
             source='assets/images/icon/settings.png',
             size_hint=(None, None),
             size=(dp(50), dp(50)),
             pos_hint={'right': 0.95, 'top': 0.95}
         )
-        layout.add_widget(settings_button)
+        self.settings_button.bind(on_press=self.open_settings_popup)
+        layout.add_widget(self.settings_button)
+
         self.add_widget(layout)
+
+    def update_language(self, language):
+        self.language = language
+        if language == 'Arabe':
+            # Replace the button's text with the image for Arabic
+            self.start_button.clear_widgets()
+            start_button_image = Image(
+                source=resource_find('assets/images/text/output.png'),
+                allow_stretch=True,
+                keep_ratio=True,
+                size_hint=(None, None),
+                size=self.start_button.size,
+                pos_hint={'center_x': 0.5, 'center_y': 0.5},
+            )
+            self.start_button.add_widget(start_button_image)
+        else:
+            # Revert to the text label for French
+            self.start_button.clear_widgets()
+            self.start_button.label.text = LANGUAGES['Français']['start']
+            self.start_button.label.font_name = 'FrenchFont'
+            self.start_button.add_widget(self.start_button.label)
+
+    def open_settings_popup(self, instance):
+        popup_content = BoxLayout(orientation='vertical', spacing=10, padding=10)
+        language_button = CustomButton(
+            text=LANGUAGES['Français']['language'],
+            size_hint=(1, None),
+            size=(dp(200), dp(50))
+        )
+        language_button.bind(on_press=self.open_language_popup)
+        help_button = CustomButton(
+            text=LANGUAGES['Français']['help'],
+            size_hint=(1, None),
+            size=(dp(200), dp(50))
+        )
+        help_button.bind(on_press=lambda x: print("Help clicked"))
+        about_button = CustomButton(
+            text=LANGUAGES['Français']['about'],
+            size_hint=(1, None),
+            size=(dp(200), dp(50))
+        )
+        about_button.bind(on_press=lambda x: print("About clicked"))
+        popup_content.add_widget(language_button)
+        popup_content.add_widget(help_button)
+        popup_content.add_widget(about_button)
+        self.settings_popup = Popup(
+            title=LANGUAGES['Français']['settings'],
+            content=popup_content,
+            size_hint=(None, None),
+            size=(dp(300), dp(250)),
+            auto_dismiss=True
+        )
+        self.settings_popup.open()
+
+    def open_language_popup(self, instance):
+        if self.settings_popup:
+            self.settings_popup.dismiss()
+        language_content = BoxLayout(orientation='vertical', spacing=10, padding=10)
+        arabic_button = CustomButton(
+            text="Arabe",
+            size_hint=(1, None),
+            size=(dp(200), dp(50))
+        )
+        arabic_button.bind(on_press=lambda x: self.set_language("Arabe"))
+        french_button = CustomButton(
+            text="Français",
+            size_hint=(1, None),
+            size=(dp(200), dp(50))
+        )
+        french_button.bind(on_press=lambda x: self.set_language("Français"))
+        language_content.add_widget(arabic_button)
+        language_content.add_widget(french_button)
+        self.language_popup = Popup(
+            title=LANGUAGES['Français']['language'],
+            content=language_content,
+            size_hint=(None, None),
+            size=(dp(300), dp(200)),
+            auto_dismiss=True
+        )
+        self.language_popup.open()
+
+    def set_language(self, language):
+        if self.language_popup:
+            self.language_popup.dismiss()
+        self.manager.language = language
+        for screen in self.manager.screens:
+            if hasattr(screen, 'update_language'):
+                screen.update_language(language)
 
 class MyApp(App):
     """Main application class."""
