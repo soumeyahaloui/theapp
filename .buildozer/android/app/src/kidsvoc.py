@@ -471,6 +471,115 @@ class AnimalCategoryScreen(Screen):
             self.back_button.label.font_name = 'FrenchFont'
             self.back_button.add_widget(self.back_button.label)
 
+class WildAnimalsScreen(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.language = 'Français'
+        self.back_button = None
+        self.init_ui()
+
+    def init_ui(self):
+        self.add_widget(Image(
+            source=resource_find('assets/images/backgrounds/wallpaperlogo.png'),
+            allow_stretch=True,
+            keep_ratio=False
+        ))
+
+       
+        scroll_view = ScrollView(size_hint=(1, 1), do_scroll_x=True, do_scroll_y=False)
+        horizontal_layout = BoxLayout(
+            orientation='horizontal',
+            spacing=dp(70),
+            padding=[dp(10), dp(20), dp(10), dp(20)],
+            size_hint_x=None,
+            height=dp(520)
+        )
+        horizontal_layout.bind(minimum_width=horizontal_layout.setter('width'))
+
+        carousel = Carousel(direction='right', loop=True, size_hint=(1, 1))
+
+        try:
+            animals = [
+                {
+                    "image": manifest["images"]["animals"][i],
+                    "audio_ar": manifest["audio"]["ar"][i],
+                    "audio_fr": manifest["audio"]["fr"][i]
+                }
+                for i in range(len(manifest["images"]["animals"]))
+            ]
+        except (KeyError, IndexError):
+            animals = []
+
+        for animal in animals:
+            frame_layout = FloatLayout(size_hint=(1, 1))
+
+            img = Image(
+                source=resource_find(f'assets/images/animals/{animal["image"]}'),
+                size_hint=(None, None),
+                size=(dp(400), dp(715)),
+                pos_hint={'center_x': 0.5, 'center_y': 0.5},
+                allow_stretch=True,
+                keep_ratio=False
+    )
+            frame_layout.add_widget(img)
+
+   
+            ar_button = Button(
+               size_hint=(None, None),
+               size=(dp(100), dp(100)),
+               pos_hint={'right': 0.65, 'center_y': 0.12},
+               background_normal='',
+               background_down='',
+               background_color=(0, 0, 0, 0)
+    )
+            frame_layout.add_widget(ar_button)
+
+   
+            fr_button = Button(
+                size_hint=(None, None),
+                size=(dp(100), dp(100)),
+                pos_hint={'right': 0.65, 'center_y': 0.42},
+                background_normal='',
+                background_down='',
+                background_color=(0, 0, 0, 0)
+            )
+            frame_layout.add_widget(fr_button)
+
+    
+            ar_button.bind(on_press=lambda instance, audio=animal["audio_ar"]: self.play_audio(audio))
+            fr_button.bind(on_press=lambda instance, audio=animal["audio_fr"]: self.play_audio(audio))
+        
+       
+            carousel.add_widget(frame_layout)
+        
+       
+        self.add_widget(carousel)
+
+     
+        self.back_button = CustomButton(
+            text=LANGUAGES[self.language]['back'],
+            size_hint=(None, None),
+            size=(dp(100), dp(50)),
+            pos_hint={'x': 0.05, 'top': 0.1}
+        )
+        self.back_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'animal_categories'))
+        self.add_widget(self.back_button)
+
+    def play_audio(self, audio_file):
+        audio_path = (
+            resource_find(f'assets/audio/ar/{audio_file}') or
+            resource_find(f'assets/audio/fr/{audio_file}')
+        )
+        if not audio_path or not os.path.exists(audio_path):
+            print(f"Audio file not found: {audio_file}")
+            return
+        sound = SoundLoader.load(audio_path)
+        if sound:
+            sound.play()
+        else:
+            print(f"Failed to load sound: {audio_file}")
+
+
 class MyApp(App):
     """Main application class."""
     def build(self):
@@ -482,6 +591,7 @@ class MyApp(App):
         sm.add_widget(FirstScreen(name='first'))
         sm.add_widget(SecondScreen(name='second'))
         sm.add_widget(AnimalCategoryScreen(name='animal_categories'))
+        sm.add_widget(WildAnimalsScreen(name='wild_animals'))
         
         return sm
 
