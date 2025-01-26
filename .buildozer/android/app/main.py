@@ -4,6 +4,8 @@ from kivy.metrics import dp
 from kivy.config import Config
 from kivy.core.window import Window
 from kivy.clock import Clock
+Clock.schedule_once(lambda dt: Window.canvas.ask_update(), 0.1)
+
 
 # Add the src directory to the path to ensure proper imports
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
