@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">KidsVoc</string>
     <string name="presplash_color">#000000</string>
-    <string name="private_version">615bac67a9e990c230a16f8e60185a1bd81c7b7b</string>
+    <string name="private_version">6a290318761ac1e67579dae88da44d8069644caa</string>
     <string name="urlScheme">kivy</string>
 </resources>

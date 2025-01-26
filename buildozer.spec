@@ -12,7 +12,7 @@ icon.filename = assets/images/icon/appkidicon.png
 version = 1.0
 requirements = python3, kivy, kivy[base], pillow, arabic-reshaper, python-bidi, setuptools
 orientation = portrait
-fullscreen = 1
+fullscreen = 0
 android.meta_data = android.max_aspect=2.1
 android.permissions = READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
 android.ndk_path = /home/myapp/Desktop/kidsvoc/.buildozer/android/platform/android-ndk-r27c
@@ -32,6 +32,6 @@ android.arch = arm64-v8a
 android.minapi = 21
 android.ndk_api = 21
 
-android.presplash_color = #000000
+android.presplash = assets/images/backgrounds/loading.png
 android.disable_dpi_scaling = 1
 
