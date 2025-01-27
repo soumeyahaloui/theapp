@@ -525,7 +525,7 @@ class WildAnimalsScreen(Screen):
    
             ar_button = Button(
                 size_hint=(0.1, 0.1),  # 10% of parent size
-                pos_hint={'center_x': 0.4, 'center_y': 0.2},  # Dynamic position
+                pos_hint={'center_x': 0.5, 'center_y': 0.18},  # Dynamic position
                 background_normal='',
                 background_down='',
                 background_color=(0, 0, 0, 0)
@@ -536,7 +536,7 @@ class WildAnimalsScreen(Screen):
    
             fr_button = Button(
                 size_hint=(0.1, 0.1),
-                pos_hint={'center_x': 0.6, 'center_y': 0.2},
+                pos_hint={'center_x': 0.5, 'center_y': 0.45},
                 background_normal='',
                 background_down='',
                 background_color=(0, 0, 0, 0)
@@ -557,8 +557,9 @@ class WildAnimalsScreen(Screen):
      
         self.back_button = CustomButton(
             text=LANGUAGES[self.language]['back'],
-            size_hint=(0.2, 0.1),
-            pos_hint={'x': 0.05, 'top': 0.9}
+            size_hint=(None, None),
+            size=(dp(80), dp(40)),
+            pos_hint={'x': 0.05, 'top': 0.1}
         )
         self.back_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'animal_categories'))
         self.add_widget(self.back_button)
@@ -576,6 +577,28 @@ class WildAnimalsScreen(Screen):
             sound.play()
         else:
             print(f"Failed to load sound: {audio_file}")
+
+    def update_language(self, language):
+        self.language = language
+
+      
+        if language == 'Arabe':
+            self.back_button.clear_widgets()
+            back_button_image = Image(
+                source=resource_find('assets/images/text/back.png'),
+                allow_stretch=True,
+                keep_ratio=True,
+                size_hint=(None, None),
+                size=self.back_button.size,
+                pos_hint={'center_x': 0.5, 'center_y': 0.5}
+            )
+            self.back_button.add_widget(back_button_image)
+        else:
+            self.back_button.clear_widgets()
+            self.back_button.label.text = LANGUAGES['Français']['back']
+            self.back_button.label.font_name = 'FrenchFont'
+            self.back_button.add_widget(self.back_button.label)
+
 
 
 class MyApp(App):

@@ -4,8 +4,8 @@ from kivy.config import Config
 
 # Configure the screen size for Android devices
 Config.set('graphics', 'resizable', False)  # Disable resizing
-Config.set('graphics', 'width', '360')  # Remove if you want Kivy to handle dynamically
-Config.set('graphics', 'height', '640')  # Remove if you want Kivy to handle dynamically
+Config.set('graphics', 'width', '360')
+Config.set('graphics', 'height', '780')
 Config.set('graphics', 'fullscreen', 'false')  # Ensure fullscreen works correctly
 Config.write()
 
