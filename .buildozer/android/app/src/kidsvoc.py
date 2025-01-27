@@ -22,7 +22,7 @@ from kivy.uix.carousel import Carousel
 from kivy.clock import Clock
 
 
-
+screen_width, screen_height = Window.size
 
 LabelBase.register(name='ArabicFont', fn_regular='assets/fonts/NotoNaskhArabic-Regular.ttf')
 LabelBase.register(name='FrenchFont', fn_regular='assets/fonts/Roboto-Regular.ttf')
@@ -515,34 +515,33 @@ class WildAnimalsScreen(Screen):
 
             img = Image(
                 source=resource_find(f'assets/images/animals/{animal["image"]}'),
-                size_hint=(None, None),
-                size=(dp(400), dp(715)),
-                pos_hint={'center_x': 0.5, 'center_y': 0.5},
+                size_hint=(1, 1),  # Scale relative to the screen size
+                pos_hint={'center_x': 0.5, 'center_y': 0.5},  # Position near the top
                 allow_stretch=True,
-                keep_ratio=False
-    )
+                keep_ratio=True
+            )
             frame_layout.add_widget(img)
 
    
             ar_button = Button(
-               size_hint=(None, None),
-               size=(dp(100), dp(100)),
-               pos_hint={'right': 0.65, 'center_y': 0.12},
-               background_normal='',
-               background_down='',
-               background_color=(0, 0, 0, 0)
-    )
-            frame_layout.add_widget(ar_button)
-
-   
-            fr_button = Button(
-                size_hint=(None, None),
-                size=(dp(100), dp(100)),
-                pos_hint={'right': 0.65, 'center_y': 0.42},
+                size_hint=(0.1, 0.1),  # 10% of parent size
+                pos_hint={'center_x': 0.4, 'center_y': 0.2},  # Dynamic position
                 background_normal='',
                 background_down='',
                 background_color=(0, 0, 0, 0)
             )
+            ar_button.bind(on_press=lambda instance, audio=animal["audio_ar"]: self.play_audio(audio))
+            frame_layout.add_widget(ar_button)
+
+   
+            fr_button = Button(
+                size_hint=(0.1, 0.1),
+                pos_hint={'center_x': 0.6, 'center_y': 0.2},
+                background_normal='',
+                background_down='',
+                background_color=(0, 0, 0, 0)
+            )
+            fr_button.bind(on_press=lambda instance, audio=animal["audio_fr"]: self.play_audio(audio))
             frame_layout.add_widget(fr_button)
 
     
@@ -558,9 +557,8 @@ class WildAnimalsScreen(Screen):
      
         self.back_button = CustomButton(
             text=LANGUAGES[self.language]['back'],
-            size_hint=(None, None),
-            size=(dp(100), dp(50)),
-            pos_hint={'x': 0.05, 'top': 0.1}
+            size_hint=(0.2, 0.1),
+            pos_hint={'x': 0.05, 'top': 0.9}
         )
         self.back_button.bind(on_press=lambda instance: setattr(self.manager, 'current', 'animal_categories'))
         self.add_widget(self.back_button)
@@ -592,7 +590,7 @@ class MyApp(App):
         sm.add_widget(SecondScreen(name='second'))
         sm.add_widget(AnimalCategoryScreen(name='animal_categories'))
         sm.add_widget(WildAnimalsScreen(name='wild_animals'))
-        
+
         return sm
 
 if __name__ == '__main__':
